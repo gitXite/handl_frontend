@@ -143,6 +143,10 @@ button.ghost {
   margin-bottom: 1rem;
 }
 
+.sign-up-container button {
+  margin-top: 1rem;
+}
+
 .overlay-container {
   position: absolute;
   top: 0;
@@ -191,7 +195,6 @@ button.ghost {
 }
 
 
-/* Animations */
 .container.right-panel-active .sign-in-container {
   transform: translateX(100%);
 }
