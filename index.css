@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+
 * {
     box-sizing: border-box;
 }
@@ -103,6 +104,7 @@ button.ghost {
 .overlay-right button.ghost:hover {
     background: #e63e00;
 }
+
 .overlay-right button.ghost:active {
     background: #ff4500;
 }
@@ -110,6 +112,7 @@ button.ghost {
 .overlay-left button.ghost:hover {
     background: #b33000;
 }
+
 .overlay-left button.ghost:active {
     background: #e63e00;
 }
@@ -193,6 +196,8 @@ button.ghost {
     transform: translateX(-20%);
 }
 
+
+/* animation */
 
 .container.right-panel-active .sign-in-container {
     transform: translateX(100%);
