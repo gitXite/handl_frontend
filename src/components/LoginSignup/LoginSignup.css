@@ -22,7 +22,7 @@ body {
 
 h1 {
     margin: 0;
-    font-weight: bold;
+    font-weight: 400;
 }
 
 p {
@@ -72,24 +72,24 @@ a {
 }
 
 button {
-    background: #ff4500;
+    background: #2d545e;
     padding: 12px 45px;
     color: #fff;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1px;
-    border: 1px solid #ff4500;
+    border: 1px solid #354e56;
     border-radius: 20px;
     text-transform: uppercase;
 }
 
 button:hover {
     cursor: pointer;
-    background: #e63e00;
+    background: #19747e;
 }
 
 button:active {
-    background: #ff4500;
+    background: #e2e2e2;
 }
 
 button:focus {
@@ -102,19 +102,19 @@ button.ghost {
 }
 
 .overlay-right button.ghost:hover {
-    background: #e63e00;
+    background: #19747e;
 }
 
 .overlay-right button.ghost:active {
-    background: #ff4500;
+    background: #e2e2e2;
 }
 
 .overlay-left button.ghost:hover {
-    background: #b33000;
+    background: #2d545e;
 }
 
 .overlay-left button.ghost:active {
-    background: #e63e00;
+    background: #e2e2e2;
 }
 
 .form-container {
@@ -163,8 +163,8 @@ button.ghost {
 .overlay {
     position: relative;
     left: -100%;
-    background: #ff4500;
-    background: linear-gradient(to right, #b33000, #ff4500) no-repeat 0 0 / cover;
+    background: #19747e;
+    background: linear-gradient(to right, #12343b, #19747e) no-repeat 0 0 / cover;
     height: 100%;
     width: 200%;
     color: #fff;

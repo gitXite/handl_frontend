@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import './components/LoginSignup/LoginSignup'
 import LoginSignup from './components/LoginSignup/LoginSignup';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
     return (
-        <LoginSignup />
+        <Fragment>
+            <LoginSignup/> 
+            <Footer />
+        </Fragment>
     );
 }
 

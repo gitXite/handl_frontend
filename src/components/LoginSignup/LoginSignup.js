@@ -6,12 +6,12 @@ function LoginSignup() {
     // toggle between sign-up and login
     const [isSignUp, setIsSignUp] = useState(true);
     // state hooks for form data
+    const [passwordError, setPasswordError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
-        passwordError: '',
         loginPassword: ''
     });
     
@@ -46,8 +46,8 @@ function LoginSignup() {
     // submit handlers
     const handleSignUpSubmit = (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            setPasswordError('Passwords do not match.');
+        if (formData.password !== formData.confirmPassword) {
+            setPasswordError('Passwords do not match');
             return;
         }
         setPasswordError('');
@@ -116,8 +116,8 @@ function LoginSignup() {
                         onChange={handleChange('loginPassword')}
                         required 
                     />
-                    <a href="#">Forgot your password?</a>
-                    <button>Login</button>
+                    <a>Forgot your password?</a>
+                    <button type="submit">Login</button>
                 </form>
             </div>
         )}
