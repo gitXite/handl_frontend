@@ -40,11 +40,6 @@ a {
     text-decoration: none;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-}
-
 .container {
     position: relative;
     overflow: hidden;
