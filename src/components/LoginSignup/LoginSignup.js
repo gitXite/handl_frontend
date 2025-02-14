@@ -4,7 +4,7 @@ import './LoginSignup.css';
 
 function LoginSignup() {
     // toggle between sign-up and login
-    const [isSignUp, setIsSignUp] = useState(true);
+    const [isSignUp, setIsSignUp] = useState(false);
     // state hooks for form data
     const [passwordError, setPasswordError] = useState('');
     const [formData, setFormData] = useState({
@@ -60,8 +60,7 @@ function LoginSignup() {
     
     return (
         <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
-            {isSignUp ? (
-                <div className="form-container sign-up-container">
+            <div className="form-container sign-up-container">
                 <form onSubmit={handleSignUpSubmit}>
                     <h1>Create Account</h1>
                     <input 
@@ -98,7 +97,6 @@ function LoginSignup() {
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
-        ) : (
             <div className="form-container sign-in-container">
                 <form onSubmit={handleLoginSubmit}>
                     <h1>Login</h1>
@@ -120,7 +118,6 @@ function LoginSignup() {
                     <button type="submit">Login</button>
                 </form>
             </div>
-        )}
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
