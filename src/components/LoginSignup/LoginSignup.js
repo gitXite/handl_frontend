@@ -7,7 +7,7 @@ function LoginSignup() {
     const [isSignUp, setIsSignUp] = useState(true);
     // state hooks for form data
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = usestate('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
 
     // toggle between sign-up and login
