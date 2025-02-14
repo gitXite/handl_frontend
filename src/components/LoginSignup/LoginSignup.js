@@ -9,13 +9,26 @@ function LoginSignup() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [loginPassword, setLoginPassword] = useState('');
 
     // toggle between sign-up and login
     const handleSignUpClick = () => {
         setIsSignUp(true);
+        setPassword('');
+        setConfirmPassword('');
+        setName('');
+        setEmail('');
+        setLoginPassword('');
     };
     const handleLoginClick = () => {
         setIsSignUp(false);
+        setPassword('');
+        setConfirmPassword('');
+        setName('');
+        setEmail('');
+        setLoginPassword('');
     };
 
     // submit handlers
@@ -42,11 +55,15 @@ function LoginSignup() {
                     <input 
                         type="text" 
                         placeholder="Name" 
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         required
                     />
                     <input 
                         type="email" 
                         placeholder="Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input 
@@ -73,8 +90,20 @@ function LoginSignup() {
             <div className="form-container sign-in-container">
                 <form onSubmit={handleLoginSubmit}>
                     <h1>Login</h1>
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
+                    <input 
+                        type="email" 
+                        placeholder="Email" 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required 
+                    />
+                    <input 
+                        type="password" 
+                        placeholder="Password" 
+                        value={loginPassword} 
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        required 
+                    />
                     <a href="#">Forgot your password?</a>
                     <button>Login</button>
                 </form>
