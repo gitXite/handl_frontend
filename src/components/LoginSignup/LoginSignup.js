@@ -6,29 +6,41 @@ function LoginSignup() {
     // toggle between sign-up and login
     const [isSignUp, setIsSignUp] = useState(true);
     // state hooks for form data
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [passwordError, setPasswordError] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [loginPassword, setLoginPassword] = useState('');
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        passwordError: '',
+        loginPassword: ''
+    });
+    
+    const handleChange = (field) => (e) => {
+        setFormData({...formData, [field]: e.target.value});
+    };
 
     // toggle between sign-up and login
     const handleSignUpClick = () => {
         setIsSignUp(true);
-        setPassword('');
-        setConfirmPassword('');
-        setName('');
-        setEmail('');
-        setLoginPassword('');
+        setFormData({
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            passwordError: '',
+            loginPassword: ''
+        });
     };
     const handleLoginClick = () => {
         setIsSignUp(false);
-        setPassword('');
-        setConfirmPassword('');
-        setName('');
-        setEmail('');
-        setLoginPassword('');
+        setFormData({
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            passwordError: '',
+            loginPassword: ''
+        });
     };
 
     // submit handlers
@@ -55,31 +67,31 @@ function LoginSignup() {
                     <input 
                         type="text" 
                         placeholder="Name" 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
+                        value={formData.name}
+                        onChange={handleChange('name')}
                         required
                     />
                     <input 
                         type="email" 
                         placeholder="Email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange('email')}
                         required
                     />
                     <input 
                         type="password" 
                         name="password" 
                         placeholder="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
+                        value={formData.password}
+                        onChange={handleChange('password')}
                         required
                     />
                     <input 
                         type="password" 
                         name="confirm" 
                         placeholder="Confirm Password"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)} 
+                        value={formData.confirmPassword}
+                        onChange={handleChange('confirmPassword')} 
                         required
                     />
                     {passwordError && <p style={{ color: 'red' }}>{passwordError}</p>}
@@ -93,15 +105,15 @@ function LoginSignup() {
                     <input 
                         type="email" 
                         placeholder="Email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={formData.email}
+                        onChange={handleChange('email')}
                         required 
                     />
                     <input 
                         type="password" 
                         placeholder="Password" 
-                        value={loginPassword} 
-                        onChange={(e) => setLoginPassword(e.target.value)}
+                        value={formData.loginPassword} 
+                        onChange={handleChange('loginPassword')}
                         required 
                     />
                     <a href="#">Forgot your password?</a>
