@@ -1,6 +1,12 @@
 footer {
+    display: flex;
+    justify-content: center;
     position: absolute;
     bottom: 0;
     height: auto;
     width: 100%;
+}
+
+.footer {
+    display: flex;
 }

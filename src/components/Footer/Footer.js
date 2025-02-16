@@ -5,7 +5,9 @@ import './Footer.css';
 function Footer() {
     return (
         <footer>
-            <small>Copyright © {new Date().getFullYear()} by Handl. All Rights Reserved.</small>
+            <div className='footer'>
+                <small>Copyright © {new Date().getFullYear()} by Handl. All Rights Reserved.</small>
+            </div>
         </footer>
     );
 }

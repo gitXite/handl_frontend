@@ -9,17 +9,6 @@
     outline: 1.5px solid;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #f6f5f7;
-    height: 100vh;
-    margin: -20px 0 50px;
-    font-family: 'Montserrat', Sans-Serif;
-}
-
 h1 {
     margin: 0;
     font-weight: 400;
@@ -41,6 +30,8 @@ a {
 }
 
 .container {
+    display: flex;
+    align-self: center;
     position: relative;
     overflow: hidden;
     background: #fff;
