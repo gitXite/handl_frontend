@@ -93,7 +93,7 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {passwordError && <p style={{color: 'red', margin: '0'}}>{passwordError}</p>}
+                    {passwordError && <p style={{color: 'red', margin: '0', marginTop: '0.5rem'}}>{passwordError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>

@@ -9,5 +9,5 @@ footer {
 
 .footer {
     display: flex;
-    text-align: center;
+    align-content: center;
 }

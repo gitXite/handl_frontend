@@ -1,0 +1,23 @@
+header {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    width: 100%;
+    margin: 2rem 0 2rem 2rem;
+}
+
+.logo {
+    margin-right: 2rem;
+    font-size: 25px;
+}
+
+.nav {
+    margin-left: 2rem;
+}
+
+.nav a {
+    margin-right: 1rem;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}

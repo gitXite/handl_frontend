@@ -15,17 +15,17 @@ body {
     height: 100vh;
     max-width: 100%;
     overflow: hidden;
-    margin: -20px 0 50px;
-    background: #f6f5f7;
+    margin: 0;
+    background: #e2e2e2;
     font-family: 'Montserrat', Sans-Serif;
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100%;
     width: 100%;
+    margin: 0;
 }
 
 * {
