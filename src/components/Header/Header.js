@@ -9,7 +9,7 @@ function Header() {
                 <h1>HANDL</h1>
             </div>
             <div className='nav'>
-                <a>Home</a>
+                <a href='/'>Home</a>
                 <a>Placeholder</a>
             </div>
         </header>

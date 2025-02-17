@@ -21,3 +21,8 @@ header {
     text-decoration: none;
     cursor: pointer;
 }
+
+.nav a:active,
+.nav a:focus {
+    outline: none;
+}
