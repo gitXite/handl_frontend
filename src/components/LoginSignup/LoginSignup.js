@@ -44,18 +44,58 @@ function LoginSignup() {
     };
 
     // submit handlers
-    const handleSignUpSubmit = (e) => {
+    const handleSignUpSubmit = async (e) => {
         e.preventDefault();
         if (formData.password !== formData.confirmPassword) {
             setPasswordError('Passwords do not match');
             return;
         }
         setPasswordError('');
-        console.log('Sign-up form submitted');
+
+        try {
+            const response = await fetch('http://localhost:5000/auth/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    password: formData.password
+                }),
+            });
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Error sending data');
+            }
+            
+            const result = await response.json();
+            console.log('Sign-up form submitted', result);
+        } catch (error) {
+            console.error('Error submitting form', error);
+        }
     };
-    const handleLoginSubmit = (e) => {
+    const handleLoginSubmit = async (e) => {
         e.preventDefault();
-        console.log('Login successful');
+        try {
+            const response = await fetch('http://localhost:5000/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: formData.email,
+                    password: formData.loginPassword
+                }),
+            });
+            if (!response.ok) {
+                throw new Error('Error sending data');
+            }
+            const result = await response.json();
+            console.log('Logged in successfully', result);
+        } catch (error) {
+            console.error('Error logging in', error);
+        }
     };
     
     return (

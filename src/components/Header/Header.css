@@ -3,7 +3,7 @@ header {
     align-items: center;
     height: 5rem;
     width: 100%;
-    margin: 2rem 0 2rem 2rem;
+    padding: 2rem 0 2rem 2rem;
 }
 
 .logo {
@@ -25,4 +25,25 @@ header {
 .nav a:active,
 .nav a:focus {
     outline: none;
+}
+
+.logoutImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    left: 70vw;
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logoutImage img {
+    width: 35px;
+}
+
+.logoutImage:hover {
+    background-color: #e2e2e2;
 }
