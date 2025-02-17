@@ -64,13 +64,15 @@ function LoginSignup() {
                     password: formData.password
                 }),
             });
+            
             if (!response.ok) {
                 const errorData = await response.json();
                 throw new Error(errorData.message || 'Error sending data');
             }
-            
+
             const result = await response.json();
             console.log('Sign-up form submitted', result);
+
         } catch (error) {
             console.error('Error submitting form', error);
         }
@@ -88,11 +90,14 @@ function LoginSignup() {
                     password: formData.loginPassword
                 }),
             });
+
             if (!response.ok) {
                 throw new Error('Error sending data');
             }
+
             const result = await response.json();
             console.log('Logged in successfully', result);
+
         } catch (error) {
             console.error('Error logging in', error);
         }

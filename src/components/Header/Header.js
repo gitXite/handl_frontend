@@ -16,6 +16,7 @@ function Header() {
 
             const result = await response.json();
             console.log('Logged out', result);
+            
         } catch (error) {
             console.error('Failed to log out');
         }
