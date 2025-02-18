@@ -133,6 +133,12 @@ button.ghost {
     margin-bottom: 2rem;
 }
 
+.errorText {
+    margin: 0;
+    marginTop: 0.5rem;
+    color: red;
+}
+
 .sign-up-container {
     left: 0;
     opacity: 0;
