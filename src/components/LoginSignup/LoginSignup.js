@@ -28,7 +28,7 @@ function LoginSignup() {
         setFormData({...formData, [field]: e.target.value});
     };
 
-    const toggleSignUp = (signUp:) => {
+    const toggleSignUp = (signUp) => {
         setIsSignUp(signUp);
         resetForm();
         setPasswordError('');

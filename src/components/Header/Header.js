@@ -12,7 +12,7 @@ function Header() {
     useEffect(() => {
         const checkAuthStatus = async () => {
             try {
-                const response = await fetch('http://localhost:5000/auth/session'),  {
+                const response = await fetch('http://localhost:5000/auth/session',  {
                     method: 'GET', 
                     credentials: 'include',
                 });
@@ -59,19 +59,23 @@ function Header() {
             </div>
             <div className='auth-button'>
                 {isAuthenticated ? (
-                    <button className='profile-button' onClick={() => navigate('/profile')}>
-                        Profile
-                    </button>
-                    <button className='logout-button' onClick={handleLogout}>
-                        <img src={logoutImage} alt='Logout' />
-                    </button>
+                    <>
+                        <button className='profile-button' onClick={() => navigate('/profile')}>
+                            Profile
+                        </button>
+                        <button className='logout-button' onClick={handleLogout}>
+                            <img src={logoutImage} alt='Logout' />
+                        </button>
+                    </>
                 ) : (
-                    <button className='login-button' onClick={() => navigate('/login')}>
-                        Login
-                    </button>
-                    <button className='register-button' onClick={() => navigate('/register')}>
-                        Register
-                    </button>
+                    <>
+                        <button className='login-button' onClick={() => navigate('/login')}>
+                            Login
+                        </button>
+                        <button className='register-button' onClick={() => navigate('/register')}>
+                            Register
+                        </button>
+                    </>
                 )}
             </div>
         </header>
