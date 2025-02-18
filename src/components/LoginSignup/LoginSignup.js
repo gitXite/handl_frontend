@@ -98,7 +98,7 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {passwordError && <p className='errorText'>{passwordError}</p>}
+                    {passwordError && <p className='error-text'>{passwordError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
