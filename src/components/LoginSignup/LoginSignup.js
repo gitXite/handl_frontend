@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './LoginSignup.css';
 
 
 function LoginSignup() {
+    const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [passwordError, setPasswordError] = useState('');
     const [formData, setFormData] = useState({
@@ -40,7 +42,7 @@ function LoginSignup() {
         }
 
         setPasswordError('');
-        const endpoint = isSignup ? 'register' : 'login';
+        const endpoint = isSignUp ? 'register' : 'login';
         const body = isSignUp
         ? { name: formData.name, email: formData.email, password: formData.password }
         : { email: formData.email, password: formData.loginPassword };
@@ -57,6 +59,12 @@ function LoginSignup() {
                 throw new Error(errorData.message || 'Error processing request');
             }
 
+            if (isSignUp) {
+                navigate('/login');
+            } else {
+                navigate('/');
+            }
+            
             console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, await response.json());
         } catch (error) {
             console.error('Error:', error);
