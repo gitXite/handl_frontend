@@ -6,19 +6,18 @@ import logoutImage from './logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
 function Header() {
     const logout = async () => {
         try {
-            const response = await fetch('http://localhost:5000/auth/logout?connect.sid', {
+            const response = await fetch('http://localhost:5000/auth/logout', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: '',
+                headers: { 'Content-Type': 'application/json' },
             });
 
-            const result = await response.json();
-            console.log('Logged out', result);
-            
+            if(!response.ok) {
+                throw new Error('Logout failed');
+            }
+
+            console.log('Logged out successfully', await response.json());
         } catch (error) {
-            console.error('Failed to log out');
+            console.error('Failed to log out:', error.message);
         }
     };
 
@@ -32,9 +31,9 @@ function Header() {
                 <a href='/'>Placeholder</a>
             </div>
             <div className='logout'>
-                <a className='logoutImage' onClick={logout}>
-                    <img src={logoutImage} alt='Logout'/>
-                </a>
+                <button className='logout-button' onClick={logout}>
+                    <img src={logoutImage} alt='Logout' />
+                </button>
             </div>
         </header>
     );
