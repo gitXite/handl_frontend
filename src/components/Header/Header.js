@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Alert } from 'react-alert';
 import logoutImage from '../../assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
 import './Header.css';
 
@@ -36,7 +35,6 @@ function Header() {
             if (!response.ok) {
                 const errorData = await response.json();
                 console.error('Logout failed', errorData.message);
-                alert(errorData.message);
                 return;
             }
 
@@ -69,12 +67,12 @@ function Header() {
                     </>
                 ) : (
                     <>
-                        <button className='login-button' onClick={() => navigate('/login')}>
+                        {/* <button className='login-button' onClick={() => navigate('/login')}>
                             Login
                         </button>
                         <button className='register-button' onClick={() => navigate('/register')}>
                             Register
-                        </button>
+                        </button> */}
                     </>
                 )}
             </div>

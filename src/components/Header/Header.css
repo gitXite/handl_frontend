@@ -32,7 +32,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 70vw;
+    left: 50vw;
     height: 35px;
     width: 35px;
     border-radius: 5px;
@@ -55,4 +55,12 @@ header {
 
 .logout-button:hover {
     background-color: #e2e2e2;
+}
+
+.login-button {
+    visibility: visible;
+}
+
+.register-button {
+    visibility: visible;
 }

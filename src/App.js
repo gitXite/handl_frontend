@@ -7,13 +7,13 @@ import Footer from './components/Footer/Footer';
 
 function App() {
     return (
-        <Fragment>
+        <Router>
             <Header />
-            <main>
-                <LoginSignup />
-            </main>
+            <Routes>
+                <Route path='/login' element={<LoginSignup />}/>
+            </Routes>
             <Footer />
-        </Fragment>
+        </Router>
     );
 }
 
