@@ -38,7 +38,7 @@ header {
     border-radius: 5px;
 }
 
-.logoutImage {
+.logout-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,10 +49,10 @@ header {
     cursor: pointer;
 }
 
-.logoutImage img {
+.logout-button img {
     width: 35px;
 }
 
-.logoutImage:hover {
+.logout-button:hover {
     background-color: #e2e2e2;
 }
