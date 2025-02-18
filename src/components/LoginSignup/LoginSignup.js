@@ -6,6 +6,7 @@ import './LoginSignup.css';
 function LoginSignup() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
+    const [loginError, setLoginError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
@@ -41,6 +42,7 @@ function LoginSignup() {
             return;
         }
 
+        setLoginError('');
         setPasswordError('');
         const endpoint = isSignUp ? 'register' : 'login';
         const body = isSignUp
@@ -62,6 +64,12 @@ function LoginSignup() {
             if (isSignUp) {
                 navigate('/login');
             } else {
+                const result = await response.json();
+                if (result.message === 'Invalid email or password') {
+                    setLoginError('Invalid email or password');
+                    return;
+                }
+                
                 navigate('/');
             }
             
@@ -129,6 +137,7 @@ function LoginSignup() {
                         required 
                     />
                     <a>Forgot your password?</a>
+                    {loginError && <p className='error-text'>{loginError}</p>}
                     <button type="submit">Login</button>
                 </form>
             </div>
