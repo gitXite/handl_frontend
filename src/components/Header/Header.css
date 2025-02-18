@@ -27,7 +27,7 @@ header {
     outline: none;
 }
 
-.logout {
+.auth-button {
     display: flex;
     justify-content: center;
     align-items: center;
