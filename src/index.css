@@ -1,13 +1,14 @@
-/* main color palette */
-/* --gunmetal: #12343b;
---charcoal: #354e56;
---dark-slate-gray: #2d545e;
---caribbean-current: #19747e;
---buff: #e1b382;
---lion: #c89666;
---platinum: #e2e2e2;
---white-smoke: #f6f5f7; */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
+/* Main color palette */
+/* --gunmetal: #12343b; */
+/* --charcoal: #354e56; */
+/* --dark-slate-gray: #2d545e; */
+/* --caribbean-current: #19747e; */
+/* --buff: #e1b382; */
+/* --lion: #c89666; */
+/* --platinum: #e2e2e2; */
+/* --white-smoke: #f6f5f7; */
 
 body {
     display: flex;
