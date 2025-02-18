@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import logoutImage from './logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
+import logoutImage from '../../assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
 
 
 function Header() {
