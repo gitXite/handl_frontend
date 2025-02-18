@@ -56,24 +56,23 @@ function LoginSignup() {
                 body: JSON.stringify(body),
             });
 
+            const result = await response.json();
+
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Error processing request');
+                throw new Error(result.message || 'Error processing request');
             }
+            
+            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
 
             if (isSignUp) {
                 navigate('/login');
             } else {
-                const result = await response.json();
                 if (result.message === 'Invalid email or password') {
                     setLoginError('Invalid email or password');
                     return;
                 }
-                
                 navigate('/');
             }
-            
-            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, await response.json());
         } catch (error) {
             console.error('Error:', error);
         }
