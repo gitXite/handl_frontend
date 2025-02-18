@@ -3,11 +3,17 @@ import './LoginSignup.css';
 
 
 function LoginSignup() {
-    // toggle between sign-up and login
     const [isSignUp, setIsSignUp] = useState(false);
-    // state hooks for form data
     const [passwordError, setPasswordError] = useState('');
     const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+        loginPassword: ''
+    });
+
+    const resetForm = () => setFormData ({
         name: '',
         email: '',
         password: '',
@@ -19,94 +25,48 @@ function LoginSignup() {
         setFormData({...formData, [field]: e.target.value});
     };
 
-    // toggle between sign-up and login
-    const handleSignUpClick = () => {
-        setIsSignUp(true);
-        setFormData({
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            passwordError: '',
-            loginPassword: ''
-        });
-    };
-    const handleLoginClick = () => {
-        setIsSignUp(false);
-        setFormData({
-            name: '',
-            email: '',
-            password: '',
-            confirmPassword: '',
-            passwordError: '',
-            loginPassword: ''
-        });
+    const toggleSignUp = (signUp:) => {
+        setIsSignUp(signUp);
+        resetForm();
+        setPasswordError('');
     };
 
-    // submit handlers
-    const handleSignUpSubmit = async (e) => {
+    const handleSubmit = async (e, isSignUp) => {
         e.preventDefault();
-        if (formData.password !== formData.confirmPassword) {
+
+        if (isSignUp && formData.password !== formData.confirmPassword) {
             setPasswordError('Passwords do not match');
             return;
         }
+
         setPasswordError('');
+        const endpoint = isSignup ? 'register' : 'login';
+        const body = isSignUp
+        ? { name: formData.name, email: formData.email, password: formData.password }
+        : { email: formData.email, password: formData.loginPassword };
 
         try {
-            const response = await fetch('http://localhost:5000/auth/register', {
+            const response = await fetch(`http://localhost:5000/auth/${endpoint}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    password: formData.password
-                }),
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
             });
-            
+
             if (!response.ok) {
                 const errorData = await response.json();
-                throw new Error(errorData.message || 'Error sending data');
+                throw new Error(errorData.message || 'Error processing request');
             }
 
-            const result = await response.json();
-            console.log('Sign-up form submitted', result);
-
+            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, await response.json());
         } catch (error) {
-            console.error('Error submitting form', error);
-        }
-    };
-    const handleLoginSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await fetch('http://localhost:5000/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    email: formData.email,
-                    password: formData.loginPassword
-                }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Error sending data');
-            }
-
-            const result = await response.json();
-            console.log('Logged in successfully', result);
-
-        } catch (error) {
-            console.error('Error logging in', error);
+            console.error('Error:', error);
         }
     };
     
     return (
         <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
             <div className="form-container sign-up-container">
-                <form onSubmit={handleSignUpSubmit}>
+                <form onSubmit={(e) => handleSubmit(e, true)}>
                     <h1>Create Account</h1>
                     <input 
                         type="text" 
@@ -138,12 +98,13 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {passwordError && <p style={{color: 'red', margin: '0', marginTop: '0.5rem'}}>{passwordError}</p>}
+                    {passwordError && <p className='errorText'>{passwordError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
+                            
             <div className="form-container sign-in-container">
-                <form onSubmit={handleLoginSubmit}>
+                <form onSubmit={(e) => handleSubmit(e, false)}>
                     <h1>Login</h1>
                     <input 
                         type="email" 
@@ -163,17 +124,18 @@ function LoginSignup() {
                     <button type="submit">Login</button>
                 </form>
             </div>
+                            
             <div className="overlay-container">
                 <div className="overlay">
                     <div className="overlay-panel overlay-left">
                         <h1>Welcome back!</h1>
                         <p>Already have an account?</p>
-                        <button className="ghost" onClick={handleLoginClick}>Login</button>
+                        <button className="ghost" onClick={() => toggleSignUp(false)}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>New here?</h1>
                         <p>Create an account by signing up!</p>
-                        <button className="ghost" onClick={handleSignUpClick}>Sign Up</button>
+                        <button className="ghost" onClick={() => toggleSignUp(true)}>Sign Up</button>
                     </div>
                 </div>
             </div>
