@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Header.css';
 import logoutImage from '../../assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
+import './Header.css';
 
 
 function Header() {
@@ -55,12 +55,18 @@ function Header() {
             </div>
             <div className='auth-button'>
                 {isAuthenticated ? (
+                    <button className='profile-button' onClick={() => navigate('/profile')}>
+                        Profile
+                    </button>
                     <button className='logout-button' onClick={handleLogout}>
                         <img src={logoutImage} alt='Logout' />
                     </button>
                 ) : (
                     <button className='login-button' onClick={() => navigate('/login')}>
                         Login
+                    </button>
+                    <button className='register-button' onClick={() => navigate('/register')}>
+                        Register
                     </button>
                 )}
             </div>
