@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Alert } from 'react-alert';
 import logoutImage from '../../assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png'
 import './Header.css';
 
