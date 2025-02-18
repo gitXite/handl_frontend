@@ -32,13 +32,16 @@ function Header() {
                 headers: { 'Content-Type': 'application/json' },
             });
 
-            if (response.ok) {
-                setIsAuthenticated(false);
-                console.log('Logged out successfully');
-                navigate('/login');
-            } else {
-                console.error('Logout failed');
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Logout failed', errorData.message);
+                alert(errorData.message);
+                return;
             }
+
+            setIsAuthenticated(false);
+            console.log('Logged out successfully');
+            navigate('/login');
         } catch (error) {
             console.error('Failed to log out:', error.message);
         }
