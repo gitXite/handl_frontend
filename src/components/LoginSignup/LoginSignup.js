@@ -34,6 +34,7 @@ function LoginSignup() {
         setPasswordError('');
     };
 
+    // Main logic
     const handleSubmit = async (e, isSignUp) => {
         e.preventDefault();
 
@@ -49,6 +50,7 @@ function LoginSignup() {
         ? { name: formData.name, email: formData.email, password: formData.password }
         : { email: formData.email, password: formData.loginPassword };
 
+        // API call for register/login
         try {
             const response = await fetch(`http://localhost:5000/auth/${endpoint}`, {
                 method: 'POST',
@@ -58,12 +60,14 @@ function LoginSignup() {
 
             const result = await response.json();
 
+            // Redirect on successful sign-in/sign-up
             if (response.ok) {
                 console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
                 navigate(isSignUp ? '/login' : '/');
                 return;
             }
-            
+
+            // Set error message to use in form
             const errorMessage = result.message || 'An error occurred. Please try again.';
             isSignUp ? setSignUpError(errorMessage) : setLoginError(errorMessage);
         } catch (error) {
