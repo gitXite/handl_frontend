@@ -54,6 +54,7 @@ function Header() {
             <div className='nav'>
                 <a href='/'>Home</a>
                 <a href='/'>Placeholder</a>
+                <a href='/'>Placeholder</a>
             </div>
             <div className='auth-button'>
                 {isAuthenticated ? (
@@ -67,12 +68,12 @@ function Header() {
                     </>
                 ) : (
                     <>
-                        {/* <button className='login-button' onClick={() => navigate('/login')}>
+                        <button className='login-button' onClick={() => navigate('/login')}>
                             Login
                         </button>
                         <button className='register-button' onClick={() => navigate('/register')}>
                             Register
-                        </button> */}
+                        </button>
                     </>
                 )}
             </div>

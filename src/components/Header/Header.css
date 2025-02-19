@@ -16,10 +16,14 @@ header {
 }
 
 .nav a {
-    margin-right: 1rem;
+    margin-right: 2rem;
     font-size: 20px;
     text-decoration: none;
     cursor: pointer;
+}
+
+.nav a:hover {
+    color: #19747e;
 }
 
 .nav a:active,
@@ -58,9 +62,8 @@ header {
 }
 
 .login-button {
-    visibility: visible;
+    margin-left: 1rem;
 }
-
 .register-button {
-    visibility: visible;
+    margin-left: 1rem;
 }
