@@ -3,10 +3,10 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginSignup.css';
 
 
-function LoginSignup() {
+function LoginSignup({ isSignUp: initialSignUp }) {
     const navigate = useNavigate();
     const location = useLocation();
-    const [isSignUp, setIsSignUp] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(initialSignUp);
     const [loginError, setLoginError] = useState('');
     const [signUpError, setSignUpError] = useState('');
     const [formData, setFormData] = useState({
