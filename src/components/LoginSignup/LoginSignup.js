@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginSignup.css';
 
 
 function LoginSignup() {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isSignUp, setIsSignUp] = useState(false);
     const [loginError, setLoginError] = useState('');
     const [signUpError, setSignUpError] = useState('');
@@ -33,6 +34,7 @@ function LoginSignup() {
         resetForm();
         setSignUpError('');
         setLoginError('');
+        navigate(isSignUp ? '/register' : '/login');
     };
 
     // Main logic
@@ -77,6 +79,14 @@ function LoginSignup() {
             isSignUp ? setSignUpError(defaultError) : setLoginError(defaultError);
         }
     };
+
+    useEffect(() => {
+        if (location.pathname === '/register' && !isSignUp) {
+            setIsSignUp(true);
+        } else if (location.pathname === '/login' && isSignUp) {
+            setIsSignUp(false);
+        }
+    }, [location.pathname, isSignUp]);
     
     return (
         <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
