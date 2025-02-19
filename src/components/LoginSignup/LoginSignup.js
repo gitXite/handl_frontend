@@ -31,7 +31,8 @@ function LoginSignup() {
     const toggleSignUp = (signUp) => {
         setIsSignUp(signUp);
         resetForm();
-        setPasswordError('');
+        setSignUpError('');
+        setLoginError('');
     };
 
     // Main logic
@@ -39,7 +40,7 @@ function LoginSignup() {
         e.preventDefault();
 
         if (isSignUp && formData.password !== formData.confirmPassword) {
-            setPasswordError('Passwords do not match');
+            setSignUpError('Passwords do not match');
             return;
         }
 
@@ -112,7 +113,7 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {SignUpError && <p className='error-text-signup'>{SignUpError}</p>}
+                    {signUpError && <p className='error-text-signup'>{signUpError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
