@@ -7,7 +7,7 @@ function LoginSignup() {
     const navigate = useNavigate();
     const [isSignUp, setIsSignUp] = useState(false);
     const [loginError, setLoginError] = useState('');
-    const [passwordError, setPasswordError] = useState('');
+    const [signUpError, setSignUpError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -43,7 +43,7 @@ function LoginSignup() {
         }
 
         setLoginError('');
-        setPasswordError('');
+        setSignUpError('');
         const endpoint = isSignUp ? 'register' : 'login';
         const body = isSignUp
         ? { name: formData.name, email: formData.email, password: formData.password }
@@ -60,38 +60,16 @@ function LoginSignup() {
 
             if (response.ok) {
                 console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
-                
-                if (isSignUp) {
-                    navigate('/login');
-                } else {
-                    navigate('/');
-                }
-            } else {
-                if (result.message) {
-                    if (isSignUp) {
-                        setPasswordError(result.message);
-                    } else {
-                        if (result.message === 'Invalid email or password') {
-                            setLoginError('Invalid email or password');
-                        } else {
-                            setLoginError(result.message);
-                        }
-                    }
-                } else {
-                    if (isSignUp) {
-                        setPasswordError('An error occurred. Please try again');
-                    } else {
-                        setLoginError('An error occurred. Please try again');
-                    }
-                }
+                navigate(isSignUp ? '/login' : '/');
+                return;
             }
+            
+            const errorMessage = result.message || 'An error occurred. Please try again.';
+            isSignUp ? setSignUpError(errorMessage) : setLoginError(errorMessage);
         } catch (error) {
-            if (isSignUp) {
-                setPasswordError('An error occurred. Please try again.');
-            } else {
-                setLoginError('An error occurred. Please try again.');
-            }
             console.error(error);
+            const defaultError = 'An error occurred. Please try again';
+            isSignUp ? setSignUpError(defaultError) : setLoginError(defaultError);
         }
     };
     
@@ -130,7 +108,7 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {passwordError && <p className='error-text-signup'>{passwordError}</p>}
+                    {SignUpError && <p className='error-text-signup'>{SignUpError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
