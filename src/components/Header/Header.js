@@ -10,13 +10,16 @@ function Header() {
 
     useEffect(() => {
         const checkAuthStatus = async () => {
+            console.log('Fetching auth status...');
             try {
                 const response = await fetch('http://localhost:5000/auth/session',  {
                     method: 'GET', 
                     credentials: 'include',
                 });
-                const data = await response.json();
-                setIsAuthenticated(data.isAuthenticated);
+                console.log('Response recieved:', response);
+                const result = await response.json();
+                console.log('Parsed JSON:', result);
+                setIsAuthenticated(result.isAuthenticated);
             } catch (error) {
                 console.error('Error checking session', error);
             }

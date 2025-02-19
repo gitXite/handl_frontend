@@ -12,7 +12,7 @@ function Home() {
                 <h1>Welcome to</h1>
                 <h1>HANDL</h1>
                 <p>
-                    Are you ready to tick off all your boxes with the perfect shopping list? 
+                    Tick off all your boxes with the perfect shopping list!
                 </p>
                 <p>Collaborative</p>
                 <p>Seamless</p>

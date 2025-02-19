@@ -74,7 +74,12 @@ function LoginSignup() {
                 navigate('/');
             }
         } catch (error) {
-            console.error('Error:', error);
+            if (isSignUp) {
+                setPasswordError('An error occurred. Please try again.');
+            } else {
+                setLoginError('An error occurred. Please try again.');
+            }
+            console.error(error);
         }
     };
     
@@ -113,7 +118,7 @@ function LoginSignup() {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
-                    {passwordError && <p className='error-text'>{passwordError}</p>}
+                    {passwordError && <p className='error-text-signup'>{passwordError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
@@ -135,8 +140,8 @@ function LoginSignup() {
                         onChange={handleChange('loginPassword')}
                         required 
                     />
-                    <a>Forgot your password?</a>
-                    {loginError && <p className='error-text'>{loginError}</p>}
+                    <a className='forgot-password'>Forgot your password?</a>
+                    {loginError && <p className='error-text-signin'>{loginError}</p>}
                     <button type="submit">Login</button>
                 </form>
             </div>

@@ -131,7 +131,19 @@ button.ghost {
     margin-bottom: 2rem;
 }
 
-.error-text {
+.forgot-password {
+    margin: 0;
+    margin-top: 0.3rem;
+    margin-bottom: 0.7rem;
+}
+
+.error-text-signin {
+    margin: 0;
+    margin-bottom: 1rem;
+    color: red;
+}
+
+.error-text-signup {
     margin: 0;
     margin-top: 0.5rem;
     color: red;
