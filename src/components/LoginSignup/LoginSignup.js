@@ -58,20 +58,32 @@ function LoginSignup() {
 
             const result = await response.json();
 
-            if (!response.ok) {
-                throw new Error(result.message || 'Error processing request');
-            }
-            
-            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
-
-            if (isSignUp) {
-                navigate('/login');
-            } else {
-                if (result.message === 'Invalid email or password') {
-                    setLoginError('Invalid email or password');
-                    return;
+            if (response.ok) {
+                console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
+                
+                if (isSignUp) {
+                    navigate('/login');
+                } else {
+                    navigate('/');
                 }
-                navigate('/');
+            } else {
+                if (result.message) {
+                    if (isSignUp) {
+                        setPasswordError(result.message);
+                    } else {
+                        if (result.message === 'Invalid email or password') {
+                            setLoginError('Invalid email or password');
+                        } else {
+                            setLoginError(result.message);
+                        }
+                    }
+                } else {
+                    if (isSignUp) {
+                        setPasswordError('An error occurred. Please try again');
+                    } else {
+                        setLoginError('An error occurred. Please try again');
+                    }
+                }
             }
         } catch (error) {
             if (isSignUp) {
