@@ -36,9 +36,7 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
-    left: 50vw;
-    height: 35px;
-    width: 35px;
+    left: 30vw;
     border-radius: 5px;
 }
 
@@ -61,9 +59,9 @@ header {
     background-color: #e2e2e2;
 }
 
-.login-button {
-    margin-left: 1rem;
-}
+/* .login-button {
+
+} */
 .register-button {
     margin-left: 1rem;
 }
