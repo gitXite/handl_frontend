@@ -12,8 +12,8 @@ function App() {
             <Header />
             <Routes>
                 <Route path='/' element={<LandingPage />} />
-                <Route path='/login' element={<LoginSignup />}/>
-                <Route path='/register' element={<LoginSignup />}/>
+                <Route path='/login' element={<LoginSignup isSignUp={false} />} />
+                <Route path='/register' element={<LoginSignup isSignUp={true} />} />
             </Routes>
             <Footer />
         </Router>
