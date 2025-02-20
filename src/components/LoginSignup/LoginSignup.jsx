@@ -6,6 +6,7 @@ import './LoginSignup.css';
 function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
     const navigate = useNavigate();
     const location = useLocation();
+    const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
     const [loginError, setLoginError] = useState('');
     const [signUpError, setSignUpError] = useState('');
@@ -67,6 +68,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
 
         // API call for register/login
         try {
+            setIsLoading(true);
             const response = await fetch(`http://localhost:5000/auth/${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -89,6 +91,8 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
             console.error(error);
             const defaultError = 'An error occurred. Please try again';
             isSignUp ? setSignUpError(defaultError) : setLoginError(defaultError);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -136,6 +140,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
                         onChange={handleChange('confirmPassword')} 
                         required
                     />
+                    {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                     {signUpError && <p className='error-text-signup'>{signUpError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
@@ -159,6 +164,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
                         required 
                     />
                     <a className='forgot-password'>Forgot your password?</a>
+                    {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                     {loginError && <p className='error-text-signin'>{loginError}</p>}
                     <button type="submit">Login</button>
                 </form>
