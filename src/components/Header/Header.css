@@ -36,6 +36,7 @@ header {
     align-items: center;
     position: absolute;
     right: 5rem;
+    color: #333;
 }
 
 .login-button {
