@@ -25,6 +25,9 @@ header {
 .nav a:hover {
     color: #19747e;
 }
+.nav a:active {
+    color: #333;
+}
 .nav a:active,
 .nav a:focus {
     outline: none;
@@ -36,18 +39,20 @@ header {
     align-items: center;
     position: absolute;
     right: 5rem;
-    color: #333;
 }
 
 .login-button {
     all: unset;
+    color: #333;
 }
-
 .login-button:hover {
     all: unset;
     color: #19747e;
     text-align: center;
     cursor: pointer;
+}
+.login-button:active {
+    color: #333;
 }
 
 .register-button {
