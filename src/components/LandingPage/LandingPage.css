@@ -1,3 +1,4 @@
+
 .hero-section {
     display: flex;
     flex-direction: row;
@@ -8,8 +9,10 @@
     margin-top: 5rem;
     padding: 2rem;
     font-size: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 10px;
-    background-color: #fff;
+    backdrop-filter: blur(7px);
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
