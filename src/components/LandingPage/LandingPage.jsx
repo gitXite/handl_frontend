@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import github from '../../assets/icons/github_2504911.png';
-import instagram from '../../assets/icons/instagram_2504918.png';
-import linkedin from '../../assets/icons/linkedin_2504923.png';
+import github from '@assets/icons/github_2504911.png';
+import instagram from '@assets/icons/instagram_2504918.png';
+import linkedin from '@assets/icons/linkedin_2504923.png';
 import './LandingPage.css'
 
 
