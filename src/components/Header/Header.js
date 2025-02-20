@@ -17,7 +17,9 @@ function Header({ resetForm }) {
                     credentials: 'include',
                 });
                 console.log('Response recieved:', response);
+
                 const result = await response.json();
+                
                 console.log('Parsed JSON:', result);
                 setIsAuthenticated(result.isAuthenticated);
             } catch (error) {

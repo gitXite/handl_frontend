@@ -56,13 +56,13 @@ function Home() {
                 </div>
             </div>
             <div className='socials'>
-                <a href='www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
+                <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
                     <img src={github}></img>
                 </a>
-                <a href='www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
+                <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
                     <img src={instagram}></img>
                 </a>
-                <a href='www.linkedin.com' target='_blank' rel='noopener noreferrer'>
+                <a href='https://www.linkedin.com' target='_blank' rel='noopener noreferrer'>
                     <img src={linkedin}></img>
                 </a>
             </div>
