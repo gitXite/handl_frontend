@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './LoginSignup.css';
 
 
-function LoginSignup({ isSignUp: initialSignUp }) {
+function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
     const navigate = useNavigate();
     const location = useLocation();
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
@@ -16,6 +16,16 @@ function LoginSignup({ isSignUp: initialSignUp }) {
         confirmPassword: '',
         loginPassword: ''
     });
+
+    useEffect(() => {
+        setFormData({
+            name: '',
+            email: '',
+            password: '',
+            confirmPassword: '',
+            loginPassword: ''
+        });
+    }, [formResetTrigger]);
 
     const resetForm = () => setFormData ({
         name: '',

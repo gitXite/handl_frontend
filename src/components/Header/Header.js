@@ -4,7 +4,7 @@ import logoutImage from '../../assets/icons/logout_16dp_000000_FILL0_wght400_GRA
 import './Header.css';
 
 
-function Header() {
+function Header({ resetForm }) {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const navigate = useNavigate();
 
@@ -71,10 +71,10 @@ function Header() {
                     </>
                 ) : (
                     <>
-                        <button className='login-button' onClick={() => navigate('/login')}>
+                        <button className='login-button' onClick={() => { navigate('/login'); resetForm(); }}>
                             Login
                         </button>
-                        <button className='register-button' onClick={() => navigate('/register')}>
+                        <button className='register-button' onClick={() => { navigate('/register'); resetForm(); }}>
                             Register
                         </button>
                     </>
