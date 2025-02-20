@@ -35,9 +35,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    left: 30vw;
-    border-radius: 5px;
+    position: absolute;
+    right: 5rem;
 }
 
 .logout-button {
@@ -59,9 +58,33 @@ header {
     background-color: #e2e2e2;
 }
 
-/* .login-button {
+.login-button {
+    all: unset;
+}
 
-} */
+.login-button:hover {
+    all: unset;
+    color: #19747e;
+    text-align: center;
+    cursor: pointer;
+}
+
 .register-button {
+    all: unset;
+    height: 2rem;
+    width: 5rem;
     margin-left: 1rem;
+    border: 1px solid #354e56;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    background-color: #2d545e;
+}
+
+.register-button:hover {
+    background-color: #19747e;
+}
+.register-button:active {
+    color: #12343b;
+    background-color: #e2e2e2;
 }
