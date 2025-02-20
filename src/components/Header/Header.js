@@ -19,7 +19,7 @@ function Header({ resetForm }) {
                 console.log('Response recieved:', response);
 
                 const result = await response.json();
-                
+
                 console.log('Parsed JSON:', result);
                 setIsAuthenticated(result.isAuthenticated);
             } catch (error) {
@@ -58,8 +58,8 @@ function Header({ resetForm }) {
             </div>
             <div className='nav'>
                 <a href='/'>Home</a>
-                <a href='/'>Placeholder</a>
-                <a href='/'>Placeholder</a>
+                <a href='/about'>About</a>
+                <a href='/contact'>Contact</a>
             </div>
             <div className='auth-button'>
                 {isAuthenticated ? (
