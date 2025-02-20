@@ -38,8 +38,8 @@ function Home() {
     return (
         <div className='hero-section'>
             <div className='heading'>
-                <h1>Welcome to</h1>
-                <h1>HANDL</h1>
+                <h1 className='welcome-to'>Welcome to</h1>
+                <h1 className='handl'>HANDL</h1>
                 <div className='sub-heading'>
                     <h1>Tick off all your boxes</h1>
                     <h1>with the perfect shopping list</h1>
