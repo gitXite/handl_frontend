@@ -17,6 +17,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         loginPassword: ''
     });
 
+    // Use formResetTrigger from App.js to reset form on Header button clicks
     useEffect(() => {
         setFormData({
             name: '',
@@ -39,6 +40,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         setFormData({...formData, [field]: e.target.value});
     };
 
+    // Function replaced by useEffect to set isSignUp
     // const toggleSignUp = (signUp) => {
     //     setIsSignUp(signUp);
     //     navigate(isSignUp ? '/register' : '/login');
