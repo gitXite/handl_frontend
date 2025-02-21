@@ -55,6 +55,17 @@ function Home() {
                     <h1>Tick off all your boxes</h1>
                     <h1>with the perfect shopping list</h1>
                 </div>
+                <div className='socials'>
+                <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
+                    <img src={github}></img>
+                </a>
+                <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
+                    <img src={instagram}></img>
+                </a>
+                <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
+                    <img src={linkedin}></img>
+                </a>
+            </div>
             </div>
             <div className='cta'>
                 <div className='supporting'>
@@ -65,17 +76,6 @@ function Home() {
                 <div className='get-started-button'>
                     <button onClick={() => getStarted()}>Get started</button>
                 </div>
-            </div>
-            <div className='socials'>
-                <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
-                    <img src={github}></img>
-                </a>
-                <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
-                    <img src={instagram}></img>
-                </a>
-                <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
-                    <img src={linkedin}></img>
-                </a>
             </div>
         </div>
     );

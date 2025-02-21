@@ -9,6 +9,7 @@ header {
 .logo {
     margin-right: 2rem;
     font-size: 25px;
+    /* border-bottom: 1px solid #c89666; */
 }
 
 .nav {
