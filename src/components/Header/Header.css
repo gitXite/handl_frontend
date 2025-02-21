@@ -16,23 +16,22 @@ header {
     display: flex;
     margin-left: 2rem;
 }
-
-.nav a {
+.nav-button {
+    all: unset;
+    align-self: center;
+    height: min-content;
+    margin: 0;
+    padding: 0;
     margin-right: 2rem;
     font-size: 20px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.nav a:hover {
-    color: #19747e;
-}
-.nav a:active {
     color: #333;
 }
-.nav a:active,
-.nav a:focus {
-    outline: none;
+.nav-button:hover {
+    margin-right: 2rem;
+    font-size: 20px;
+    color: #19747e;
+    background: none;
+    cursor: pointer;
 }
 .hamburger {
     display: flex;
@@ -41,7 +40,11 @@ header {
 .menu {
     margin: 0;
 }
-.menu a {
+.menu button {
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+.menu button:hover {
     margin-right: 1rem;
     margin-left: 1rem;
 }

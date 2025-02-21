@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { Squash as Hamburger } from 'hamburger-react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import logoutImage from '@assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png';
 import './Header.css';
-import { MotionValue } from 'motion';
 
 
 function Header({ resetForm }) {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [open, setOpen] = useState(false);
+    const location = useLocation();
 
     const fetchAuthStatus = async () => {
         try {
@@ -38,11 +38,17 @@ function Header({ resetForm }) {
         queryFn: fetchAuthStatus
     });
 
+    // set isAuthenticated when data updates
     useEffect(() => {
         if (data) {
             setIsAuthenticated(data.isAuthenticated);
         }
     }, [data]);
+
+    // Used for hamburger menu animation
+    useEffect(() => {
+        setOpen(false);
+    }, [location]);
     
     const handleLogout = async () => {
         try {
@@ -70,25 +76,28 @@ function Header({ resetForm }) {
                 <h1>HANDL</h1>
             </div>
             <div className='nav'>
-                <a href='/'>Home</a>
-                <a href='/lists'>Shopping Lists</a>
+                <button className='nav-button' onClick={() => navigate('/')}>Home</button>
+                <button className='nav-button' onClick={() => navigate('/lists')}>Shopping Lists</button>
                 <div className='hamburger'>
                     <Hamburger 
                         size={24}
                         duration={0.3}
                         toggled={open}
                         toggle={setOpen}
+                        color='#333'
                     />
-                    {open && <motion.div 
-                        className='menu'
-                        initial={{ opacity: 0, translateX: -10 }}
-                        animate={{ opacity: 1, translateX: 0 }}
-                        exit={{ opacity: 0, translateX: -10 }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <a href='/about'>About</a>
-                        <a href='/contact'>Contact</a>
-                    </motion.div>}
+                    <AnimatePresence>
+                        {open && <motion.div 
+                            className='menu'
+                            initial={{ opacity: 0, translateX: -50 }}
+                            animate={{ opacity: 1, translateX: 0 }}
+                            exit={{ opacity: 0, translateX: -50 }}
+                            transition={{ duration: 0.2 }}
+                        >
+                            <button className='nav-button' onClick={() => navigate('/about')}>About</button>
+                            <button className='nav-button' onClick={() => navigate('/contact')}>Contact</button>
+                        </motion.div>}
+                    </AnimatePresence>
                 </div>
             </div>
             <div className='auth-button'>
