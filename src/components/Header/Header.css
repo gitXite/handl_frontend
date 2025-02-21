@@ -33,6 +33,9 @@ header {
     background: none;
     cursor: pointer;
 }
+.nav-button:active {
+    color: #333;
+}
 .hamburger {
     display: flex;
     align-items: center;
@@ -47,6 +50,9 @@ header {
 .menu button:hover {
     margin-right: 1rem;
     margin-left: 1rem;
+}
+.menu button:active {
+    color: #333;
 }
 
 .auth-button {
