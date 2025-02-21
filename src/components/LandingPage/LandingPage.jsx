@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
 import linkedin from '@assets/icons/linkedin_2504923.png';
@@ -10,29 +12,38 @@ function Home() {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    useEffect(() => {
-        const checkAuthStatus = async () => {
-            console.log('Fetching auth status...');
-            try {
-                const response = await fetch('http://localhost:5000/auth/session', {
-                    method: 'GET',
-                    credentials: 'include',
-                });
-                console.log('Response recieved:', response);
+    const fetchAuthStatus = async () => {
+        console.log('Fetching auth status...');
 
-                const result = await response.json();
+        try {
+            const { data } = await axios.get('http://localhost:5000/auth/session', {
+                withCredentials: true
+            });
 
-                console.log('Parsed JSON:', result);
-                setIsAuthenticated(result.isAuthenticated);
-            } catch (error) {
-                console.error('Error checking session', error);
+            console.log('Parsed JSON:', data);
+            return data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error('Axios error:', error.response?.data || error.message);
+                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
             }
-        }; 
-        checkAuthStatus();
-    }, []);
+            throw error;
+        }
+    };
+
+    const { data } = useQuery({
+        queryKey: ['authStatus'],
+        queryFn: fetchAuthStatus
+    });
+
+    useEffect(() => {
+        if (data) {
+            setIsAuthenticated(data.isAuthenticated);
+        }
+    }, [data]);
 
     const getStarted = () => {
-        isAuthenticated ? navigate('/') : navigate('/login');
+        isAuthenticated ? navigate('/lists') : navigate('/login');
     };
 
     return (

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import axios from 'axios';
 import './LoginSignup.css';
 
 
@@ -18,7 +19,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         loginPassword: ''
     });
 
-    // Use formResetTrigger from App.js to reset form on Header button clicks
+    // Use formResetTrigger from App.jsx to reset form on Header button clicks
     useEffect(() => {
         setFormData({
             name: '',
@@ -41,15 +42,6 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         setFormData({...formData, [field]: e.target.value});
     };
 
-    // Function replaced by useEffect to set isSignUp
-    // const toggleSignUp = (signUp) => {
-    //     setIsSignUp(signUp);
-    //     navigate(isSignUp ? '/register' : '/login');
-    //     resetForm();
-    //     setSignUpError('');
-    //     setLoginError('');
-    // };
-
     // Main logic
     const handleSubmit = async (e, isSignUp) => {
         e.preventDefault();
@@ -61,6 +53,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
 
         setLoginError('');
         setSignUpError('');
+        
         const endpoint = isSignUp ? 'register' : 'login';
         const body = isSignUp
         ? { name: formData.name, email: formData.email, password: formData.password }
@@ -69,28 +62,17 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         // API call for register/login
         try {
             setIsLoading(true);
-            const response = await fetch(`http://localhost:5000/auth/${endpoint}`, {
-                method: 'POST',
+            const { data } = await axios.post(`http://localhost:5000/auth/${endpoint}`, body, {
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(body),
             });
 
-            const result = await response.json();
-
-            // Redirect on successful sign-in/sign-up
-            if (response.ok) {
-                console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
-                navigate(isSignUp ? '/login' : '/');
-                return;
-            }
-
-            // Set error message to use in form
-            const errorMessage = result.message || 'An error occurred. Please try again.';
-            isSignUp ? setSignUpError(errorMessage) : setLoginError(errorMessage);
+            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, data);
+            navigate(isSignUp ? '/login' : '/');
         } catch (error) {
             console.error(error);
-            const defaultError = 'An error occurred. Please try again';
-            isSignUp ? setSignUpError(defaultError) : setLoginError(defaultError);
+            const errorMessage = error.response?.data?.message || 'An error occurred. Please try again.';
+
+            isSignUp ? setSignUpError(errorMessage) : setLoginError(errorMessage);
         } finally {
             setIsLoading(false);
         }
