@@ -14,9 +14,9 @@ function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.5, delay: 0 }}
             >
-                <p>
+                <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?
@@ -27,9 +27,9 @@ function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
             >
-                <p>
+                <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?
@@ -40,9 +40,9 @@ function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
             >
-                <p>
+                <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?

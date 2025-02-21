@@ -75,7 +75,7 @@ function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
+                        transition={{ duration: 0.5, delay: 0 }}
                     >
                         <p>Collaborative</p>
                     </motion.div>
@@ -84,7 +84,7 @@ function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.5 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
                     >
                         <p>Seamless</p>
                     </motion.div>
@@ -93,7 +93,7 @@ function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.7 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
                     >
                         <p>User friendly</p>
                     </motion.div>
@@ -104,7 +104,7 @@ function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.9 }}
+                        transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <button onClick={() => getStarted()}>Get started</button>
                     </motion.div>

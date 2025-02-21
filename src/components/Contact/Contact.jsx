@@ -13,7 +13,7 @@ function Contact() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
+                    transition={{ duration: 0.5, delay: 0 }}
                 >
                     <p>Feel free to reach out</p>
                 </motion.div>
@@ -22,7 +22,7 @@ function Contact() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.5 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                 >
                     <p>to one of our developers,</p>
                 </motion.div>
@@ -31,7 +31,7 @@ function Contact() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
                 >
                     <p>we want to help</p>
                 </motion.div>
