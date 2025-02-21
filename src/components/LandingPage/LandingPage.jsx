@@ -57,16 +57,16 @@ function Home() {
                     <h1>with the perfect shopping list</h1>
                 </div>
                 <div className='socials'>
-                <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
-                    <img src={github}></img>
-                </a>
-                <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
-                    <img src={instagram}></img>
-                </a>
-                <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
-                    <img src={linkedin}></img>
-                </a>
-            </div>
+                    <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
+                        <img src={github}></img>
+                    </a>
+                    <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
+                        <img src={instagram}></img>
+                    </a>
+                    <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
+                        <img src={linkedin}></img>
+                    </a>
+                </div>
             </div>
             <div className='cta'>
                 <div className='supporting'>
@@ -104,7 +104,7 @@ function Home() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
+                        transition={{ duration: 0.5 }}
                     >
                         <button onClick={() => getStarted()}>Get started</button>
                     </motion.div>
