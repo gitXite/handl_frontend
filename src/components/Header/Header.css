@@ -13,6 +13,7 @@ header {
 }
 
 .nav {
+    display: flex;
     margin-left: 2rem;
 }
 
@@ -32,6 +33,17 @@ header {
 .nav a:active,
 .nav a:focus {
     outline: none;
+}
+.hamburger {
+    display: flex;
+    align-items: center;
+}
+.menu {
+    margin: 0;
+}
+.menu a {
+    margin-right: 1rem;
+    margin-left: 1rem;
 }
 
 .auth-button {

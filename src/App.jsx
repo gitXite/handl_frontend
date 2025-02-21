@@ -8,6 +8,7 @@ import LoginSignup from '@components/LoginSignup/LoginSignup';
 import Footer from '@components/Footer/Footer';
 import About from '@components/About/About';
 import Contact from '@components/Contact/Contact';
+import Lists from '@components/Lists/Lists';
 
 
 function App() {
@@ -58,6 +59,18 @@ function App() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />
+                            </motion.div>
+                        } />
+                        <Route path='/lists' element={
+                            <motion.div
+                                className='page-fade'
+                                key='lists'
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Lists />
                             </motion.div>
                         } />
                         <Route path='/about' element={

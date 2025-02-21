@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { Squash as Hamburger } from 'hamburger-react';
+import { motion } from 'framer-motion';
 import logoutImage from '@assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png';
 import './Header.css';
+import { MotionValue } from 'motion';
 
 
 function Header({ resetForm }) {
     const navigate = useNavigate();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [open, setOpen] = useState(false);
 
     const fetchAuthStatus = async () => {
         try {
@@ -67,9 +71,25 @@ function Header({ resetForm }) {
             </div>
             <div className='nav'>
                 <a href='/'>Home</a>
-                <a href='/lists'>Lists</a>
-                <a href='/about'>About</a>
-                <a href='/contact'>Contact</a>
+                <a href='/lists'>Shopping Lists</a>
+                <div className='hamburger'>
+                    <Hamburger 
+                        size={24}
+                        duration={0.3}
+                        toggled={open}
+                        toggle={setOpen}
+                    />
+                    {open && <motion.div 
+                        className='menu'
+                        initial={{ opacity: 0, translateX: -10 }}
+                        animate={{ opacity: 1, translateX: 0 }}
+                        exit={{ opacity: 0, translateX: -10 }}
+                        transition={{ duration: 0.3 }}
+                    >
+                        <a href='/about'>About</a>
+                        <a href='/contact'>Contact</a>
+                    </motion.div>}
+                </div>
             </div>
             <div className='auth-button'>
                 {isAuthenticated ? (
