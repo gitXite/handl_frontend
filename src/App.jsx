@@ -7,6 +7,7 @@ import LandingPage from '@components/LandingPage/LandingPage';
 import LoginSignup from '@components/LoginSignup/LoginSignup';
 import Footer from '@components/Footer/Footer';
 import About from '@components/About/About';
+import Contact from '@components/Contact/Contact';
 
 
 function App() {
@@ -69,6 +70,18 @@ function App() {
                                 transition={{ duration: 0.5 }}
                             >
                                 <About />
+                            </motion.div>
+                        } />
+                        <Route path='/contact' element={
+                            <motion.div
+                                className='page-fade'
+                                key='contact'
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                transition={{ duration: 0.5 }}
+                            >
+                                <Contact />
                             </motion.div>
                         } />
                     </Routes>

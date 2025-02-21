@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
 import linkedin from '@assets/icons/linkedin_2504923.png';
@@ -69,12 +70,44 @@ function Home() {
             </div>
             <div className='cta'>
                 <div className='supporting'>
-                    <p>Collaborative</p>
-                    <p>Seamless</p>
-                    <p>User friendly</p>
+                    <motion.div
+                        className='fade-supporting'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                        <p>Collaborative</p>
+                    </motion.div>
+                    <motion.div
+                        className='fade-supporting'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                        <p>Seamless</p>
+                    </motion.div>
+                    <motion.div
+                        className='fade-supporting'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, delay: 0.7 }}
+                    >
+                        <p>User friendly</p>
+                    </motion.div>
                 </div>
                 <div className='get-started-button'>
-                    <button onClick={() => getStarted()}>Get started</button>
+                    <motion.div
+                        className='fade-supporting'
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.5, delay: 0.9 }}
+                    >
+                        <button onClick={() => getStarted()}>Get started</button>
+                    </motion.div>
                 </div>
             </div>
         </div>

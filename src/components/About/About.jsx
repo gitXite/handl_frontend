@@ -14,6 +14,19 @@ function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+            >
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
+                    Cumque, sunt?
+                </p>
+            </motion.div>
+            <motion.div
+                className='fade-desc'
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
             >
                 <p>
@@ -27,20 +40,7 @@ function About() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 1 }}
-            >
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
-                    Cumque, sunt?
-                </p>
-            </motion.div>
-            <motion.div
-                className='fade-desc'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 1.5 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
             >
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -51,5 +51,6 @@ function About() {
         </div>
     );
 }
+
 
 export default About;
