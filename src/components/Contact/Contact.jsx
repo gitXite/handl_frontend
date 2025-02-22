@@ -55,6 +55,7 @@ function Contact() {
                     <input type='text' placeholder='Name' required/>
                     <input type='email' placeholder='Email' required/>
                     <input type='text' placeholder='Subject' required/>
+                    <input type='text' placeholder='Message' required/>
                     <button type='submit'>Submit</button>
                 </form>
             </div>
