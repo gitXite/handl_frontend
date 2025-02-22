@@ -1,6 +1,7 @@
 # HANDL
 
-Frontend repository for a shopping list app called Handl
+Frontend repository for Handl. 
+A collaborative full stack shopping list web application. 
 
 ## Stack
 - React
