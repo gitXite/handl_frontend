@@ -22,7 +22,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <Router>
-                <AnimatePresence mode='wait'>
+                <AnimatePresence mode='sync'>
                     <Header resetForm={resetForm} />
                     <Routes>
                         <Route path='/' element={
