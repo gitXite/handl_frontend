@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "vite",
-    "dev": "vite --host=localhost",
+    "dev": "vite --host localhost",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "test": "vitest",
