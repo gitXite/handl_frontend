@@ -22,6 +22,7 @@ export default defineConfig({
     //         exclude: [],
     //     }
     // },
+    host: 'localhost',
     server: {
         port: 3000,
     },
