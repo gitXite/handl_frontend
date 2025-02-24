@@ -67,7 +67,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
             });
 
             console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, data);
-            navigate(isSignUp ? '/login' : '/');
+            navigate(isSignUp ? '/login' : '/lists');
         } catch (error) {
             console.error(error);
             const errorMessage = error.response?.data?.message || 'An error occurred. Please try again.';
