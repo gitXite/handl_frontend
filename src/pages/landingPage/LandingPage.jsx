@@ -12,41 +12,26 @@ import './LandingPage.css'
 
 function Home() {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-    const fetchAuthStatus = async () => {
-        console.log('Fetching auth status...');
-
-        try {
-            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
-                withCredentials: true
-            });
-
-            console.log('Parsed JSON:', data);
-            return data;
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.error('Axios error:', error.response?.data || error.message);
-                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
-            }
-            throw error;
-        }
+    // API call
+    const fetchSession = async () => {
+        const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
+            withCredentials: true,
+        });
+        return data;
     };
 
+    // Bypass landing page, redirect to list-page if session is authenticated
     const { data } = useQuery({
-        queryKey: ['authStatus'],
-        queryFn: fetchAuthStatus
-    });
-
-    useEffect(() => {
-        if (data) {
-            setIsAuthenticated(data.isAuthenticated);
+        queryKey: ['session'],
+        queryFn: fetchSession,
+        retry: false,
+        onSuccess: (data) => {
+            if (data.isAuthenticated) {
+                navigate('/lists');
+            }
         }
-    }, [data]);
-
-    const getStarted = () => {
-        isAuthenticated ? navigate('/lists') : navigate('/login');
-    };
+    });
 
     return (
         <div className='hero-section'>
@@ -107,7 +92,7 @@ function Home() {
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.5 }}
                     >
-                        <button onClick={() => getStarted()}>Get started</button>
+                        <button onClick={() => navigate('/register')}>Get started</button>
                     </motion.div>
                 </div>
             </div>
