@@ -19,7 +19,7 @@ function Header({ resetForm }) {
         try {
             console.log('Fetching auth status...');
 
-            const { data } = await axios.get('http://localhost:5000/auth/session', {
+            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
                 withCredentials: true
             });
 
@@ -53,7 +53,7 @@ function Header({ resetForm }) {
     
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/auth/logout', {}, {
+            const response = await axios.post('http://localhost:5000/api/auth/logout', {}, {
                 withCredentials: true,
                 headers: { 'Content-Type': 'application/json' },
             });
