@@ -13,48 +13,67 @@ import About from '@pages/about/About';
 import Contact from '@pages/contact/Contact';
 
 
+const queryClient = new QueryClient();
+
+const MotionWrapper = ({ children, pathname }) => {
+    return (
+        <motion.div
+            className='page-fade'
+            key={ pathname }
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+        >
+            {children}
+        </motion.div>
+    );
+};
+
 function App() {
     const [formResetTrigger, setFormResetTrigger] = useState(false);
-    const [isInitialLoad, setIsInitialLoad] = useState(true);
-    const queryClient = new QueryClient();
-    const location = useLocation();
-    const prevLocationRef = useRef(null);
 
     const resetForm = () => {
         setFormResetTrigger(prev => !prev);
     };
-
-    useEffect (() => {
-        if (prevLocationRef.current !== location.pathname) {
-            setIsInitialLoad(false);
-        }
-        prevLocationRef.current = location.pathname;
-    }, [location]);
-    
-    const isLoginOrSignup = location.pathname === '/login' || location.pathname === '/register';
 
     return (
         <QueryClientProvider client={queryClient}>
             <Router>
                 <Header resetForm={resetForm} />
                 <AnimatePresence mode='sync'>
-                    <motion.div
-                        className='page-fade'
-                        key={location.pathname}
-                        initial={{ opacity: isLoginOrSignup && isInitialLoad ? 0 : 1 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: isLoginOrSignup && isInitialLoad ? 0 : 1 }}
-                        transition={{ duration: 0.5 }}
-                    >
-                        <Routes location={location} key={location.pathname}>
-                            <Route path='/' element={<LandingPage />} />
-                            <Route path='/login' element={<LoginSignup isSignUp={false} formResetTrigger={formResetTrigger} />} />
-                            <Route path='/register' element={<LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />} />
-                            <Route path='/lists' element={<Lists />} />
-                            <Route path='/about' element={<About />} />
-                            <Route path='/contact' element={<Contact />} />
-                        </Routes>
-                    </motion.div>
+                    <Routes>
+                        <Route path='/' element={
+                            <MotionWrapper pathname='/'>
+                                <LandingPage />
+                            </MotionWrapper>}
+                        />
+                        <Route path='/login' element={
+                            <MotionWrapper pathname='login'>
+                                <LoginSignup isSignUp={false} formResetTrigger={formResetTrigger} />
+                            </MotionWrapper>}
+                        />
+                        <Route path='/register' element={
+                            <MotionWrapper pathname='login'>
+                                <LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />
+                            </MotionWrapper>} 
+                        />
+                        <Route path='/lists' element={
+                            <MotionWrapper pathname='lists'>
+                                <Lists />
+                            </MotionWrapper>}
+                        />
+                        <Route path='/about' element={
+                            <MotionWrapper pathname='about'>
+                                <About />
+                            </MotionWrapper>}
+                        />
+                        <Route path='/contact' element={
+                            <MotionWrapper pathname='contact'>
+                                <Contact />
+                            </MotionWrapper>}
+                        />
+                    </Routes>
                 </AnimatePresence>
                 <Footer />
             </Router>
