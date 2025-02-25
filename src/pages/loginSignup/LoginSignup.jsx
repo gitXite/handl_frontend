@@ -62,7 +62,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         // API call for register/login
         try {
             setIsLoading(true);
-            const { data } = await axios.post(`http://localhost:5000/auth/${endpoint}`, body, {
+            const { data } = await axios.post(`http://localhost:5000/api/auth/${endpoint}`, body, {
                 headers: { 'Content-Type': 'application/json' },
             });
 
