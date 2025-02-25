@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { Squash as Hamburger } from 'hamburger-react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Squash as Hamburger } from 'hamburger-react';
+
 import logoutImage from '@assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png';
 import './Header.css';
 
