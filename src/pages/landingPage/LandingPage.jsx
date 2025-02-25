@@ -18,7 +18,7 @@ function Home() {
         console.log('Fetching auth status...');
 
         try {
-            const { data } = await axios.get('http://localhost:5000/auth/session', {
+            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
                 withCredentials: true
             });
 
