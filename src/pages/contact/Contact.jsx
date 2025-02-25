@@ -1,9 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './Contact.css';
+
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
 import linkedin from '@assets/icons/linkedin_2504923.png';
+import './Contact.css';
 
 
 function Contact() {
