@@ -5,7 +5,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
-import LoginSignup from '@components/LoginSignup/LoginSignup';
+
+import LoginSignup from '@pages/loginSignup/LoginSignup';
 import LandingPage from '@pages/landingPage/LandingPage';
 import Lists from '@pages/lists/Lists';
 import About from '@pages/about/About';
