@@ -17,9 +17,7 @@ function Header({ resetForm }) {
 
     const fetchAuthStatus = async () => {
         console.log('Fetching auth status...');
-        
         try {
-
             const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
                 withCredentials: true
             });
