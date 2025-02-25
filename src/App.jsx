@@ -4,12 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Header from '@components/Header/Header';
-import LandingPage from '@components/LandingPage/LandingPage';
-import LoginSignup from '@components/LoginSignup/LoginSignup';
 import Footer from '@components/Footer/Footer';
-import About from '@components/About/About';
-import Contact from '@components/Contact/Contact';
-import Lists from '@components/Lists/Lists';
+import LoginSignup from '@components/LoginSignup/LoginSignup';
+import LandingPage from '@pages/landingPage/LandingPage';
+import Lists from '@pages/lists/Lists';
+import About from '@pages/about/About';
+import Contact from '@pages/contact/Contact';
 
 
 function App() {
