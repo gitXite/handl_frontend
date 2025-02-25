@@ -15,10 +15,21 @@ function Home() {
 
     // API call
     const fetchSession = async () => {
-        const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
-            withCredentials: true,
-        });
-        return data;
+        console.log('Fetching auth status...');
+        try {
+            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
+                withCredentials: true,
+            });
+            
+            console.log('Parsed JSON:', data);
+            return data;
+        } catch (error) {
+            if (axios.isAxiosError(error)) {
+                console.error('Axios error:', error.response?.data || error.message);
+                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+            }
+            throw error;
+        }
     };
 
     // Bypass landing page, redirect to list-page if session is authenticated
