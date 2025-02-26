@@ -3,7 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+
 import './Lists.css';
+import addIcon from '../../assets/icons/add.png';
+import addWhiteIcon from '../../assets/icons/add-white.png';
+import deleteIcon from '../../assets/icons/delete.png';
+import editIcon from '../../assets/icons/edit-square.png';
+import doneIcon from '../../assets/icons/done.png';
+import menuIcon from '../../assets/icons/menu.png';
 
 
 const MotionWrapper = ({ className, children, transition = {} }) => {
@@ -62,27 +69,37 @@ function Lists() {
         <div className='list-container'>
             <h1 className='your-shopping-lists'>Your shopping lists</h1>
             <div className='manage-lists'>
-                <button>B</button>
-                <button>B</button>
+                <button>
+                    <img src={addWhiteIcon} />
+                </button>
+                <button>
+                    <img src={menuIcon} />
+                </button>
             </div>
             <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
                 <div className='list-card'>
                 <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
                     <button className='list'>
                         <div className='list-name'>
-                            <p>Placeholder</p>
+                            <p>Groceries</p>
                         </div>
                     </button>
                 </MotionWrapper>
                     <div className='list-buttons'>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.5 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={addWhiteIcon} />
+                        </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={editIcon} />
+                        </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={deleteIcon} />
+                        </button>
                     </MotionWrapper>
                     </div>
                 </div>
@@ -92,19 +109,25 @@ function Lists() {
                 <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
                     <button className='list'>
                         <div className='list-name'>
-                            <p>Placeholder</p>
+                            <p>Household</p>
                         </div>
                     </button>
                 </MotionWrapper>
                     <div className='list-buttons'>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={addWhiteIcon} />
+                        </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={editIcon} />
+                        </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.9 }}>
-                        <button>B</button>
+                        <button>
+                            <img src={deleteIcon} />
+                        </button>
                     </MotionWrapper>
                     </div>
                 </div>

@@ -36,7 +36,7 @@
 .your-shopping-lists {
     position: relative;
     padding-bottom: 2rem;
-    font-size: 40px;
+    font-size: 50px;
 }
 .your-shopping-lists::after {
     content: '';
@@ -51,20 +51,34 @@
 }
 .manage-lists {
     display: flex;
-    align-self: flex-start;
+    align-self: flex-end;
     gap: 1rem;
     margin-top: 2rem;
-    margin-left: 2rem;
+    margin-right: 2.5rem;
 }
 .manage-lists button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 35px;
     width: 35px;
     margin: 0;
     padding: 0;
-    color: #333;
-    border: 1px solid #333;
+    color: black;
+    border: 1px solid #141414;
     border-radius: 8px;
-    background: none;
+    background-color: #242424;
+    box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.manage-lists button:hover {
+    background-color: #292929;
+}
+.manage-lists button:active {
+    background-color: #1f1f1f;
+}
+.manage-lists img {
+    height: 25px;
+    width: 25px;
 }
 
 .list-fade {
@@ -130,6 +144,9 @@
     /* box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.10); */
 }
 .list-buttons button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 35px;
     width: 35px;
     margin: 0;
@@ -145,4 +162,8 @@
 .list-buttons button:active {
     color: #fff;
     background-color: #1f1f1f;
+}
+.list-buttons img {
+    height: 25px;
+    width: 25px;
 }
