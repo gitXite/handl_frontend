@@ -1,40 +1,30 @@
-@keyframes loading {
-    0%, 80%, 100% { opacity: 0 }
-    40% { opacity: 1; }
+/* Laptop screen */
+@media screen and (max-width: 1750px) {
+    .container {
+        margin-top: 2rem !important;
+    }
 }
-.signup-loading {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    margin-bottom: 2rem;
-    line-height: 1px;
-    gap: 1rem;
-}
-.login-loading {
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    margin-bottom: 3rem;
-    line-height: 0;
-    gap: 1rem;
-}
-span {
-    scale: 500%;
-    margin: 0;
-    animation: loading 1.4s infinite ease-in-out;
-}
-span:nth-child(1) { animation-delay: -0.32s; }
-span:nth-child(2) { animation-delay: -0.16s; }
+/* Tablet screen */
+/* @media screen and (max-width: 1024) {
+    .container {
+        margin-top: 2rem !important;
+    }
+} */
+/* Phone screen */
+/* @media screen and (max-width: 768px) {
+    .container {
+        margin-top: 2rem !important;
+    }
+} */
 
+/* 1920x1080 + */
 *:focus {
     outline: 1.5px solid;
 }
-
 h1 {
     margin: 0;
     font-weight: 400;
 }
-
 p {
     margin: 20px 0 30px;
     font-size: 14px;
@@ -42,7 +32,6 @@ p {
     line-height: 20px;
     letter-spacing: 0.5px;
 }
-
 a {
     margin: 15px 0;
     color: #333;
@@ -262,3 +251,32 @@ button.ghost {
 .container.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
+
+/* Loading animation */
+@keyframes loading {
+    0%, 80%, 100% { opacity: 0 }
+    40% { opacity: 1; }
+}
+.signup-loading {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-bottom: 2rem;
+    line-height: 1px;
+    gap: 1rem;
+}
+.login-loading {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    margin-bottom: 3rem;
+    line-height: 0;
+    gap: 1rem;
+}
+span {
+    scale: 500%;
+    margin: 0;
+    animation: loading 1.4s infinite ease-in-out;
+}
+span:nth-child(1) { animation-delay: -0.32s; }
+span:nth-child(2) { animation-delay: -0.16s; }
