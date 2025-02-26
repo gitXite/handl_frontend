@@ -10,6 +10,18 @@ import linkedin from '@assets/icons/linkedin_2504923.png';
 import './LandingPage.css'
 
 
+const MotionWrapper = ({ className, children, transition={} }) => {
+    return <motion.div
+        className={className}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.5, ...transition }}
+        >
+            {children}
+        </motion.div>
+};
+
 function Home() {
     const navigate = useNavigate();
 
@@ -47,64 +59,57 @@ function Home() {
     return (
         <div className='hero-section'>
             <div className='heading'>
-                <h1 className='welcome-to'>Welcome to</h1>
+                <MotionWrapper className={'fade-heading'} transition={{ delay: 0 }}>
+                    <h1 className='welcome-to'>Welcome</h1>
+                </MotionWrapper>
+                <MotionWrapper className={'fade-heading'} transition={{ delay: 0.1 }}>
+                    <h1 className='welcome-to'>to</h1>
+                </MotionWrapper>
+                <MotionWrapper className={'fade-heading'} transition={{ delay: 0.2 }}>
                 <h1 className='handl'>HANDL</h1>
+                </MotionWrapper>
                 <div className='sub-heading'>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.3 }}>
                     <h1>Tick off all your boxes</h1>
+                    </MotionWrapper>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.4 }}>
                     <h1>with the perfect shopping list</h1>
+                    </MotionWrapper>
                 </div>
                 <div className='socials'>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.5 }}>
                     <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
                         <img src={github}></img>
                     </a>
+                    </MotionWrapper>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.6 }}>
                     <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
                         <img src={instagram}></img>
                     </a>
+                    </MotionWrapper>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.7 }}>
                     <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
                         <img src={linkedin}></img>
                     </a>
+                    </MotionWrapper>
                 </div>
             </div>
             <div className='cta'>
                 <div className='supporting'>
-                    <motion.div
-                        className='fade-supporting'
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0 }}
-                    >
+                    <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.4 }}>
                         <p>Collaborative</p>
-                    </motion.div>
-                    <motion.div
-                        className='fade-supporting'
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                    >
+                    </MotionWrapper>
+                    <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.5 }}>
                         <p>Seamless</p>
-                    </motion.div>
-                    <motion.div
-                        className='fade-supporting'
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                    >
+                    </MotionWrapper>
+                    <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.6 }}>
                         <p>User friendly</p>
-                    </motion.div>
+                    </MotionWrapper>
                 </div>
                 <div className='get-started-button'>
-                    <motion.div
-                        className='fade-supporting'
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.5, delay: 0.6 }}
-                    >
+                    <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>
                         <button onClick={() => navigate('/register')}>Get started</button>
-                    </motion.div>
+                    </MotionWrapper>
                 </div>
             </div>
         </div>
