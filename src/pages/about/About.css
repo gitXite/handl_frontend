@@ -1,3 +1,15 @@
+/* Laptop screen */
+@media screen and (max-width: 1750px) {
+    .about-container {
+        margin-top: 0 !important;
+    }
+    .about-header h1 {
+        font-size: 43px !important;
+    }
+    .about-p {
+        font-size: 14px !important;
+    }
+}
 .about-container {
     display: flex;
     flex-direction: column;
