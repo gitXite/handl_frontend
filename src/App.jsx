@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
+import { AuthProvider } from './hooks/AuthContext';
 
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
@@ -31,6 +32,7 @@ const MotionWrapper = ({ children, pathname }) => {
     );
 };
 
+
 function App() {
     const [formResetTrigger, setFormResetTrigger] = useState(false);
 
@@ -40,49 +42,51 @@ function App() {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <Router>
-                <Header resetForm={resetForm} />
-                <AnimatePresence mode='sync'>
-                    <Routes>
-                        <Route path='/' element={
-                            <MotionWrapper pathname='/'>
-                                <LandingPage />
-                            </MotionWrapper>}
-                        />
-                        <Route path='/login' element={
-                            <MotionWrapper pathname='login'>
-                                <LoginSignup isSignUp={false} formResetTrigger={formResetTrigger} />
-                            </MotionWrapper>}
-                        />
-                        <Route path='/register' element={
-                            <MotionWrapper pathname='login'>
-                                <LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />
-                            </MotionWrapper>} 
-                        />
-                        <Route path='/lists' element={
-                            <MotionWrapper pathname='lists'>
-                                <Lists />
-                            </MotionWrapper>}
-                        />
-                        <Route path='/about' element={
-                            <MotionWrapper pathname='about'>
-                                <About />
-                            </MotionWrapper>}
-                        />
-                        <Route path='/contact' element={
-                            <MotionWrapper pathname='contact'>
-                                <Contact />
-                            </MotionWrapper>}
-                        />
-                        <Route path='/confirm-email' element={
-                            <MotionWrapper pathname='confirm-email'>
-                                <ConfirmEmail />
-                            </MotionWrapper>}
-                        />
-                    </Routes>
-                </AnimatePresence>
-                <Footer />
-            </Router>
+            <AuthProvider>
+                <Router>
+                    <Header resetForm={resetForm} />
+                    <AnimatePresence mode='sync'>
+                        <Routes>
+                            <Route path='/' element={
+                                <MotionWrapper pathname='/'>
+                                    <LandingPage />
+                                </MotionWrapper>}
+                            />
+                            <Route path='/login' element={
+                                <MotionWrapper pathname='login'>
+                                    <LoginSignup isSignUp={false} formResetTrigger={formResetTrigger} />
+                                </MotionWrapper>}
+                            />
+                            <Route path='/register' element={
+                                <MotionWrapper pathname='login'>
+                                    <LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />
+                                </MotionWrapper>} 
+                            />
+                            <Route path='/lists' element={
+                                <MotionWrapper pathname='lists'>
+                                    <Lists />
+                                </MotionWrapper>}
+                            />
+                            <Route path='/about' element={
+                                <MotionWrapper pathname='about'>
+                                    <About />
+                                </MotionWrapper>}
+                            />
+                            <Route path='/contact' element={
+                                <MotionWrapper pathname='contact'>
+                                    <Contact />
+                                </MotionWrapper>}
+                            />
+                            <Route path='/confirm-email' element={
+                                <MotionWrapper pathname='confirm-email'>
+                                    <ConfirmEmail />
+                                </MotionWrapper>}
+                            />
+                        </Routes>
+                    </AnimatePresence>
+                    <Footer />
+                </Router>
+            </AuthProvider>
         </QueryClientProvider>
     );
 }
