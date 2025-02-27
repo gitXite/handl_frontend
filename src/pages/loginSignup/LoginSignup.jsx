@@ -163,7 +163,7 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
                     <div className="overlay-panel overlay-left">
                         <h1>Welcome back!</h1>
                         <p>Already have an account?</p>
-                        <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setSignUpError(); }}>Login</button>
+                        <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setSignUpError(''); }}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>New here?</h1>
