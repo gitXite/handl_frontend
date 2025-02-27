@@ -1,5 +1,7 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
+import MotionWrapper from '@components/MotionWrapper';
+
 import './AboutPage.css';
 
 
@@ -9,45 +11,27 @@ function About() {
             <div className='about-header'>
                 <h1>About HANDL</h1>
             </div>
-            <motion.div
-                className='fade-desc'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0 }}
-            >
+            <MotionWrapper className={'list-fade'} transition={{ delay: 0.0 }}>
                 <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?
                 </p>
-            </motion.div>
-            <motion.div
-                className='fade-desc'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-            >
+            </MotionWrapper>
+            <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
                 <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?
                 </p>
-            </motion.div>
-            <motion.div
-                className='fade-desc'
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-            >
+            </MotionWrapper>
+            <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
                 <p className='about-p'>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. 
                     Culpa, dolorum eius alias explicabo laborum facere harum adipisci ratione suscipit libero possimus voluptatem minus asperiores similique eligendi in assumenda. 
                     Cumque, sunt?
                 </p>
-            </motion.div>
+            </MotionWrapper>
         </div>
     );
 }
