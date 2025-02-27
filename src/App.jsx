@@ -11,6 +11,7 @@ import LandingPage from '@pages/landingPage/LandingPage';
 import Lists from '@pages/lists/Lists';
 import About from '@pages/about/About';
 import Contact from '@pages/contact/Contact';
+import ConfirmEmail from '@pages/confirmEmail/ConfirmEmail';
 
 
 const queryClient = new QueryClient();
@@ -71,6 +72,11 @@ function App() {
                         <Route path='/contact' element={
                             <MotionWrapper pathname='contact'>
                                 <Contact />
+                            </MotionWrapper>}
+                        />
+                        <Route path='/confirm-email' element={
+                            <MotionWrapper pathname='confirm-email'>
+                                <ConfirmEmail />
                             </MotionWrapper>}
                         />
                     </Routes>
