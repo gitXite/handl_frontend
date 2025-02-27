@@ -1,16 +1,16 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import React, { useEffect } from 'react';
 import axios from '../../axiosConfig';
 import { motion } from 'framer-motion';
+import { useAuth } from '../../hooks/useAuth';
 
-import './Lists.css';
-import addIcon from '../../assets/icons/add.png';
+import LoginSignup from '@components/loginSignup/LoginSignup';
+
 import addWhiteIcon from '../../assets/icons/add-white.png';
 import deleteIcon from '../../assets/icons/delete.png';
 import editIcon from '../../assets/icons/edit-square.png';
 import doneIcon from '../../assets/icons/done.png';
 import menuIcon from '../../assets/icons/menu.png';
+import './Lists.css';
 
 
 const MotionWrapper = ({ className, children, transition = {} }) => {
@@ -26,41 +26,35 @@ const MotionWrapper = ({ className, children, transition = {} }) => {
 };
 
 function Lists() {
-    const navigate = useNavigate();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
 
-    // API call to fetch session
-    const fetchSession = async () => {
-        try {
-            const { data } = await axios.get('/api/auth/get-session');
+    useEffect(() => {
+        const fetchAuthStatus = async () => {
+            console.log('Fetching auth status...');
+            try {
+                const { data } = await axios.get('/api/auth/get-session');
 
-            console.log('Parsed JSON:', data);
-            return data;
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.error('Axios error:', error.response?.data || error.message);
-                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+                console.log('Parsed JSON:', data);
+                setIsAuthenticated(data?.isAuthenticated || false);
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    console.error('Axios error:', error.response?.data || error.message);
+                    throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+                }
+                throw error;
             }
-            throw error;
-        }
-    };
+        };
 
-    // Fetch session
-    const { data, isError } = useQuery({
-        queryKey: ['session'],
-        queryFn: fetchSession,
-        retry: false
-    });
+        fetchAuthStatus();
+    }, [setIsAuthenticated]);
+
+    useEffect(() => {
+        localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    }, [isAuthenticated]);
 
     // If fetchSession fails or data returns false
-    if (isError || !data?.isAuthenticated) {
-        return (
-            <div className='access-denied'>
-                <div className='login-lists'>
-                    <p>Login to access:</p>
-                    <button onClick={() => navigate('/login')}>Login</button>
-                </div>
-            </div>
-        );
+    if (!isAuthenticated) {
+        return <LoginSignup />
     }
     
     return (
