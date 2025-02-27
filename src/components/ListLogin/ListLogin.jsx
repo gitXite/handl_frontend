@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import axios from '../../axiosConfig';
-import './LoginSignup.css';
+import './ListLogin.css';
 
 
-function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
+function ListLogin({ isSignUp: initialSignUp, formResetTrigger }) {
     const navigate = useNavigate();
     const location = useLocation();
     const { setIsAuthenticated } = useAuth();
@@ -176,4 +176,4 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
     );
 }
 
-export default LoginSignup;
+export default ListLogin;

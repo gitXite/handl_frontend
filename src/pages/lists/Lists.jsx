@@ -3,7 +3,7 @@ import axios from '../../axiosConfig';
 import { motion } from 'framer-motion';
 import { useAuth } from '../../hooks/useAuth';
 
-import LoginSignup from '@components/loginSignup/LoginSignup';
+import ListLogin from '@components/ListLogin/ListLogin';
 
 import addWhiteIcon from '../../assets/icons/add-white.png';
 import deleteIcon from '../../assets/icons/delete.png';
@@ -54,7 +54,12 @@ function Lists() {
 
     // If fetchSession fails or data returns false
     if (!isAuthenticated) {
-        return <LoginSignup />
+        return (
+            <div className='unauthorized-lists'>
+                <h1 className='login-to-access'>UNAUTHORIZED<br/>Login to access</h1>
+                <ListLogin />
+            </div>
+        );
     }
     
     return (
