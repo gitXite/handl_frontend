@@ -1,9 +1,8 @@
-import React, {createContext, useEffect, useState, useContext } from 'react';
+import React, {createContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-const AuthContext = createContext();
 
-export const useAuth = () => useContext(AuthContext);
+export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(() => {
