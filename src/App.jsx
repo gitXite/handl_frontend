@@ -8,12 +8,12 @@ import { AuthProvider } from './context/AuthProvider';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
-import LoginSignup from '@pages/LoginSignup/LoginSignup';
+import LoginSignup from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
-import Lists from '@pages/Lists/Lists';
-import About from '@pages/About/About';
-import Contact from '@pages/Contact/Contact';
-import ConfirmEmail from '@pages/ConfirmEmail/ConfirmEmail';
+import Lists from '@pages/ListPage/ListPage';
+import About from '@pages/AboutPage/AboutPage';
+import Contact from '@pages/ContactPage/ContactPage';
+import ConfirmEmail from '@pages/ConfirmEmailPage/ConfirmEmailPage';
 
 
 const queryClient = new QueryClient();
