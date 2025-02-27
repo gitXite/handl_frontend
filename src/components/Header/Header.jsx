@@ -101,6 +101,7 @@ function Header({ resetForm }) {
                         </button>
                         <button className='logout-button' onClick={handleLogout}>
                             Logout
+                            {/* <img src={logoutImage} /> */}
                         </button>
                     </>
                 ) : (
