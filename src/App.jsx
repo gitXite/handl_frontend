@@ -5,15 +5,15 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import { AuthProvider } from './context/AuthProvider';
 
-import Header from '@components/header/Header';
-import Footer from '@components/footer/Footer';
+import Header from '@components/Header/Header';
+import Footer from '@components/Footer/Footer';
 
-import LoginSignup from '@pages/loginSignup/LoginSignup';
-import LandingPage from '@pages/landingPage/LandingPage';
-import Lists from '@pages/lists/Lists';
-import About from '@pages/about/About';
-import Contact from '@pages/contact/Contact';
-import ConfirmEmail from '@pages/confirmEmail/ConfirmEmail';
+import LoginSignup from '@pages/LoginSignup/LoginSignup';
+import LandingPage from '@pages/LandingPage/LandingPage';
+import Lists from '@pages/Lists/Lists';
+import About from '@pages/About/About';
+import Contact from '@pages/Contact/Contact';
+import ConfirmEmail from '@pages/ConfirmEmail/ConfirmEmail';
 
 
 const queryClient = new QueryClient();
