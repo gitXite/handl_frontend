@@ -11,7 +11,7 @@ import editIcon from '../../assets/icons/edit-square.png';
 import doneIcon from '../../assets/icons/done.png';
 import menuIcon from '../../assets/icons/menu.png';
 import shareIcon from '../../assets/icons/share.png';
-import './Lists.css';
+import './ListPage.css';
 
 
 const MotionWrapper = ({ className, children, transition = {} }) => {
