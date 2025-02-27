@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
+import { useAuth } from '../../hooks/AuthContext';
+import axios from '../../axiosConfig';
 import './LoginSignup.css';
 
 
 function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
     const navigate = useNavigate();
     const location = useLocation();
+    const { setIsAuthenticated } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
     const [loginError, setLoginError] = useState('');
@@ -62,11 +64,15 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
         // API call for register/login
         try {
             setIsLoading(true);
-            const { data } = await axios.post(`http://localhost:5000/api/auth/${endpoint}`, body, {
+            const { data } = await axios.post(`/api/auth/${endpoint}`, body, {
                 headers: { 'Content-Type': 'application/json' },
             });
 
             console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, data);
+            if (!isSignUp) {
+                setIsAuthenticated(true);
+                localStorage.setItem('isAuthenticated', 'true');
+            }
             navigate(isSignUp ? '/login' : '/lists');
         } catch (error) {
             console.error(error);

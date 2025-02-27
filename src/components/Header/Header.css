@@ -100,31 +100,40 @@ header {
 
 .profile-button {
     all: unset;
+    color: #333;
 }
-
 .profile-button:hover {
     all: unset;
     color: #19747e;
     text-align: center;
     cursor: pointer;
 }
+.profile-button:active {
+    color: #333;
+}
 
 .logout-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 35px;
-    width: 35px;
+    all: unset;
+    height: 2rem;
+    width: 5rem;
     margin-left: 1rem;
+    border: 1px solid #354e56;
     border-radius: 5px;
-    text-decoration: none;
-    cursor: pointer;
+    color: white;
+    text-align: center;
+    background-color: #2d545e;
+    box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.15);
 }
-
 .logout-button img {
-    width: 35px;
+    display: flex;
+    height: 30px;
+    width: 30px;
 }
-
 .logout-button:hover {
+    background-color: #19747e;
+}
+.logout-button:active {
+    color: #12343b;
     background-color: #e2e2e2;
 }

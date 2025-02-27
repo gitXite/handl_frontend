@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 
 
 function ConfirmEmail() {
@@ -15,7 +15,7 @@ function ConfirmEmail() {
         }
 
         axios
-            .get(`http://localhost:5000/api/auth/confirm-email`, { params: { token } })
+            .get(`/api/auth/confirm-email`, { params: { token } })
             .then((res) => setMessage(res.data.message || 'Email confirmed!'))
             .catch(() => setMessage('Error confirming email.'));
     }, []);

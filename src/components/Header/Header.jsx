@@ -1,49 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react';
+import { useAuth } from '../../hooks/AuthContext';
 
-import logoutImage from '@assets/icons/logout_16dp_000000_FILL0_wght400_GRAD0_opsz20.png';
+import logoutImage from '@assets/icons/logout.png';
 import './Header.css';
 
 
 function Header({ resetForm }) {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
     const [open, setOpen] = useState(false);
     const location = useLocation();
 
-    const fetchAuthStatus = async () => {
-        console.log('Fetching auth status...');
-        try {
-            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
-                withCredentials: true
-            });
-
-            console.log('Parsed JSON:', data);
-            return data;
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.error('Axios error:', error.response?.data || error.message);
-                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
-            }
-            throw error;
-        }
-    };
-
-    const { data } = useQuery({
-        queryKey: ['authStatus'],
-        queryFn: fetchAuthStatus
-    });
-
-    // set isAuthenticated when data updates
     useEffect(() => {
-        if (data) {
-            setIsAuthenticated(data.isAuthenticated);
-        }
-    }, [data]);
+        const fetchAuthStatus = async () => {
+            console.log('Fetching auth status...');
+            try {
+                const { data } = await axios.get('/api/auth/get-session');
+
+                console.log('Parsed JSON:', data);
+                setIsAuthenticated(data?.isAuthenticated || false);
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    console.error('Axios error:', error.response?.data || error.message);
+                    throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+                }
+                throw error;
+            }
+        };
+
+        fetchAuthStatus();
+    }, [setIsAuthenticated]);
+
+    useEffect(() => {
+        localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+    }, [isAuthenticated]);
 
     // Used for hamburger menu animation
     useEffect(() => {
@@ -52,8 +46,7 @@ function Header({ resetForm }) {
     
     const handleLogout = async () => {
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/logout', {}, {
-                withCredentials: true,
+            const response = await axios.post('/api/auth/logout', {}, {
                 headers: { 'Content-Type': 'application/json' },
             });
             
@@ -107,7 +100,7 @@ function Header({ resetForm }) {
                             Profile
                         </button>
                         <button className='logout-button' onClick={handleLogout}>
-                            <img src={logoutImage} alt='Logout' />
+                            Logout
                         </button>
                     </>
                 ) : (

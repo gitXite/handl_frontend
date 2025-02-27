@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { motion } from 'framer-motion';
 
 import './Lists.css';
@@ -31,9 +31,7 @@ function Lists() {
     // API call to fetch session
     const fetchSession = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
-                withCredentials: true,
-            });
+            const { data } = await axios.get('/api/auth/get-session');
 
             console.log('Parsed JSON:', data);
             return data;
@@ -54,16 +52,16 @@ function Lists() {
     });
 
     // If fetchSession fails or data returns false
-    // if (isError || !data?.isAuthenticated) {
-    //     return (
-    //         <div className='access-denied'>
-    //             <div className='login-lists'>
-    //                 <p>Login to access:</p>
-    //                 <button onClick={() => navigate('/login')}>Login</button>
-    //             </div>
-    //         </div>
-    //     );
-    // }
+    if (isError || !data?.isAuthenticated) {
+        return (
+            <div className='access-denied'>
+                <div className='login-lists'>
+                    <p>Login to access:</p>
+                    <button onClick={() => navigate('/login')}>Login</button>
+                </div>
+            </div>
+        );
+    }
     
     return (
         <div className='list-container'>

@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+import axios from '../../axiosConfig';
 import { motion } from 'framer-motion';
 
 import github from '@assets/icons/github_2504911.png';
@@ -25,36 +24,28 @@ const MotionWrapper = ({ className, children, transition={} }) => {
 function Home() {
     const navigate = useNavigate();
 
-    // API call
-    const fetchSession = async () => {
-        console.log('Fetching auth status...');
-        try {
-            const { data } = await axios.get('http://localhost:5000/api/auth/get-session', {
-                withCredentials: true,
-            });
-            
-            console.log('Parsed JSON:', data);
-            return data;
-        } catch (error) {
-            if (axios.isAxiosError(error)) {
-                console.error('Axios error:', error.response?.data || error.message);
-                throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+    useEffect(() => {
+        // API call
+        const fetchSession = async () => {
+            console.log('Fetching auth status...');
+            try {
+                const { data } = await axios.get('/api/auth/get-session');
+                console.log('Parsed JSON:', data);
+                // Only show landing page if user not authenticated
+                if (data?.isAuthenticated) {
+                    navigate('/lists');
+                }
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    console.error('Axios error:', error.response?.data || error.message);
+                    throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
+                }
+                throw error;
             }
-            throw error;
-        }
-    };
+        };
 
-    // Bypass landing page, redirect to list-page if session is authenticated
-    const { data } = useQuery({
-        queryKey: ['session'],
-        queryFn: fetchSession,
-        retry: false,
-        onSuccess: (data) => {
-            if (data.isAuthenticated) {
-                navigate('/lists');
-            }
-        }
-    });
+        fetchSession();
+    }, [navigate]);
 
     return (
         <div className='hero-section'>
