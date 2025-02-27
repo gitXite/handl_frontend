@@ -1,23 +1,12 @@
 import React from 'react';
-import { delay, motion } from 'framer-motion';
+
+import MotionWrapper from '@components/MotionWrapper';
 
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
 import linkedin from '@assets/icons/linkedin_2504923.png';
 import './ContactPage.css';
 
-
-const MotionWrapper = ({ className, children, transition = {} }) => {
-    return <motion.div
-        className={className}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5, ...transition }}
-        >
-            {children}
-        </motion.div>
-};
 
 function Contact() {
     return (
