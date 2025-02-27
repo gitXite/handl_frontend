@@ -21,7 +21,7 @@ const MotionWrapper = ({ className, children, transition={} }) => {
         </motion.div>
 };
 
-function Home() {
+function LandingPage() {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -57,31 +57,31 @@ function Home() {
                     <h1 className='welcome-to'>to</h1>
                 </MotionWrapper>
                 <MotionWrapper className={'fade-heading'} transition={{ delay: 0.2 }}>
-                <h1 className='handl'>HANDL</h1>
+                    <h1 className='handl'>HANDL</h1>
                 </MotionWrapper>
                 <div className='sub-heading'>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.3 }}>
-                    <h1>Tick off all your boxes</h1>
+                        <h1>Tick off all your boxes</h1>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.4 }}>
-                    <h1>with the perfect shopping list</h1>
+                        <h1>with the perfect shopping list</h1>
                     </MotionWrapper>
                 </div>
                 <div className='socials'>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.5 }}>
-                    <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
-                        <img src={github}></img>
-                    </a>
+                        <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
+                            <img src={github}></img>
+                        </a>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.6 }}>
-                    <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
-                        <img src={instagram}></img>
-                    </a>
+                        <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
+                            <img src={instagram}></img>
+                        </a>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.7 }}>
-                    <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
-                        <img src={linkedin}></img>
-                    </a>
+                        <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
+                            <img src={linkedin}></img>
+                        </a>
                     </MotionWrapper>
                 </div>
             </div>
@@ -99,6 +99,7 @@ function Home() {
                 </div>
                 <div className='get-started-button'>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>
+                        <p>Create an account</p>
                         <button onClick={() => navigate('/register')}>Get started</button>
                     </MotionWrapper>
                 </div>
@@ -108,4 +109,4 @@ function Home() {
 }
 
 
-export default Home;
+export default LandingPage;
