@@ -10,6 +10,7 @@ import deleteIcon from '../../assets/icons/delete.png';
 import editIcon from '../../assets/icons/edit-square.png';
 import doneIcon from '../../assets/icons/done.png';
 import menuIcon from '../../assets/icons/menu.png';
+import shareIcon from '../../assets/icons/share.png';
 import './Lists.css';
 
 
@@ -80,6 +81,7 @@ function Lists() {
                         <div className='list-name'>
                             <p>Groceries</p>
                         </div>
+                        <img src={editIcon} />
                     </button>
                 </MotionWrapper>
                     <div className='list-buttons'>
@@ -90,7 +92,7 @@ function Lists() {
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
                         <button>
-                            <img src={editIcon} />
+                            <img src={shareIcon} />
                         </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
@@ -108,6 +110,7 @@ function Lists() {
                         <div className='list-name'>
                             <p>Household</p>
                         </div>
+                        <img src={editIcon} />
                     </button>
                 </MotionWrapper>
                     <div className='list-buttons'>
@@ -118,7 +121,7 @@ function Lists() {
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
                         <button>
-                            <img src={editIcon} />
+                            <img src={shareIcon} />
                         </button>
                     </MotionWrapper>
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.9 }}>
