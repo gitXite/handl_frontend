@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import axios from '../../axiosConfig';
-import { motion } from 'framer-motion';
 import { useAuth } from '../../hooks/useAuth';
 
 import ListLogin from '@components/ListLogin/ListLogin';
+import MotionWrapper from '@components/MotionWrapper';
 
 import addWhiteIcon from '../../assets/icons/add-white.png';
 import deleteIcon from '../../assets/icons/delete.png';
@@ -13,18 +13,6 @@ import menuIcon from '../../assets/icons/menu.png';
 import shareIcon from '../../assets/icons/share.png';
 import './ListPage.css';
 
-
-const MotionWrapper = ({ className, children, transition = {} }) => {
-    return <motion.div
-        className={className}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.5, ...transition }}
-        >
-            {children}
-        </motion.div>
-};
 
 function Lists() {
     const { isAuthenticated, setIsAuthenticated } = useAuth();
