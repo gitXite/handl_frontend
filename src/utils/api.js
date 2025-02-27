@@ -1,6 +1,7 @@
 import axios from '@axiosConfig';
 
 
+// Generic asynchronous methods for HTTP requests using axios
 const api = {
     get: async (endpoint, config = {}) => {
         try {
