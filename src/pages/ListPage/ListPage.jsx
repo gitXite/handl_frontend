@@ -17,7 +17,7 @@ import './ListPage.css';
 
 function Lists() {
     const navigate = useNavigate();
-    const [message, setMessage] = useState('Confirming...');
+    const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
     const { isAuthenticated, setIsAuthenticated } = useAuth();
 
