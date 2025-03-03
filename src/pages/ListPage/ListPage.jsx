@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from '../../axiosConfig';
 import { useAuth } from '@hooks/useAuth';
@@ -21,7 +21,10 @@ function Lists() {
     const [isLoading, setIsLoading] = useState(false);
     const { isAuthenticated, setIsAuthenticated } = useAuth();
 
+    const isMounted = useRef(true);
+
     useEffect(() => {
+        isMounted.current = true;
         const fetchAuthStatus = async () => {
             setIsLoading(true);
             console.log('Fetching auth status...');
@@ -33,7 +36,11 @@ function Lists() {
 
                 if (!isAuthenticated) {
                     setMessage('Unauthorized, please login');
-                    setTimeout(() => navigate('/login'), 2000);
+                    setTimeout(() => {
+                        if (isMounted.current) {
+                            navigate('/login');
+                        }
+                    }, 2000);
                 }
             } catch (error) {
                 if (axios.isAxiosError(error)) {
@@ -45,7 +52,11 @@ function Lists() {
         };
 
         fetchAuthStatus();
-    }, [setIsAuthenticated, navigate]);
+
+        return () => {
+            isMounted.current = false;
+        };
+    }, [setIsAuthenticated, navigate, isAuthenticated]);
 
     useEffect(() => {
         localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
