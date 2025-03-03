@@ -6,7 +6,7 @@ function Footer() {
     return (
         <footer>
             <div className='footer'>
-                <small>Copyright © {new Date().getFullYear()} by Handl. All Rights Reserved.</small>
+                <small>Copyright © {new Date().getFullYear()} by HANDL. All Rights Reserved.</small>
             </div>
         </footer>
     );

@@ -1,5 +1,4 @@
 import React from 'react';
-import { useAuth } from '@hooks/useAuth';
 
 import MotionWrapper from '@components/MotionWrapper';
 
@@ -7,8 +6,6 @@ import './AboutPage.css';
 
 
 function About() {
-    const { isAuthenticated, setIsAuthenticated } = useAuth();
-    
     return (
         <div className='about-container'>
             <div className='about-subcontainer'>
@@ -43,7 +40,7 @@ function About() {
                             <MotionWrapper className={'tag-fade'} transition={{ delay: 1.0 }}>
                                 <p>
                                     Ready to make shopping simpler? <br />
-                                    <a className='create-account' href="/register"><strong>Create an account</strong></a> and start using HANDL today!
+                                    <a className='create-account' href="/register">Create an account</a> and start using HANDL today!
                                 </p>
                             </MotionWrapper>
                         </div>
