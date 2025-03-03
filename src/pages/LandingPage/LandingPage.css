@@ -94,7 +94,7 @@
     justify-self: center;
     margin: 0;
     color: #333;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 .socials {
@@ -104,7 +104,7 @@
     height: 35px;
     width: auto;
     margin: 0;
-    margin-top: 2rem;
+    margin-top: 3.5rem;
 }
 .socials img {
     display: flex;
