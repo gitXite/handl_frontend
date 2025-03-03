@@ -40,13 +40,13 @@ function LandingPage() {
         <div className='hero-section'>
             <div className='heading'>
                 <MotionWrapper className={'fade-heading'} transition={{ delay: 0 }}>
-                    <h1 className='welcome-to'>Welcome</h1>
+                    <h1 className='welcome-to'>HANDL</h1>
                 </MotionWrapper>
                 <MotionWrapper className={'fade-heading'} transition={{ delay: 0.1 }}>
-                    <h1 className='welcome-to'>to</h1>
+                    <h1 className='welcome-to'></h1>
                 </MotionWrapper>
                 <MotionWrapper className={'fade-heading'} transition={{ delay: 0.2 }}>
-                    <h1 className='handl'>HANDL</h1>
+                    <h1 className='handl'></h1>
                 </MotionWrapper>
                 <div className='sub-heading'>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.3 }}>

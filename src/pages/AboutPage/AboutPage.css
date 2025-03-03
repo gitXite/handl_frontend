@@ -14,48 +14,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: auto;
-    width: 50%;
+    max-height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+}
+.about-subcontainer {
+    display: flex;
+    width: 80%;
     margin-top: 2rem;
 }
-.about-header {
+.about-subcontainer-left, 
+.about-subcontainer-right {
     display: flex;
-    justify-content: center;
-    position: relative;
-    width: 50%;
-    padding-bottom: 1.3rem;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
-.about-header::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 40%;
-    background-color: #c89666;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+.about {
+    text-align: left;
+    font-size: 18px;
 }
-.about-header h1 {
-    font-size: 50px;
-}
-.about-p {
-    font-size: 15px;
+.about p {
+    font-size: 18px;
 }
 .fade-desc {
     position: relative;
-    width: 40%;
+    width: 60%;
     text-align: center;
     color: #333;
 }
-.fade-desc:nth-child(4):after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 50%;
-    background-color: #c89666;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+
+.create-account {
+    font-size: 18px;
 }
