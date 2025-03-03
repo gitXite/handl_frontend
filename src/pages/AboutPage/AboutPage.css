@@ -3,10 +3,7 @@
     .about-container {
         margin-top: 0 !important;
     }
-    .about-header h1 {
-        font-size: 43px !important;
-    }
-    .about-p {
+    .about {
         font-size: 14px !important;
     }
 }
@@ -30,11 +27,30 @@
     align-items: center;
     width: 100%;
 }
+.about-header {
+    color: black;
+}
 .about {
+    position: relative;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
     text-align: left;
     font-size: 18px;
 }
+.about::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    height: 1px;
+    width: 30%;
+    background-color: #c89666;
+    transform: translateX(-50%);
+}
 .about p {
+    margin: 0;
+    margin-top: 0.5rem;
     font-size: 18px;
 }
 .fade-desc {
@@ -46,4 +62,9 @@
 
 .create-account {
     font-size: 18px;
+    color: #c89666;
+}
+.create-account:active,
+.create-account:focus {
+    outline: none;
 }
