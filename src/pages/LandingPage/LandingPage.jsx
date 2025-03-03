@@ -88,7 +88,7 @@ function LandingPage() {
                 </div>
                 <div className='get-started-button'>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>
-                        <p>Create an account</p>
+                        <i>Create an account</i>
                         <button onClick={() => navigate('/register')}>Get started</button>
                     </MotionWrapper>
                 </div>
