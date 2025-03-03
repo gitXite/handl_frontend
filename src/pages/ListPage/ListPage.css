@@ -4,29 +4,12 @@
 } */
 
 /* Auth fail page */
-.unauthorized-lists {
+.list-redirect {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-}
-.login-to-access {
-    position: relative;
-    margin-bottom: -2rem;
-    padding-bottom: 1.5rem;
-    font-size: 25px;
-    text-align: center;
-    color: #c89666;
-}
-.login-to-access::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 50%;
-    background-color: #c89666;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-top: 5rem;
 }
 
 /* Main list page */
