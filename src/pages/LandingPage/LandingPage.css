@@ -84,6 +84,10 @@
     color: #12343b;
     background-color: #e2e2e2;
 }
+.get-started-button p {
+    margin: 0;
+    color: #333;
+}
 
 .socials {
     display: flex;
