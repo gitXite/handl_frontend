@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../axiosConfig';
+import { useNavigate } from 'react-router-dom';
+import api from '@utils/api';
+
+import './ConfirmEmail.css';
 
 
 function ConfirmEmail() {
+    const navigate = useNavigate();
     const [message, setMessage] = useState('Confirming...');
+    const [isValid, setIsValid] = useState(false);
     
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -11,17 +16,26 @@ function ConfirmEmail() {
 
         if (!token) {
             setMessage('Invalid confirmation link');
-            return;
+            setIsValid(false);
         }
 
-        axios
-            .get(`/api/auth/confirm-email`, { params: { token } })
-            .then((res) => setMessage(res.data.message || 'Email confirmed!'))
-            .catch(() => setMessage('Error confirming email.'));
+        const confirmEmail = async () => {
+            try {
+                const { data } = await api.get('/api/auth/confirm-email');
+                setMessage(data.message || 'Email confirmed!');
+                setIsValid(true);
+            } catch (error) {
+                console.error(error);
+                setMessage('Error confirming email.');
+                setIsValid(false);
+            }
+        };
+
+        confirmEmail();
     }, []);
     
     return (
-        <h1>{message}</h1>
+        isValid ? navigate('/login') : navigate('/')
     );
 }
 

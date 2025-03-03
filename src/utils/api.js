@@ -1,4 +1,4 @@
-import axios from '@axiosConfig';
+import axios from '../axiosConfig';
 
 
 // Generic asynchronous methods for HTTP requests using axios
