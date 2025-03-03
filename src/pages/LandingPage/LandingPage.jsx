@@ -83,13 +83,13 @@ function LandingPage() {
                         <p>Seamless</p>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.6 }}>
-                        <p>User friendly</p>
+                        <p>User Friendly</p>
                     </MotionWrapper>
                 </div>
                 <div className='get-started-button'>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>
                         <i>Create an account</i>
-                        <button onClick={() => navigate('/register')}>Get started</button>
+                        <button onClick={() => navigate('/register')}>Get Started</button>
                     </MotionWrapper>
                 </div>
             </div>
