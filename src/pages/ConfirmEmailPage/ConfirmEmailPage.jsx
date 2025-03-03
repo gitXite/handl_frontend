@@ -21,7 +21,7 @@ function ConfirmEmail() {
 
         const confirmEmail = async () => {
             try {
-                const { data } = await api.get('/api/auth/confirm-email');
+                const { data } = await api.get('/api/auth/confirm-email', { params: { token } });
                 setMessage(data.message || 'Email confirmed!');
                 setIsValid(true);
             } catch (error) {
@@ -35,7 +35,10 @@ function ConfirmEmail() {
     }, []);
     
     return (
-        isValid ? navigate('/login') : navigate('/')
+        <div>
+            <p>{message}</p>
+            {isValid ? navigate('/login') : navigate('/')}
+        </div>
     );
 }
 
