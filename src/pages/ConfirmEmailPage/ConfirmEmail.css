@@ -3,51 +3,5 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
     margin-top: 5rem;
-    padding-top: 2rem;
-}
-.confirm-email-container::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 40%;
-    background-color: #c89666;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.confirm-email-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.confirm-message {
-    margin-bottom: 1rem;
-    font-size: 20px;
-    color: #333;
-}
-.redirecting {
-    position: relative;
-    padding-bottom: 2rem;
-    color: #333;
-}
-.redirecting::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 100%;
-    background-color: #c89666;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.confirm-email-loading {
-    margin-top: 2rem;
 }

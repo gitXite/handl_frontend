@@ -1,0 +1,49 @@
+.redirect-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding-top: 2rem;
+}
+.redirect-container::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40%;
+    background-color: #c89666;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.redirect-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.redirect-message {
+    margin-bottom: 1rem;
+    font-size: 20px;
+    color: #333;
+}
+.redirecting {
+    position: relative;
+    padding-bottom: 2rem;
+    color: #333;
+}
+.redirecting::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: #c89666;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.redirect-loader {
+    margin-top: 2rem;
+}
