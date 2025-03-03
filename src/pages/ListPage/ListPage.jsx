@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 import axios from '../../axiosConfig';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '@hooks/useAuth';
 
 import ListLogin from '@components/ListLogin/ListLogin';
 import MotionWrapper from '@components/MotionWrapper';
 
-import addWhiteIcon from '../../assets/icons/add-white.png';
-import deleteIcon from '../../assets/icons/delete.png';
-import editIcon from '../../assets/icons/edit-square.png';
-import doneIcon from '../../assets/icons/done.png';
-import menuIcon from '../../assets/icons/menu.png';
-import shareIcon from '../../assets/icons/share.png';
+import addWhiteIcon from '@assets/icons/add-white.png';
+import deleteIcon from '@assets/icons/delete.png';
+import editIcon from '@assets/icons/edit-square.png';
+import doneIcon from '@assets/icons/done.png';
+import menuIcon from '@assets/icons/menu.png';
+import shareIcon from '@assets/icons/share.png';
 import './ListPage.css';
 
 
