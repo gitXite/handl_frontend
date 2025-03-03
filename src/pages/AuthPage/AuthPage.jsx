@@ -5,7 +5,7 @@ import axios from '../../axiosConfig';
 import './AuthPage.css';
 
 
-function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
+function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
     const navigate = useNavigate();
     const location = useLocation();
     const { setIsAuthenticated } = useAuth();
@@ -176,4 +176,4 @@ function LoginSignup({ isSignUp: initialSignUp, formResetTrigger }) {
     );
 }
 
-export default LoginSignup;
+export default AuthPage;

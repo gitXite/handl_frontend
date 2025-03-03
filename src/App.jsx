@@ -8,7 +8,7 @@ import { AuthProvider } from './context/AuthProvider';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
-import LoginSignup from '@pages/AuthPage/AuthPage';
+import AuthPage from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
 import Lists from '@pages/ListPage/ListPage';
 import About from '@pages/AboutPage/AboutPage';
@@ -55,12 +55,12 @@ function App() {
                             />
                             <Route path='/login' element={
                                 <MotionWrapper pathname='login'>
-                                    <LoginSignup isSignUp={false} formResetTrigger={formResetTrigger} />
+                                    <AuthPage isSignUp={false} formResetTrigger={formResetTrigger} />
                                 </MotionWrapper>}
                             />
                             <Route path='/register' element={
                                 <MotionWrapper pathname='login'>
-                                    <LoginSignup isSignUp={true} formResetTrigger={formResetTrigger} />
+                                    <AuthPage isSignUp={true} formResetTrigger={formResetTrigger} />
                                 </MotionWrapper>} 
                             />
                             <Route path='/lists' element={
