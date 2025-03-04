@@ -23,7 +23,7 @@ function About() {
                         </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-desc'} transition={{ delay: 0.2 }}>
-                    <div className='about'>
+                        <div className='about'>
                             <strong className='about-header'>About the Developer</strong>
                             <MotionWrapper className={'tag-fade'} transition={{ delay: 0.3 }}>
                                 <p>
