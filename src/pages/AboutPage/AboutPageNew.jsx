@@ -40,7 +40,7 @@ function AboutPageNew() {
                 </div>
             </div>
             <div className='tags-container'>
-                <div>
+                <div className='tag-header'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                         <h1>Why HANDL?</h1>
                     </MotionWrapper>
@@ -58,7 +58,7 @@ function AboutPageNew() {
                 </div>
             </div>
             <div className='tags-container'>
-                <div>
+                <div className='tag-header'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                         <h1>Security & Privacy</h1>
                     </MotionWrapper>
