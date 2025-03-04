@@ -53,6 +53,9 @@ function AboutPageNew() {
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Real-Time Sync</p>
                         </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>Stay updated with live changes as you or others update your shopping needs.</p>
+                        </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
@@ -61,6 +64,9 @@ function AboutPageNew() {
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Simple & Fast</p>
                         </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>No clutter, no distractions. An intuitive shopping experience through and through</p>
+                        </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
@@ -68,6 +74,9 @@ function AboutPageNew() {
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Collaborative</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>Share lists with family, friends, or roommates for hassle-free coordination.</p>
                         </MotionWrapper>
                     </div>
                 </div>
@@ -86,6 +95,9 @@ function AboutPageNew() {
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Secure Authentication</p>
                         </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>Your account is protected with encrypted credentials.</p>
+                        </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
@@ -93,6 +105,9 @@ function AboutPageNew() {
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Minimal Data Collection</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>We only store what’s necessary to provide the best experience.</p>
                         </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
@@ -102,6 +117,9 @@ function AboutPageNew() {
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Private Lists</p>
                         </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>Your shopping lists are accessible only to you and those you share them with.</p>
+                        </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
@@ -109,6 +127,9 @@ function AboutPageNew() {
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>No Third-Party Tracking</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p>We don’t sell or share your data with advertisers. We take your privacy and data security seriously.</p>
                         </MotionWrapper>
                     </div>
                 </div>
