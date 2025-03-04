@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import MotionWrapper from '@components/MotionWrapper';
+import { useAuth } from '@hooks/useAuth';
 
 import teamIcon from '@assets/icons/group-chat.png';
 import syncIcon from '@assets/icons/cloud-sync.png';
@@ -14,6 +16,9 @@ import './AboutPageNew.css';
 
 
 function AboutPageNew() {
+    const navigate = useNavigate();
+    const { isAuthenticated, setIsAuthenticated } = useAuth();
+
     return (
         <div className='about-container'>
             <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
@@ -24,7 +29,7 @@ function AboutPageNew() {
             <div className='about-subcontainer'>
                 <div className='about'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
-                        <p className='strong'>What is HANDL?</p>
+                        <p className='strong'>What Is It?</p>
                     </MotionWrapper>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0.25 }}>
                         <p>
@@ -36,7 +41,7 @@ function AboutPageNew() {
                 </div>
                 <div className='about'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0.3 }}>
-                        <p className='strong'>About the developer</p>
+                        <p className='strong'>About The Developer</p>
                     </MotionWrapper>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0.35 }}>
                         <p>

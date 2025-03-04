@@ -84,7 +84,7 @@ function LandingPage() {
                     </MotionWrapper>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.6 }}>
                         <p>User Friendly</p>
-                    </MotionWrapper>
+                    </MotionWrapper>                    
                 </div>
                 <div className='get-started-button'>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>

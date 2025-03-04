@@ -121,3 +121,16 @@
 .socials a:active {
     outline: none;
 }
+
+.read-more {
+    all: unset;
+    font-size: 18px;
+    /* text-decoration: underline; */
+}
+.read-more:hover {
+    color: #c89666;
+    background: none;
+}
+.read-more:active {
+    color: #333;
+}
