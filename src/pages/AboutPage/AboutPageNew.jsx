@@ -2,6 +2,14 @@ import React from 'react';
 
 import MotionWrapper from '@components/MotionWrapper';
 
+import teamIcon from '@assets/icons/group-chat.png';
+import syncIcon from '@assets/icons/cloud-sync.png';
+import fastIcon from '@assets/icons/deadline.png';
+import secureIcon from '@assets/icons/insurance.png';
+import compliantIcon from '@assets/icons/compliant.png';
+import privacyIcon from '@assets/icons/privacy.png';
+import bullhornIcon from '@assets/icons/bullhorn.png';
+import accountIcon from '@assets/icons/add-user.png';
 import './AboutPageNew.css';
 
 
@@ -15,10 +23,10 @@ function AboutPageNew() {
             </MotionWrapper>
             <div className='about-subcontainer'>
                 <div className='about'>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
                         <p className='strong'>What is HANDL?</p>
                     </MotionWrapper>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.25 }}>
                         <p>
                             HANDL is a modern shopping list app designed to make grocery planning effortless. 
                             Whether you're managing weekly groceries, coordinating with family, or keeping track of must-have items, 
@@ -27,10 +35,10 @@ function AboutPageNew() {
                     </MotionWrapper>
                 </div>
                 <div className='about'>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.3 }}>
                         <p className='strong'>About the developer</p>
                     </MotionWrapper>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.35 }}>
                         <p>
                             HANDL is built by an aspiring full-stack developer, working solo to create a simple yet powerful tool 
                             for seamless shopping list management. With a passion for intuitive design and real-time functionality, 
@@ -41,99 +49,113 @@ function AboutPageNew() {
             </div>
             <div className='tags-container'>
                 <div className='tag-header'>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
                         <h1>Why HANDL?</h1>
                     </MotionWrapper>
                 </div>
                 <div className='tags'>
                     <div className='tag-image-pair'>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
+                            <img className='about-icon' src={teamIcon} />
                         </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p className='tag'>Real-Time Sync</p>
-                        </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>Stay updated with live changes as you or others update your shopping needs.</p>
-                        </MotionWrapper>
-                    </div>
-                    <div className='tag-image-pair'>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
-                        </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p className='tag'>Simple & Fast</p>
-                        </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>No clutter, no distractions. An intuitive shopping experience through and through</p>
-                        </MotionWrapper>
-                    </div>
-                    <div className='tag-image-pair'>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
-                        </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.45 }}>
                             <p className='tag'>Collaborative</p>
                         </MotionWrapper>
-                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>Share lists with family, friends, or roommates for hassle-free coordination.</p>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.5 }}>
+                            <p className='tag-text'>Share lists with family, friends, or roommates for hassle-free coordination.</p>
+                        </MotionWrapper>
+                    </div>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.5 }}>
+                            <img className='about-icon' src={syncIcon} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.55 }}>
+                            <p className='tag'>Real-Time Sync</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.6 }}>
+                            <p className='tag-text'>Stay updated with live changes as you or others update your shopping needs.</p>
+                        </MotionWrapper>
+                    </div>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.6 }}>
+                            <img className='about-icon' src={fastIcon} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.65 }}>
+                            <p className='tag'>Simple & Fast</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.7 }}>
+                            <p className='tag-text'>No clutter, no distractions. An intuitive shopping experience through and through</p>
+                        </MotionWrapper>
+                    </div>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.7 }}>
+                            <img className='about-icon' src={accountIcon} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.75 }}>
+                            <p className='tag'>Get Started</p>
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0.8 }}>
+                            <p className='tag-text'>Ready to make shopping simpler? <button className='about-register-button'>Create an account</button> <br /> and start using HANDL today!</p>
                         </MotionWrapper>
                     </div>
                 </div>
             </div>
-            <div className='tags-container'>
+            {/* <div className='tags-container'>
                 <div className='tag-header'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                        <h1>Security & Privacy</h1>
+                        <h1>Privacy & Security</h1>
                     </MotionWrapper>
                 </div>
                 <div className='tags'>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
+                            <img className='about-icon' src={secureIcon} />
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Secure Authentication</p>
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>Your account is protected with encrypted credentials.</p>
+                            <p className='tag-text'>Your account is protected with encrypted credentials.</p>
                         </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
+                            <img className='about-icon' src={compliantIcon} />
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Minimal Data Collection</p>
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>We only store what’s necessary to provide the best experience.</p>
+                            <p className='tag-text'>We only store what’s necessary to provide the best experience.</p>
                         </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
+                            <img className='about-icon' src={privacyIcon} />
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>Private Lists</p>
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>Your shopping lists are accessible only to you and those you share them with.</p>
+                            <p className='tag-text'>Your shopping lists are accessible only to you and those you share them with.</p>
                         </MotionWrapper>
                     </div>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <img src={} />
+                            <img className='about-icon' src={bullhornIcon} />
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <p className='tag'>No Third-Party Tracking</p>
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                            <p>We don’t sell or share your data with advertisers. We take your privacy and data security seriously.</p>
+                            <p className='tag-text'>We don’t sell or share your data with advertisers. We take your privacy and data security seriously.</p>
                         </MotionWrapper>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 }
+
+
+export default AboutPageNew;

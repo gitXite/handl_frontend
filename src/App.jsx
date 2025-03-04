@@ -11,7 +11,7 @@ import Footer from '@components/Footer/Footer';
 import AuthPage from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
 import Lists from '@pages/ListPage/ListPage';
-import About from '@pages/AboutPage/AboutPage';
+import AboutPageNew from '@pages/AboutPage/AboutPageNew';
 import Contact from '@pages/ContactPage/ContactPage';
 import ConfirmEmail from '@pages/ConfirmEmailPage/ConfirmEmailPage';
 
@@ -70,7 +70,7 @@ function App() {
                             />
                             <Route path='/about' element={
                                 <MotionWrapper pathname='about'>
-                                    <About />
+                                    <AboutPageNew />
                                 </MotionWrapper>}
                             />
                             <Route path='/contact' element={

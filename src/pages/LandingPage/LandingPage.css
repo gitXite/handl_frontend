@@ -44,6 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 2rem;
     margin-right: 10rem;
     margin-left: 10rem;
 }

@@ -2,31 +2,90 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3rem;
     height: 100%;
     width: 100%;
 }
 .about-subcontainer {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
+    justify-content: space-evenly;
+}
+.about-header {
+    position: relative;
+    padding-bottom: 2rem;
+    font-size: 20px;
+}
+.about-header::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 500%;
+    background-color: #c89666;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.strong {
+    margin: 0;
+    color: black !important;
+    font-size: 24px !important;
+    text-align: center !important;
 }
 .about {
     display: flex;
     flex-direction: column;
-    text-align: left;
+    width: 20%;
+}
+.about p {
+    color: #333;
+    font-size: 15px;
+    text-align: center;
 }
 .tags-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 100%;
+    margin-top: 1rem;
+}
+.tag-header {
+    margin-bottom: 2rem;
+    font-size: 12px;
 }
 .tags {
     display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 .tag-image-pair {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    width: 10%;
+    text-align: center;
+}
+.tag {
+    margin: 0;
+    font-size: 15px;
+}
+.tag-text {
+    margin-top: 1rem;
+    color: #333;
+}
+.about-icon {
+    height: 64px;
+    width: 64px;
+}
+.about-register-button {
+    all: unset;
+    text-decoration: underline;
+}
+.about-register-button:hover {
+    color: #c89666;
+    background: none;
+}
+.about-register-button:active {
+    color: #333;
 }
