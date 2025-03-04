@@ -46,15 +46,30 @@ function AboutPageNew() {
                     </MotionWrapper>
                 </div>
                 <div className='tags'>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                        <p className='tag'>Real-Time Sync</p>
-                    </MotionWrapper>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                        <p className='tag'>Simple & Fast</p>
-                    </MotionWrapper>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                        <p className='tag'>Collaborative</p>
-                    </MotionWrapper>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <img src={} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p className='tag'>Real-Time Sync</p>
+                        </MotionWrapper>
+                    </div>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <img src={} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p className='tag'>Simple & Fast</p>
+                        </MotionWrapper>
+                    </div>
+                    <div className='tag-image-pair'>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <img src={} />
+                        </MotionWrapper>
+                        <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                            <p className='tag'>Collaborative</p>
+                        </MotionWrapper>
+                    </div>
                 </div>
             </div>
             <div className='tags-container'>
