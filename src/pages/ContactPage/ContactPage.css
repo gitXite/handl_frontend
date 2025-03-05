@@ -139,3 +139,8 @@
     font-size: 11px;
     background: #f6f5f7;
 }
+.error-text-contact {
+    margin: 0;
+    margin-bottom: 1rem;
+    color: red;
+}
