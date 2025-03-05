@@ -78,10 +78,10 @@ function Lists() {
                     <div className='list-card'>
                         <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
                             <button className='list'>
+                                <img src={editIcon} />
                                 <div className='list-name'>
                                     <p>Groceries</p>
                                 </div>
-                                <img src={editIcon} />
                             </button>
                         </MotionWrapper>
                             <div className='list-buttons'>
@@ -107,10 +107,10 @@ function Lists() {
                     <div className='list-card'>
                         <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
                             <button className='list'>
+                                <img src={editIcon} />
                                 <div className='list-name'>
                                     <p>Household</p>
                                 </div>
-                                <img src={editIcon} />
                             </button>
                         </MotionWrapper>
                             <div className='list-buttons'>
