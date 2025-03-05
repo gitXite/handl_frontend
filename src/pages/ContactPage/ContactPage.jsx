@@ -43,16 +43,28 @@ function Contact() {
             <div className='contact-right'>
                 <form className='contact-form'>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.2 }}>
-                        <input type='text' placeholder='Name' required/>
+                        <div className='field'>
+                            <input type='text' id='name'required/>
+                            <label className='form-label' htmlFor='name'>Name</label>
+                        </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.3 }}>
-                        <input type='email' placeholder='Email' required/>
+                        <div className='field'>
+                            <input type='text' id='email'required/>
+                            <label className='form-label' htmlFor='email'>Email</label>
+                        </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.4}}>
-                        <input type='text' placeholder='Subject' required/>
+                        <div className='field'>
+                            <input type='text' id='subject'required/>
+                            <label className='form-label' htmlFor='subject'>Subject</label>
+                        </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.5 }}>
-                        <textarea placeholder='Message'></textarea>
+                        <div className='field'>
+                            <textarea id='message' required></textarea>
+                            <label className='textarea-label' htmlFor='message'>Message</label>
+                        </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.6 }}>
                         <button type='submit'>Submit</button>

@@ -77,10 +77,13 @@
     padding: 12px 15px;
     border: none;
     border-radius: 3px;
+    outline: none;
     background-color: #eee;
 }
+.contact-form input:valid,
 .contact-form input:focus {
-    outline: 1px solid;
+    border: 1px solid;
+    background-color: #f6f5f7;
 }
 .contact-form textarea {
     height: 5rem;
@@ -89,13 +92,50 @@
     padding: 12px 15px;
     border: none;
     border-radius: 3px;
+    outline: none;
     background-color: #eee;
     font-family: Arial, Helvetica, sans-serif;
     resize: none;
 }
-.contact-form textarea:focus {
-    outline: 1px solid;
-}
+.contact-form textarea:focus, 
+.contact-form textarea:valid {
+    border: 1px solid;
+    background-color: #f6f5f7;
+} 
 .contact-form button {
     width: 50%;
+}
+.field {
+    position: relative;
+}
+.field label {
+    position: absolute;
+    top: 50%;
+    left: 0.9rem;
+    opacity: 0.8;
+    padding-right: 2px;
+    padding-left: 2px;
+    color: #333;
+    font-size: 12px;
+    font-family: Arial, Helvetica, sans-serif;
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: 0.2s ease;
+}
+.field textarea + label {
+    top: 45%;
+}
+.field input:focus~label,
+.field input:valid~label {
+    opacity: 1;
+    top: 0.5rem;
+    font-size: 10px;
+    background: #f6f5f7;
+}
+.field textarea:focus~label,
+.field textarea:valid~label {
+    opacity: 1;
+    top: 0.5rem;
+    font-size: 10px;
+    background: #f6f5f7;
 }
