@@ -136,7 +136,7 @@ function Contact() {
                         </div>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.6 }}>
-                        {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
+                        {isLoading ? <div className='contact-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                         {notice && <p className='error-text-contact'>{notice}</p>}
                         <button type='submit'>Submit</button>
                     </MotionWrapper>

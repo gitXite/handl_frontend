@@ -144,3 +144,26 @@
     margin-bottom: 1rem;
     color: red;
 }
+
+/* Loading animation */
+@keyframes loading {
+    0%, 80%, 100% { opacity: 0 }
+    40% { opacity: 1; }
+}
+.contact-loading {
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    position: relative;
+    bottom: 1rem;
+    margin: 0;
+    margin-bottom: 2rem;
+    gap: 1rem;
+}
+span {
+    scale: 500%;
+    margin: 0;
+    animation: loading 1.4s infinite ease-in-out;
+}
+span:nth-child(1) { animation-delay: -0.32s; }
+span:nth-child(2) { animation-delay: -0.16s; }
