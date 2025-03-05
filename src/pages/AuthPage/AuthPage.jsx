@@ -70,8 +70,10 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                 localStorage.setItem('isAuthenticated', 'true');
                 navigate('/lists');
             } else {
-                setUserError(result.message);
-                navigate('/login');
+                if (result.message) {
+                    navigate('/login');
+                    setUserError(result.message);
+                }
             }
         } catch (error) {
             console.error(error);
