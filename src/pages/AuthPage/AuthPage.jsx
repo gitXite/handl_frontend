@@ -11,8 +11,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
     const { setIsAuthenticated } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
-    const [loginError, setLoginError] = useState('');
-    const [signUpError, setSignUpError] = useState('');
+    const [userError, setUserError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -49,12 +48,11 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         e.preventDefault();
 
         if (isSignUp && formData.password !== formData.confirmPassword) {
-            setSignUpError('Passwords do not match');
+            setUserError('Passwords do not match');
             return;
         }
 
-        setLoginError('');
-        setSignUpError('');
+        setUserError('');
         
         const endpoint = isSignUp ? 'register' : 'login';
         const body = isSignUp
@@ -75,8 +73,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         } catch (error) {
             console.error(error);
             const errorMessage = error.response?.data?.message || 'An error occurred. Please try again.';
-
-            isSignUp ? setSignUpError(errorMessage) : setLoginError(errorMessage);
+            setUserError(errorMessage);
         } finally {
             setIsLoading(false);
         }
@@ -127,7 +124,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                         required
                     />
                     {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
-                    {signUpError && <p className='error-text-signup'>{signUpError}</p>}
+                    {userError && <p className='error-text-signup'>{userError}</p>}
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
@@ -151,7 +148,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                     />
                     <a className='forgot-password'>Forgot your password?</a>
                     {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
-                    {loginError && <p className='error-text-signin'>{loginError}</p>}
+                    {userError && <p className='error-text-signin'>{userError}</p>}
                     <button type="submit">Login</button>
                 </form>
             </div>
@@ -161,12 +158,12 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                     <div className="overlay-panel overlay-left">
                         <h1>Welcome back!</h1>
                         <p>Already have an account?</p>
-                        <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setSignUpError(''); }}>Login</button>
+                        <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setUserError(''); }}>Login</button>
                     </div>
                     <div className="overlay-panel overlay-right">
                         <h1>New here?</h1>
                         <p>Create an account by signing up!</p>
-                        <button className="ghost" onClick={() => { navigate('/register'); resetForm(); setLoginError(''); }}>Sign Up</button>
+                        <button className="ghost" onClick={() => { navigate('/register'); resetForm(); setUserError(''); }}>Sign Up</button>
                     </div>
                 </div>
             </div>
