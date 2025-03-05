@@ -129,13 +129,13 @@
 .field input:valid~label {
     opacity: 1;
     top: 0.5rem;
-    font-size: 10px;
+    font-size: 11px;
     background: #f6f5f7;
 }
 .field textarea:focus~label,
 .field textarea:valid~label {
     opacity: 1;
     top: 0.5rem;
-    font-size: 10px;
+    font-size: 11px;
     background: #f6f5f7;
 }
