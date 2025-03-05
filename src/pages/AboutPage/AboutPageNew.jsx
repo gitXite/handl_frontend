@@ -26,8 +26,13 @@ function AboutPageNew() {
     return (
         <div className='about-container'>
             <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
-                <div className='about-header'>
-                    <h1>About HANDL</h1>
+                <div className='header-container'>
+                    <div className='about-header'>
+                        <h1>About HANDL</h1>
+                    </div>
+                    <div className='sub-header'>
+                        <button className='privacy-security'>Privacy & Security</button>
+                    </div>
                 </div>
             </MotionWrapper>
             <div className='about-subcontainer'>
@@ -57,11 +62,6 @@ function AboutPageNew() {
                 </div>
             </div>
             <div className='tags-container'>
-                {/* <div className='tag-header'>
-                    <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
-                        <h1>Why HANDL?</h1>
-                    </MotionWrapper>
-                </div> */}
                 <div className='tags'>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
