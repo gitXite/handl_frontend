@@ -105,7 +105,7 @@
     height: 35px;
     width: auto;
     margin: 0;
-    margin-top: 3rem;
+    margin-top: 1rem;
 }
 .socials img {
     display: flex;
@@ -124,8 +124,9 @@
 
 .read-more {
     all: unset;
-    font-size: 18px;
-    /* text-decoration: underline; */
+    color: #333;
+    font-size: 16px;
+
 }
 .read-more:hover {
     color: #c89666;

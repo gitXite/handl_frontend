@@ -55,6 +55,9 @@ function LandingPage() {
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.4 }}>
                         <h1>with the perfect shopping list</h1>
                     </MotionWrapper>
+                    <MotionWrapper className={'fade-heading'} transition={{ delay: 0.5 }}>
+                        <button className='read-more' onClick={() => navigate('/about')}>read more</button>
+                    </MotionWrapper>
                 </div>
                 <div className='socials'>
                     <MotionWrapper className={'fade-heading'} transition={{ delay: 0.5 }}>
@@ -88,7 +91,6 @@ function LandingPage() {
                 </div>
                 <div className='get-started-button'>
                     <MotionWrapper className={'fade-supporting'} transition={{ delay: 0.7 }}>
-                        <i>Create an account</i>
                         <button onClick={() => navigate('/register')}>Get Started</button>
                     </MotionWrapper>
                 </div>
