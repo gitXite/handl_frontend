@@ -32,6 +32,7 @@ function Contact() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setNotice('');
 
         const body = {
             name: formData.name,
@@ -40,7 +41,6 @@ function Contact() {
             message: formData.message
         };
 
-        setNotice('');
         try {
             setIsLoading(true);
             const result = await api.post('/api/contact/submit-form', body);
