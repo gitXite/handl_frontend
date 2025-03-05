@@ -37,14 +37,16 @@ function AboutPageNew() {
                     <AnimatePresence>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <div className='header-container'>
-                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: 200, y: 30 }}>
+                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
                                     <div className='about-header'>
                                         <h1>About HANDL</h1>
                                     </div>
                                 </MotionWrapper>
-                                <div className='sub-header'>
-                                    <button className='sub-button' onClick={() => setIsSecurity(true)}>Privacy & Security</button>
-                                </div>
+                                <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
+                                    <div className='sub-header'>
+                                        <button className='sub-button' onClick={() => setIsSecurity(true)}>Privacy & Security</button>
+                                    </div>
+                                </MotionWrapper>
                             </div>
                         </MotionWrapper>
                     </AnimatePresence>
@@ -129,14 +131,16 @@ function AboutPageNew() {
                 <>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                         <div className='header-container'>
-                        <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: 200, y: 30 }}>
+                            <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
                                 <div className='about-header'>
                                     <h1>Privacy & Security</h1>
                                 </div>
                                 </MotionWrapper>
-                            <div className='sub-header'>
-                                <button className='sub-button' onClick={() => setIsSecurity(false)}>About HANDL</button>
-                            </div>
+                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
+                                <div className='sub-header'>
+                                    <button className='sub-button' onClick={() => setIsSecurity(false)}>About HANDL</button>
+                                </div>
+                            </MotionWrapper>
                         </div>
                     </MotionWrapper>
                     <div className='about-subcontainer'>
