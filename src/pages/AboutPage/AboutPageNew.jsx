@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MotionWrapper from '@components/MotionWrapper';
@@ -18,6 +18,10 @@ import './AboutPageNew.css';
 function AboutPageNew() {
     const navigate = useNavigate();
     const { isAuthenticated, setIsAuthenticated } = useAuth();
+
+    const onClick = () => {
+        isAuthenticated ? navigate('/') : navigate('/register');
+    };
 
     return (
         <div className='about-container'>
@@ -53,11 +57,11 @@ function AboutPageNew() {
                 </div>
             </div>
             <div className='tags-container'>
-                <div className='tag-header'>
+                {/* <div className='tag-header'>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
                         <h1>Why HANDL?</h1>
                     </MotionWrapper>
-                </div>
+                </div> */}
                 <div className='tags'>
                     <div className='tag-image-pair'>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0.4 }}>
@@ -100,7 +104,7 @@ function AboutPageNew() {
                             <p className='tag'>Get Started</p>
                         </MotionWrapper>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0.8 }}>
-                            <p className='tag-text'>Ready to make shopping simpler? <button className='about-register-button'>Create an account</button> <br /> and start using HANDL today!</p>
+                            <p className='tag-text'>Ready to make shopping simpler? <button onClick={onClick} className='about-register-button'>Create an account</button> <br /> and start using HANDL today!</p>
                         </MotionWrapper>
                     </div>
                 </div>
