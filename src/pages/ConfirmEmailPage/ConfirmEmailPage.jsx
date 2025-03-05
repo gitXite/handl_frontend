@@ -23,7 +23,7 @@ function ConfirmEmail() {
         if (!token) {
             setMessage('Invalid confirmation link');
             setIsLoading(true);
-            setTimeout(() => navigate('/'), 3000);
+            setTimeout(() => navigate('/'), 2000);
             return;
         }
 
@@ -36,7 +36,7 @@ function ConfirmEmail() {
             } catch (error) {
                 console.error('Confirm email error:', error.response?.data || error.message);
                 setMessage(error.response?.data?.message || 'Error confirming email');
-                setTimeout(() => navigate('/'), 3000);
+                setTimeout(() => navigate('/'), 2000);
             }
         };
 
