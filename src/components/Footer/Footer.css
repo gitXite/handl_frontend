@@ -7,7 +7,6 @@ footer {
     width: 100%;
     margin-bottom: 0.5rem;
 }
-
 .footer-logo {
     font-size: 15px;
 }
@@ -20,9 +19,19 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+    height: 25px;
 }
 .footer-socials img {
     height: 25px;
     width: 25px;
     margin: 0;
+}
+.footer-socials a {
+    margin: 0;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.10);
+}
+.footer-socials a:active {
+    outline: none;
 }
