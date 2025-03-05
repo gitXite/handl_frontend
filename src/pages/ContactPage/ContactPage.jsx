@@ -52,7 +52,7 @@ function Contact() {
                         <input type='text' placeholder='Subject' required/>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.5 }}>
-                        <input type='text' placeholder='Message' required/>
+                        <textarea placeholder='Message'></textarea>
                     </MotionWrapper>
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.6 }}>
                         <button type='submit'>Submit</button>
