@@ -17,6 +17,7 @@ function Footer() {
                 <small>Copyright © {new Date().getFullYear()} by HANDL. All Rights Reserved.</small>
             </div>
             <div className='footer-socials'>
+                <small>support@handl.dev</small>
                 <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
                     <img src={github}></img>
                 </a>
@@ -26,7 +27,6 @@ function Footer() {
                 <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
                     <img src={linkedin}></img>
                 </a>
-                <small>support@handl.dev</small>
             </div>
         </footer>
     );
