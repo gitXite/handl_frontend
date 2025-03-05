@@ -1,4 +1,9 @@
 import react from 'react';
+
+import github from '@assets/icons/github_2504911.png';
+import instagram from '@assets/icons/instagram_2504918.png';
+import linkedin from '@assets/icons/linkedin_2504923.png';
+
 import './Footer.css';
 
 
@@ -12,9 +17,15 @@ function Footer() {
                 <small>Copyright © {new Date().getFullYear()} by HANDL. All Rights Reserved.</small>
             </div>
             <div className='footer-socials'>
-                <img />
-                <img />
-                <img />
+                <a href='https://www.github.com/gitXite' target='_blank' rel='noopener noreferrer'>
+                    <img src={github}></img>
+                </a>
+                <a href='https://www.instagram.com/daniel_halaas' target='_blank' rel='noopener noreferrer'>
+                    <img src={instagram}></img>
+                </a>
+                <a href='https://www.linkedin.com/in/daniel-halås-b00363352' target='_blank' rel='noopener noreferrer'>
+                    <img src={linkedin}></img>
+                </a>
                 <small>support@handl.dev</small>
             </div>
         </footer>
