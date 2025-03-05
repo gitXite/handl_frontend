@@ -68,8 +68,11 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
             if (!isSignUp) {
                 setIsAuthenticated(true);
                 localStorage.setItem('isAuthenticated', 'true');
+                navigate('/lists');
+            } else {
+                setUserError(result.message);
+                navigate('/login');
             }
-            navigate(isSignUp ? '/login' : '/lists');
         } catch (error) {
             console.error(error);
             const errorMessage = error.response?.data?.message || 'An error occurred. Please try again.';
