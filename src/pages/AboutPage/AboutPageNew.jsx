@@ -37,7 +37,7 @@ function AboutPageNew() {
                     <AnimatePresence>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <div className='header-container'>
-                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
+                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
                                     <div className='about-header'>
                                         <h1>About HANDL</h1>
                                     </div>
@@ -131,7 +131,7 @@ function AboutPageNew() {
                 <>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                         <div className='header-container'>
-                            <MotionWrapper className={'about-fade'} transition={{ duration: 0.3, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
+                            <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
                                 <div className='about-header'>
                                     <h1>Privacy & Security</h1>
                                 </div>
