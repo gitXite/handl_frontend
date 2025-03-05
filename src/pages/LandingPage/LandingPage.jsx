@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import axios from '../../axiosConfig';
+import api from '@utils/api';
 
 import MotionWrapper from '@components/MotionWrapper';
 
@@ -18,14 +18,14 @@ function LandingPage() {
         const fetchSession = async () => {
             console.log('Fetching auth status...');
             try {
-                const { data } = await axios.get('/api/auth/get-session');
-                console.log('Parsed JSON:', data);
+                const result = await api.get('/api/auth/get-session');
+                console.log('Parsed JSON:', result);
                 // Only show landing page if user not authenticated
-                if (data?.isAuthenticated) {
+                if (result.isAuthenticated) {
                     navigate('/lists');
                 }
             } catch (error) {
-                if (axios.isAxiosError(error)) {
+                if (api.isAxiosError(error)) {
                     console.error('Axios error:', error.response?.data || error.message);
                     throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
                 }

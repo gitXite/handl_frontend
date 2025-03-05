@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@hooks/useAuth';
-import axios from '../../axiosConfig';
+import api from '@utils/api';
 import './AuthPage.css';
 
 
@@ -64,11 +64,9 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         // API call for register/login
         try {
             setIsLoading(true);
-            const { data } = await axios.post(`/api/auth/${endpoint}`, body, {
-                headers: { 'Content-Type': 'application/json' },
-            });
+            const result = await api.post(`/api/auth/${endpoint}`, body);
 
-            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, data);
+            console.log(`${isSignUp ? 'Sign-Up' : 'Login'} successful`, result);
             if (!isSignUp) {
                 setIsAuthenticated(true);
                 localStorage.setItem('isAuthenticated', 'true');

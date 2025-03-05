@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '@utils/api';
 
 
 export const AuthContext = createContext();
@@ -13,8 +13,8 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const { data } = await axios.get('/api/auth/get-session');
-                const isAuthenticated = data?.isAuthenticated || false;
+                const result = await api.get('/api/auth/get-session');
+                const isAuthenticated = result.isAuthenticated || false;
                 setIsAuthenticated(isAuthenticated);
                 localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
             } catch (error) {

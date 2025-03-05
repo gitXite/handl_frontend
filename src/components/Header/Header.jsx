@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from '../../axiosConfig';
+import api from '@utils/api';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react';
 import { useAuth } from '@hooks/useAuth';
@@ -19,12 +19,12 @@ function Header({ resetForm }) {
         const fetchAuthStatus = async () => {
             console.log('Fetching auth status...');
             try {
-                const { data } = await axios.get('/api/auth/get-session');
+                const result = await api.get('/api/auth/get-session');
 
-                console.log('Parsed JSON:', data);
-                setIsAuthenticated(data?.isAuthenticated || false);
+                console.log('Parsed JSON:', result);
+                setIsAuthenticated(result.isAuthenticated || false);
             } catch (error) {
-                if (axios.isAxiosError(error)) {
+                if (api.isAxiosError(error)) {
                     console.error('Axios error:', error.response?.data || error.message);
                     throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
                 }
@@ -46,15 +46,13 @@ function Header({ resetForm }) {
     
     const handleLogout = async () => {
         try {
-            const response = await axios.post('/api/auth/logout', {}, {
-                headers: { 'Content-Type': 'application/json' },
-            });
+            const result = await api.post('/api/auth/logout');
             
             setIsAuthenticated(false);
             console.log('Logged out successfully');
             navigate('/login');
         } catch (error) {
-            if (axios.isAxiosError(error)) {
+            if (api.isAxiosError(error)) {
                 const errorMessage = error.response?.data?.message || error.message;
                 console.error('Logout failed:', errorMessage);
             } else {

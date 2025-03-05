@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../../axiosConfig';
+import api from '@utils/api';
 import { useAuth } from '@hooks/useAuth';
 
 import MotionWrapper from '@components/MotionWrapper';
@@ -29,10 +29,10 @@ function Lists() {
             setIsLoading(true);
             console.log('Fetching auth status...');
             try {
-                const { data } = await axios.get('/api/auth/get-session');
+                const result = await api.get('/api/auth/get-session');
 
-                console.log('Parsed JSON:', data);
-                setIsAuthenticated(data?.isAuthenticated || false);
+                console.log('Parsed JSON:', result);
+                setIsAuthenticated(result.isAuthenticated || false);
 
                 if (!isAuthenticated) {
                     setMessage('Unauthorized, please login');
@@ -43,7 +43,7 @@ function Lists() {
                     }, 2000);
                 }
             } catch (error) {
-                if (axios.isAxiosError(error)) {
+                if (api.isAxiosError(error)) {
                     console.error('Axios error:', error.response?.data || error.message);
                     throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
                 }
