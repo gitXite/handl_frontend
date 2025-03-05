@@ -13,10 +13,10 @@ import compliantIcon from '@assets/icons/compliant.png';
 import privacyIcon from '@assets/icons/privacy.png';
 import bullhornIcon from '@assets/icons/bullhorn.png';
 import accountIcon from '@assets/icons/add-user.png';
-import './AboutPageNew.css';
+import './AboutPage.css';
 
 
-function AboutPageNew() {
+function AboutPage() {
     const navigate = useNavigate();
     const { isAuthenticated, setIsAuthenticated } = useAuth();
     const [isSecurity, setIsSecurity] = useState(false);
@@ -37,7 +37,7 @@ function AboutPageNew() {
                     <AnimatePresence>
                         <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                             <div className='header-container'>
-                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
+                                <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 50 }}>
                                     <div className='about-header'>
                                         <h1>About HANDL</h1>
                                     </div>
@@ -50,32 +50,34 @@ function AboutPageNew() {
                             </div>
                         </MotionWrapper>
                     </AnimatePresence>
-                    <div className='about-subcontainer'>
-                        <div className='about'>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
-                                <p className='strong'>What Is It?</p>
-                            </MotionWrapper>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.25 }}>
-                                <p>
-                                    HANDL is a modern shopping list app designed to make grocery planning effortless. 
-                                    Whether you're managing weekly groceries, coordinating with family, or keeping track of must-have items, 
-                                    HANDL keeps everything in sync so you never forget an essential item again.
-                                </p>
-                            </MotionWrapper>
+                    <AnimatePresence>
+                        <div className='about-subcontainer'>
+                            <div className='about'>
+                                <MotionWrapper className={'about-fade'} transition={{ delay: isFirstRender ? 0.2 : 0 }}>
+                                    <p className='strong'>What Is It?</p>
+                                </MotionWrapper>
+                                <MotionWrapper className={'about-fade'} transition={{ delay: isFirstRender ? 0.25 : 0.05 }}>
+                                    <p>
+                                        HANDL is a modern shopping list app designed to make grocery planning effortless. 
+                                        Whether you're managing weekly groceries, coordinating with family, or keeping track of must-have items, 
+                                        HANDL keeps everything in sync so you never forget an essential item again.
+                                    </p>
+                                </MotionWrapper>
+                            </div>
+                            <div className='about'>
+                                <MotionWrapper className={'about-fade'} transition={{ delay: isFirstRender ? 0.3 : 0.1 }}>
+                                    <p className='strong'>About The Developer</p>
+                                </MotionWrapper>
+                                <MotionWrapper className={'about-fade'} transition={{ delay: isFirstRender ? 0.35 : 0.15 }}>
+                                    <p>
+                                        HANDL is built by an aspiring full-stack developer, working solo to create a simple yet powerful tool 
+                                        for seamless shopping list management. With a passion for intuitive design and real-time functionality, 
+                                        this project is a testiment to his love and obsession with software development, crafted to make everyday tasks easier.
+                                    </p>
+                                </MotionWrapper>
+                            </div>
                         </div>
-                        <div className='about'>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.3 }}>
-                                <p className='strong'>About The Developer</p>
-                            </MotionWrapper>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.35 }}>
-                                <p>
-                                    HANDL is built by an aspiring full-stack developer, working solo to create a simple yet powerful tool 
-                                    for seamless shopping list management. With a passion for intuitive design and real-time functionality, 
-                                    this project is a testiment to his love and obsession with software development, crafted to make everyday tasks easier.
-                                </p>
-                            </MotionWrapper>
-                        </div>
-                    </div>
+                    </AnimatePresence>
                     <AnimatePresence>
                         <div className='tags-container'>
                             <div className='tags'>
@@ -131,7 +133,7 @@ function AboutPageNew() {
                 <>
                     <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
                         <div className='header-container'>
-                            <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 200, y: isFirstRender? 0 : 30 }}>
+                            <MotionWrapper className={'about-fade'} transition={{ duration: 0.2, delay: 0 }} initial={{ x: isFirstRender ? 0 : 50 }}>
                                 <div className='about-header'>
                                     <h1>Privacy & Security</h1>
                                 </div>
@@ -145,26 +147,24 @@ function AboutPageNew() {
                     </MotionWrapper>
                     <div className='about-subcontainer'>
                         <div className='about'>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.2 }}>
-                                <p className='strong'>What Is It?</p>
+                            <MotionWrapper className={'about-fade'} transition={{ delay: 0 }}>
+                                <p className='strong'>Privacy Is Private</p>
                             </MotionWrapper>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.25 }}>
+                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.05 }}>
                                 <p>
-                                    HANDL is a modern shopping list app designed to make grocery planning effortless. 
-                                    Whether you're managing weekly groceries, coordinating with family, or keeping track of must-have items, 
-                                    HANDL keeps everything in sync so you never forget an essential item again.
+                                    At HANDL, we prioritize your privacy and security. Your personal data, including your shopping lists and account information, 
+                                    is securely stored and protected with the latest encryption methods. We never share your data with third parties without your consent.
                                 </p>
                             </MotionWrapper>
                         </div>
                         <div className='about'>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.3 }}>
-                                <p className='strong'>About The Developer</p>
+                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.1 }}>
+                                <p className='strong'>Industry Standard</p>
                             </MotionWrapper>
-                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.35 }}>
+                            <MotionWrapper className={'about-fade'} transition={{ delay: 0.15 }}>
                                 <p>
-                                    HANDL is built by an aspiring full-stack developer, working solo to create a simple yet powerful tool 
-                                    for seamless shopping list management. With a passion for intuitive design and real-time functionality, 
-                                    this project is a testiment to his love and obsession with software development, crafted to make everyday tasks easier.
+                                    HANDL uses industry-standard security measures, including two-factor authentication and secure encryption, 
+                                    to protect your account and ensure that only you have access to your data. We take every step to keep your personal information safe.
                                 </p>
                             </MotionWrapper>
                         </div>
@@ -224,4 +224,4 @@ function AboutPageNew() {
 }
 
 
-export default AboutPageNew;
+export default AboutPage;

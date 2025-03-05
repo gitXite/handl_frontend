@@ -11,7 +11,7 @@ import Footer from '@components/Footer/Footer';
 import AuthPage from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
 import Lists from '@pages/ListPage/ListPage';
-import AboutPageNew from '@pages/AboutPage/AboutPageNew';
+import AboutPage from '@pages/AboutPage/AboutPage';
 import Contact from '@pages/ContactPage/ContactPage';
 import ConfirmEmail from '@pages/ConfirmEmailPage/ConfirmEmailPage';
 
@@ -26,7 +26,7 @@ const MotionWrapper = ({ children, pathname }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.3 }}
         >
             {children}
         </motion.div>
@@ -70,7 +70,7 @@ function App() {
                             />
                             <Route path='/about' element={
                                 <MotionWrapper pathname='about'>
-                                    <AboutPageNew />
+                                    <AboutPage />
                                 </MotionWrapper>}
                             />
                             <Route path='/contact' element={

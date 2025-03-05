@@ -58,6 +58,7 @@
 .about {
     display: flex;
     flex-direction: column;
+    height: 230px;
     width: 20%;
 }
 .about p {
