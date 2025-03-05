@@ -1,6 +1,5 @@
 footer {
     display: flex;
-    align-content: center;
     align-items: center;
     position: absolute;
     bottom: 0;
@@ -9,11 +8,16 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+.footer-logo {
+    font-size: 15px;
+}
 .footer-copyright {
     display: flex;
     justify-content: center;
     width: 100%;
 }
-.footer-logo {
-    font-size: 15px;
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
