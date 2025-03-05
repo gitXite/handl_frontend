@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { useAuth } from '@hooks/useAuth';
+import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
+import PasswordRequirement from '@components/PasswordRequirement/PasswordRequirement';
 
 import './AuthPage.css';
 
@@ -13,6 +15,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
     const { setIsAuthenticated } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
+    const [passwordError, setPasswordError] = useState({});
     const [userError, setUserError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
@@ -41,14 +44,25 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         loginPassword: ''
     });
     
-    const handleChange = (field) => (e) => {
-        setFormData({...formData, [field]: e.target.value});
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({...formData, [name]: value});
+
+        if (name === 'password') {
+            const validation = validatePassword(value);
+            setPasswordErrors(validation.errors);
+        }
     };
 
     // Main logic
     const handleSubmit = async (e, isSignUp) => {
         e.preventDefault();
-
+        
+        const validation = validatePassword(formData.password);
+        if (!validation.isValid) {
+            setUserError('Password does not meet the required criteria.');
+            return;
+        }
         if (isSignUp && formData.password !== formData.confirmPassword) {
             setUserError('Passwords do not match');
             return;
@@ -96,85 +110,93 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
     }, [location.pathname, isSignUp]);
     
     return (
-        <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
-            <div className="form-container sign-up-container">
-                <form onSubmit={(e) => handleSubmit(e, true)}>
-                    <h1>Create Account</h1>
-                    <input 
-                        type="text" 
-                        placeholder="Name" 
-                        value={formData.name}
-                        onChange={handleChange('name')}
-                        required
-                    />
-                    <input 
-                        type="email" 
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={handleChange('email')}
-                        required
-                    />
-                    <input 
-                        type="password" 
-                        name="password" 
-                        placeholder="Password"
-                        value={formData.password}
-                        onChange={handleChange('password')}
-                        required
-                    />
-                    <input 
-                        type="password" 
-                        name="confirm" 
-                        placeholder="Confirm Password"
-                        value={formData.confirmPassword}
-                        onChange={handleChange('confirmPassword')} 
-                        required
-                    />
-                    {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
-                    {userError && <p className='error-text-signup'>{userError}</p>}
-                    <button type="submit">Sign Up</button>
-                </form>
-            </div>
-                            
-            <div className="form-container sign-in-container">
-                <form onSubmit={(e) => handleSubmit(e, false)}>
-                    <h1>Login</h1>
-                    <input 
-                        type="email" 
-                        placeholder="Email" 
-                        value={formData.email}
-                        onChange={handleChange('email')}
-                        required 
-                    />
-                    <input 
-                        type="password" 
-                        placeholder="Password" 
-                        value={formData.loginPassword} 
-                        onChange={handleChange('loginPassword')}
-                        required 
-                    />
-                    <a className='forgot-password'>Forgot your password?</a>
-                    {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
-                    {userError && <p className='error-text-signin'>{userError}</p>}
-                    <button type="submit">Login</button>
-                </form>
-            </div>
-                            
-            <div className="overlay-container">
-                <div className="overlay">
-                    <div className="overlay-panel overlay-left">
-                        <h1>Welcome back!</h1>
-                        <p>Already have an account?</p>
-                        <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setUserError(''); }}>Login</button>
-                    </div>
-                    <div className="overlay-panel overlay-right">
-                        <h1>New here?</h1>
-                        <p>Create an account by signing up!</p>
-                        <button className="ghost" onClick={() => { navigate('/register'); resetForm(); setUserError(''); }}>Sign Up</button>
+        <main>
+            <div className={`container ${isSignUp ? 'right-panel-active' : ''}`}>
+                <div className="form-container sign-up-container">
+                    <form onSubmit={(e) => handleSubmit(e, true)}>
+                        <h1>Create Account</h1>
+                        <input 
+                            type="text" 
+                            name="name"
+                            placeholder="Name" 
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input 
+                            type="password" 
+                            name="password" 
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input 
+                            type="password" 
+                            name="confirmPassword" 
+                            placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange} 
+                            required
+                        />
+                        {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
+                        {userError && <p className='error-text-signup'>{userError}</p>}
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+                                
+                <div className="form-container sign-in-container">
+                    <form onSubmit={(e) => handleSubmit(e, false)}>
+                        <h1>Login</h1>
+                        <input 
+                            type="email" 
+                            name="email"
+                            placeholder="Email" 
+                            value={formData.email}
+                            onChange={handleChange}
+                            required 
+                        />
+                        <input 
+                            type="password" 
+                            name="loginPassword"
+                            placeholder="Password" 
+                            value={formData.loginPassword} 
+                            onChange={handleChange}
+                            required 
+                        />
+                        <a className='forgot-password'>Forgot your password?</a>
+                        {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
+                        {userError && <p className='error-text-signin'>{userError}</p>}
+                        <button type="submit">Login</button>
+                    </form>
+                </div>
+                                
+                <div className="overlay-container">
+                    <div className="overlay">
+                        <div className="overlay-panel overlay-left">
+                            <h1>Welcome back!</h1>
+                            <p>Already have an account?</p>
+                            <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setUserError(''); }}>Login</button>
+                        </div>
+                        <div className="overlay-panel overlay-right">
+                            <h1>New here?</h1>
+                            <p>Create an account by signing up!</p>
+                            <button className="ghost" onClick={() => { navigate('/register'); resetForm(); setUserError(''); }}>Sign Up</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <PasswordRequirement passwordErrors={passwordErrors} />
+        </main>
     );
 }
 
