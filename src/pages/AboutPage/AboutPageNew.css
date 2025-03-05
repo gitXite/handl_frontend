@@ -16,7 +16,7 @@
     content: '';
     display: block;
     height: 1px;
-    width: 500%;
+    width: 1440px;
     background-color: #c89666;
     position: absolute;
     bottom: 0;
@@ -31,16 +31,16 @@
     right: 0;
     transform: translateX(180%) translateY(120%);
 }
-.privacy-security {
+.sub-button {
     all: unset;
     color: #333;
     font-size: 16px;
 }
-.privacy-security:hover {
+.sub-button:hover {
     color: #c89666;
     background: none;
 }
-.privacy-security:active {
+.sub-button:active {
     color: #333;
 }
 .about-subcontainer {
@@ -98,7 +98,7 @@
     content: '';
     display: block;
     height: 1px;
-    width: 50%;
+    width: 52px;
     background-color: #c89666;
     position: absolute;
     bottom: 0;
