@@ -65,8 +65,8 @@ function Header({ resetForm }) {
     return (
         <header>
             <div className='logo'>
-                <h1>HANDL</h1>
                 <img className='logo-img' src={logo}></img>
+                <h1>HANDL</h1>
             </div>
             <div className='nav'>
                 <button className='nav-button' onClick={() => navigate('/')}>Home</button>
