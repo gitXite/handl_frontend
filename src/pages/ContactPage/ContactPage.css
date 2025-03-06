@@ -80,6 +80,10 @@
     outline: none;
     background-color: #eee;
 }
+.contact-form input:-webkit-autofill {
+    background-color: transparent !important;
+    transition: background-color 5000s ease-in-out 0s; /* Trick to keep original styles */
+}
 .contact-form input:valid,
 .contact-form input:focus {
     border: 1px solid;

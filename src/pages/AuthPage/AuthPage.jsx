@@ -117,38 +117,50 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                 <div className="form-container sign-up-container">
                     <form onSubmit={(e) => handleSubmit(e, true)}>
                         <h1>Create Account</h1>
-                        <input 
-                            type="text" 
-                            name="name"
-                            placeholder="Name" 
-                            value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input 
-                            type="email" 
-                            name="email"
-                            placeholder="Email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input 
-                            type="password" 
-                            name="password" 
-                            placeholder="Password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            required
-                        />
-                        <input 
-                            type="password" 
-                            name="confirmPassword" 
-                            placeholder="Confirm Password"
-                            value={formData.confirmPassword}
-                            onChange={handleChange} 
-                            required
-                        />
+                        <div className='auth-field'>
+                            <input 
+                                type="text" 
+                                name="name"
+                                // placeholder="Name" 
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label className='form-label' htmlFor='name'>Name</label>
+                        </div>
+                        <div className='auth-field'>
+                            <input 
+                                type="email" 
+                                name="email"
+                                // placeholder="Email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label className='form-label' htmlFor='email'>Email</label>
+                        </div>
+                        <div className='auth-field'>
+                            <input 
+                                type="password" 
+                                name="password" 
+                                // placeholder="Password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                required
+                            />
+                            <label className='form-label' htmlFor='password'>Password</label>
+                        </div>
+                        <div className='auth-field'>
+                            <input 
+                                type="password" 
+                                name="confirmPassword" 
+                                // placeholder="Confirm Password"
+                                value={formData.confirmPassword}
+                                onChange={handleChange} 
+                                required
+                            />
+                            <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
+                        </div>
                         {isLoading ? <div className='signup-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                         {userError && <p className='error-text-signup'>{userError}</p>}
                         <button type="submit">Sign Up</button>
@@ -158,22 +170,28 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                 <div className="form-container sign-in-container">
                     <form onSubmit={(e) => handleSubmit(e, false)}>
                         <h1>Login</h1>
-                        <input 
-                            type="email" 
-                            name="email"
-                            placeholder="Email" 
-                            value={formData.email}
-                            onChange={handleChange}
-                            required 
-                        />
-                        <input 
-                            type="password" 
-                            name="loginPassword"
-                            placeholder="Password" 
-                            value={formData.loginPassword} 
-                            onChange={handleChange}
-                            required 
-                        />
+                        <div className='auth-field'>
+                            <input 
+                                type="email" 
+                                name="email"
+                                // placeholder="Email" 
+                                value={formData.email}
+                                onChange={handleChange}
+                                required 
+                            />
+                            <label className='form-label' htmlFor='email'>Email</label>
+                        </div>
+                        <div className='auth-field'>
+                            <input 
+                                type="password" 
+                                name="loginPassword"
+                                // placeholder="Password" 
+                                value={formData.loginPassword} 
+                                onChange={handleChange}
+                                required 
+                            />
+                            <label className='form-label' htmlFor='loginPassword'>Password</label>
+                        </div>
                         <button className='forgot-password' type='button' onClick={() => navigate('/forgot-password')}>Forgot your password?</button>
                         {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                         {userError && <p className='error-text-signin'>{userError}</p>}
