@@ -36,6 +36,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
             confirmPassword: '',
             loginPassword: ''
         });
+        setPasswordErrors({});
     }, [formResetTrigger]);
 
     const resetForm = () => setFormData ({
@@ -198,12 +199,26 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                         <div className="overlay-panel overlay-left">
                             <h1>Welcome back!</h1>
                             <p>Already have an account?</p>
-                            <button className="ghost" onClick={() => { navigate('/login'); resetForm(); setUserError(''); }}>Login</button>
+                            <button className="ghost" onClick={() => {
+                                navigate('/login'); 
+                                resetForm(); 
+                                setUserError(''); 
+                                setPasswordErrors({}); 
+                            }}>
+                                Login
+                            </button>
                         </div>
                         <div className="overlay-panel overlay-right">
                             <h1>New here?</h1>
                             <p>Create an account by signing up!</p>
-                            <button className="ghost" onClick={() => { navigate('/register'); resetForm(); setUserError(''); }}>Sign Up</button>
+                            <button className="ghost" onClick={() => {
+                                navigate('/register'); 
+                                resetForm(); 
+                                setUserError(''); 
+                                setPasswordErrors({}); 
+                            }}>
+                                Sign Up
+                            </button>
                         </div>
                     </div>
                 </div>
