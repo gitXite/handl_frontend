@@ -15,7 +15,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
     const { setIsAuthenticated } = useAuth();
     const [isLoading, setIsLoading] = useState(false);
     const [isSignUp, setIsSignUp] = useState(initialSignUp);
-    const [passwordError, setPasswordError] = useState({});
+    const [passwordErrors, setPasswordErrors] = useState({});
     const [userError, setUserError] = useState('');
     const [formData, setFormData] = useState({
         name: '',
@@ -195,7 +195,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                 </div>
             </div>
 
-            <PasswordRequirement passwordErrors={passwordErrors} />
+            {/* <PasswordRequirement passwordErrors={passwordErrors} /> */}
         </main>
     );
 }
