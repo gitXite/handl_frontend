@@ -121,7 +121,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="text" 
                                 name="name"
-                                // placeholder="Name" 
                                 value={formData.name}
                                 onChange={handleChange}
                                 required
@@ -132,7 +131,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="email" 
                                 name="email"
-                                // placeholder="Email"
                                 value={formData.email}
                                 onChange={handleChange}
                                 required
@@ -143,7 +141,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="password" 
                                 name="password" 
-                                // placeholder="Password"
                                 value={formData.password}
                                 onChange={handleChange}
                                 required
@@ -154,7 +151,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="password" 
                                 name="confirmPassword" 
-                                // placeholder="Confirm Password"
                                 value={formData.confirmPassword}
                                 onChange={handleChange} 
                                 required
@@ -174,7 +170,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="email" 
                                 name="email"
-                                // placeholder="Email" 
                                 value={formData.email}
                                 onChange={handleChange}
                                 required 
@@ -185,7 +180,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             <input 
                                 type="password" 
                                 name="loginPassword"
-                                // placeholder="Password" 
                                 value={formData.loginPassword} 
                                 onChange={handleChange}
                                 required 
