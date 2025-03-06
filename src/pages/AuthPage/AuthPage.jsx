@@ -199,9 +199,9 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
             <AnimatePresence mode='sync'>
                 {isSignUp ? (
                     <motion.div
-                        initial={{ opacity: 0.5, x: -200 }}
+                        initial={{ opacity: 0.7, x: -200 }}
                         animate={{ opacity: 1, x: 10 }}
-                        exit={{ opacity: 0.5, x: -200 }}
+                        exit={{ opacity: 0.7, x: -200 }}
                         transition={{ duration: 0.6, delay: 0.05 }}
                     >
                         <PasswordRequirement className={'req-list'} passwordErrors={passwordErrors} />
