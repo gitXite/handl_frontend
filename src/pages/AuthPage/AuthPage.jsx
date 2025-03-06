@@ -8,7 +8,6 @@ import api from '@utils/api';
 import PasswordRequirement from '@components/PasswordRequirement/PasswordRequirement';
 
 import './AuthPage.css';
-import { transform } from 'motion';
 
 
 function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
