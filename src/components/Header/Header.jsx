@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react';
 import { useAuth } from '@hooks/useAuth';
 
+import logo from '@assets/icons/logo.png';
 import logoutImage from '@assets/icons/logout.png';
 import './Header.css';
 
@@ -65,6 +66,7 @@ function Header({ resetForm }) {
         <header>
             <div className='logo'>
                 <h1>HANDL</h1>
+                <img className='logo-img' src={logo}></img>
             </div>
             <div className='nav'>
                 <button className='nav-button' onClick={() => navigate('/')}>Home</button>
