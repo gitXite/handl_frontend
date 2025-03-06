@@ -5,15 +5,17 @@ footer {
     bottom: 0;
     height: auto;
     width: 100%;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 .footer-logo {
+    display: flex;
+    margin-left: 2rem;
     font-size: 15px;
 }
 .footer-copyright {
     display: flex;
-    justify-content: center;
     width: 100%;
+    margin-left: 2rem;
 }
 .footer-socials {
     display: flex;
@@ -21,7 +23,7 @@ footer {
     align-items: center;
     gap: 1rem;
     height: 25px;
-    margin-right: 1rem;
+    margin-right: 2rem;
 }
 .footer-socials img {
     height: 25px;
@@ -29,6 +31,7 @@ footer {
     margin: 0;
 }
 .footer-socials a {
+    display: flex;
     margin: 0;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.10);
