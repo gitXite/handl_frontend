@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 
 import { useAuth } from '@hooks/useAuth';
 import { validatePassword } from '@utils/passwordValidator';
@@ -7,6 +8,7 @@ import api from '@utils/api';
 import PasswordRequirement from '@components/PasswordRequirement/PasswordRequirement';
 
 import './AuthPage.css';
+import { transform } from 'motion';
 
 
 function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
@@ -59,7 +61,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         e.preventDefault();
         
         const validation = validatePassword(formData.password);
-        if (!validation.isValid) {
+        if (isSignUp && !validation.isValid) {
             setUserError('Password does not meet the required criteria.');
             return;
         }
@@ -172,7 +174,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                             onChange={handleChange}
                             required 
                         />
-                        <a className='forgot-password'>Forgot your password?</a>
+                        <button className='forgot-password' type='button' onClick={() => navigate('/forgot-password')}>Forgot your password?</button>
                         {isLoading ? <div className='login-loading'><span>.</span><span>.</span><span>.</span></div> : null}
                         {userError && <p className='error-text-signin'>{userError}</p>}
                         <button type="submit">Login</button>
@@ -194,8 +196,18 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                     </div>
                 </div>
             </div>
-
-            {/* <PasswordRequirement passwordErrors={passwordErrors} /> */}
+            <AnimatePresence mode='sync'>
+                {isSignUp ? (
+                    <motion.div
+                        initial={{ opacity: 0.5, x: -200 }}
+                        animate={{ opacity: 1, x: 10 }}
+                        exit={{ opacity: 0.5, x: -200 }}
+                        transition={{ duration: 0.6, }}
+                    >
+                        <PasswordRequirement className={'req-list'} passwordErrors={passwordErrors} />
+                    </motion.div>
+                    ) : null}
+            </AnimatePresence>
         </main>
     );
 }
