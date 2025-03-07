@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     useEffect(() => {
         const checkSession = async () => {
             try {
-                const result = await api.get('/api/auth/get-session');
+                const result = await api.get('/api/auth/session');
                 const isAuthenticated = result.isAuthenticated || false;
                 setIsAuthenticated(isAuthenticated);
                 localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
