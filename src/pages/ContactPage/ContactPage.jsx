@@ -43,7 +43,7 @@ function Contact() {
 
         try {
             setIsLoading(true);
-            const result = await api.post('/api/contact/submit-form', body);
+            const result = await api.post('/api/contact/form', body);
             console.log(result.message);
             setNotice(result.message);
             resetForm();
