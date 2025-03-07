@@ -20,7 +20,7 @@ function Header({ resetForm }) {
         const fetchAuthStatus = async () => {
             console.log('Fetching auth status...');
             try {
-                const result = await api.get('/api/auth/get-session');
+                const result = await api.get('/api/auth/session');
 
                 console.log('Parsed JSON:', result);
                 setIsAuthenticated(result.isAuthenticated || false);
