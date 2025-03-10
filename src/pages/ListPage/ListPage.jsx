@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import api from '@utils/api';
 import { useAuth } from '@hooks/useAuth';
+import { AnimatePresence, motion } from 'framer-motion';
 
-import MotionWrapper from '@components/MotionWrapper';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
@@ -21,6 +22,7 @@ function Lists() {
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
     const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const [lists, setLists] = useState([]);
 
     const isMounted = useRef(true);
 
@@ -62,23 +64,51 @@ function Lists() {
     useEffect(() => {
         localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
     }, [isAuthenticated]);
+
+    useEffect(() => {
+        axios.get('/lists').then((res) => {
+            setLists(res.data);
+        });
+    }, []);
+
+    const addList = async () => {
+        const name = prompt('Enter list name');
+        if (!name) return;
+
+        try {
+            const result = await axios.post('/lists', { name });
+            setLists((prevLists) => [...prevLists, res.data]);
+        } catch (error) {
+            console.error('Failed to add list:', error);
+        }
+    };
     
     return (
         isAuthenticated ? (
             <div className='list-container'>
                     <h1 className='your-shopping-lists'>Your shopping lists</h1>
                 <div className='manage-lists'>
-                    <button>
-                        <img src={addWhiteIcon} />
+                    <button onCLick={addList}>
+                        <img src={addWhiteIcon} alt='Add list'/>
                     </button>
                     <button>
-                        <img src={menuIcon} />
+                        <img src={menuIcon} alt='Manage lists' />
                     </button>
                 </div>
                 <div className='lists'>
-                    <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
-                        <ListCard />
-                    </MotionWrapper>
+                    <AnimatePresence>
+                        {lists.map((list) => (
+                            <motion.div
+                                key={list.id}
+                                initial={{ opacity: 0, y: -30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: -30 }}
+                                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                            >
+                                <ListCard list={list} />
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
             </div>
         ) : (
