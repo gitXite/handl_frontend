@@ -5,7 +5,7 @@ import deleteIcon from '@assets/icons/delete.png';
 import editIcon from '@assets/icons/edit-square.png';
 import shareIcon from '@assets/icons/share.png';
 
-import './ListCard.css'
+import './ListCard.css';
 
 
 function ListCard () {
