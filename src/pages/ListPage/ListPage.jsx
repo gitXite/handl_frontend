@@ -82,6 +82,15 @@ function Lists() {
             console.error('Failed to add list:', error);
         }
     };
+
+    const deleteList = async (id) => {
+        try {
+            await axios.delete(`/lists/${id}`);
+            setLists((prevLists) => prevLists.filter((list) => list.id !== id));
+        } catch (error) {
+            console.error('Failed to delete list:', error);
+        }
+    };
     
     return (
         isAuthenticated ? (
@@ -105,7 +114,7 @@ function Lists() {
                                 exit={{ opacity: 0, y: -30 }}
                                 transition={{ type: "spring", stiffness: 100, damping: 10 }}
                             >
-                                <ListCard list={list} />
+                                <ListCard list={list} onDelete={deleteList} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
