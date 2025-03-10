@@ -4,12 +4,9 @@ import api from '../utils/api';
 
 const useSSE = (listId) => {
     const [items, setItems] = useState([]);
+    const [lists, setLists] = useState([]);
 
     useEffect(() => {
-        api.get(`/api/lists/${listId}/items`)
-            .then(res => setItems(res.data))
-            .catch(err => console.error('Error fetching items:', err));
-
         const eventSource = new EventSource(`${import.meta.env.VITE_API_URL}/events?${listId}`);
 
         eventSource.onmessage = (event) => {
@@ -21,13 +18,17 @@ const useSSE = (listId) => {
                 setItems(prev => prev.map(item => (item.id === data.id ? data : item)));
             } else if (type === 'ITEM_DELETED') {
                 setItems(prev => prev.filter(item => item.id !== data.id));
+            } else if (type === 'LIST_ADDED') {
+                setLists(prev => [...prev, data]);
+            } else if (type === 'LIST_DELETED') {
+                setLists(prev => prev.filter(list => list.id !== data.id));
             }
         };
 
         return () => eventSource.close();
     }, [listId])
     
-    return items;
+    return { items, lists };
 };
 
 
