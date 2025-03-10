@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import MotionWrapper from '@components/MotionWrapper';
 
 import addWhiteIcon from '@assets/icons/add-white.png';
@@ -8,14 +9,16 @@ import shareIcon from '@assets/icons/share.png';
 import './ListCard.css';
 
 
-function ListCard () {
+function ListCard({ list }) {
+    const navigate = useNavigate();
+    
     return (
         <div className='list-card'>
             <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
-                <button className='list'>
+                <button className='list' onClick={() => navigate(`/lists/${list.id}`)}>
                     <img src={editIcon} />
                     <div className='list-name'>
-                        <p>Groceries</p>
+                        <p>{list.name}</p>
                     </div>
                 </button>
             </MotionWrapper>
