@@ -10,13 +10,8 @@ import shareIcon from '@assets/icons/share.png';
 import './ListCard.css';
 
 
-function ListCard({ list }) {
+function ListCard({ list, onDelete }) {
     const navigate = useNavigate();
-
-    const deleteList = async (id) => {
-        await axios.delete(`/lists/${id}`);
-        setLists(lists.filter((list) => list.id !== id));
-    };
     
     return (
         <div className='list-card'>
@@ -40,7 +35,7 @@ function ListCard({ list }) {
                     </button>
                 </MotionWrapper>
                 <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
-                    <button onClick={deleteList(list.id)}>
+                    <button onClick={() => onDelete(list.id)}>
                         <img src={deleteIcon} alt='Delete list'/>
                     </button>
                 </MotionWrapper>
