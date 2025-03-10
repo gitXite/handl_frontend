@@ -3,7 +3,7 @@ header {
     align-items: center;
     height: 5rem;
     width: 100%;
-    padding: 2rem;
+    padding: 2rem 0 2rem 0;
     padding-top: 3rem;
     box-shadow: inset 0 20px 20px rgba(0, 0, 0, 0.20);
 }
@@ -12,6 +12,7 @@ header {
     display: flex;
     align-items: center;
     margin-right: 2rem;
+    margin-left: 1rem;
     font-size: 25px;
 }
 .logo-img {
@@ -62,10 +63,8 @@ header {
 
 .auth-button {
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
     position: absolute;
-    right: 5rem;
+    right: 2rem;
 }
 
 .login-button {
