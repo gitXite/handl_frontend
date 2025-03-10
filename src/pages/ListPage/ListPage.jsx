@@ -5,13 +5,14 @@ import { useAuth } from '@hooks/useAuth';
 
 import MotionWrapper from '@components/MotionWrapper';
 import Redirect from '@components/Redirect/Redirect';
+import ListCard from '@components/ListCard/ListCard';
 
 import addWhiteIcon from '@assets/icons/add-white.png';
 import deleteIcon from '@assets/icons/delete.png';
 import editIcon from '@assets/icons/edit-square.png';
+import shareIcon from '@assets/icons/share.png';
 import doneIcon from '@assets/icons/done.png';
 import menuIcon from '@assets/icons/menu.png';
-import shareIcon from '@assets/icons/share.png';
 import './ListPage.css';
 
 
@@ -74,64 +75,11 @@ function Lists() {
                         <img src={menuIcon} />
                     </button>
                 </div>
-                <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
-                    <div className='list-card'>
-                        <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
-                            <button className='list'>
-                                <img src={editIcon} />
-                                <div className='list-name'>
-                                    <p>Groceries</p>
-                                </div>
-                            </button>
-                        </MotionWrapper>
-                            <div className='list-buttons'>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.5 }}>
-                                <button>
-                                    <img src={addWhiteIcon} />
-                                </button>
-                            </MotionWrapper>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
-                                <button>
-                                    <img src={shareIcon} />
-                                </button>
-                            </MotionWrapper>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
-                                <button>
-                                    <img src={deleteIcon} />
-                                </button>
-                            </MotionWrapper>
-                        </div>
-                    </div>
-                </MotionWrapper>
-                <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
-                    <div className='list-card'>
-                        <MotionWrapper className={'list-fade'} transition={{ delay: 0.6 }}>
-                            <button className='list'>
-                                <img src={editIcon} />
-                                <div className='list-name'>
-                                    <p>Household</p>
-                                </div>
-                            </button>
-                        </MotionWrapper>
-                            <div className='list-buttons'>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.7 }}>
-                                <button>
-                                    <img src={addWhiteIcon} />
-                                </button>
-                            </MotionWrapper>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
-                                <button>
-                                    <img src={shareIcon} />
-                                </button>
-                            </MotionWrapper>
-                            <MotionWrapper className={'list-fade'} transition={{ delay: 0.9 }}>
-                                <button>
-                                    <img src={deleteIcon} />
-                                </button>
-                            </MotionWrapper>
-                        </div>
-                    </div>
-                </MotionWrapper>
+                <div className='lists'>
+                    <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
+                        <ListCard />
+                    </MotionWrapper>
+                </div>
             </div>
         ) : (
             <div className='list-redirect'>
