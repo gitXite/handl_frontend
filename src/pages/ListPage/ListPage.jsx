@@ -68,12 +68,17 @@ function Lists() {
     }, []);
 
     const addList = async () => {
-        const name = prompt('Enter list name');
+        const name = prompt('Enter list name', 'New list');
         if (!name) return;
 
         try {
-            const result = await axios.post('/api/lists', { name });
-            setLists((prevLists) => [...prevLists, result.data]);
+            // const result = await axios.post('/api/lists', { name });
+            // setLists((prevLists) => [...prevLists, result.data]);
+            const fakeResponse = {
+                data: { id: Date.now(), name },
+            };
+            setLists((prevLists) => [...prevLists, fakeResponse.data]);
+            console.log('List added (mock):', fakeResponse.data);
         } catch (error) {
             console.error('Failed to add list:', error);
         }
@@ -81,7 +86,7 @@ function Lists() {
 
     const deleteList = async (id) => {
         try {
-            await axios.delete(`/api/lists/${id}`);
+            // await axios.delete(`/api/lists/${id}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== id));
         } catch (error) {
             console.error('Failed to delete list:', error);
@@ -105,10 +110,11 @@ function Lists() {
                         {lists.map((list) => (
                             <motion.div
                                 key={list.id}
+                                layout
                                 initial={{ opacity: 0, y: -30 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -30 }}
-                                transition={{ type: "spring", stiffness: 100, damping: 10 }}
+                                exit={{ opacity: 0, x: -100, scale: 0.9 }}
+                                transition={{ duration: 0.1, type: 'spring', stiffness: 250, damping: 15 }}
                             >
                                 <ListCard list={list} onDelete={deleteList} />
                             </motion.div>
