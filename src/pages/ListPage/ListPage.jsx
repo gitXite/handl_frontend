@@ -106,7 +106,7 @@ function Lists() {
                     </button>
                 </div>
                 <div className='lists'>
-                    <AnimatePresence>
+                    <AnimatePresence mode='popLayout'>
                         {lists.map((list) => (
                             <motion.div
                                 key={list.id}
