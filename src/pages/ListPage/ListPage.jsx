@@ -9,10 +9,6 @@ import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
 import addWhiteIcon from '@assets/icons/add-white.png';
-import deleteIcon from '@assets/icons/delete.png';
-import editIcon from '@assets/icons/edit-square.png';
-import shareIcon from '@assets/icons/share.png';
-import doneIcon from '@assets/icons/done.png';
 import menuIcon from '@assets/icons/menu.png';
 import './ListPage.css';
 
@@ -76,8 +72,8 @@ function Lists() {
         if (!name) return;
 
         try {
-            const result = await axios.post('/lists', { name });
-            setLists((prevLists) => [...prevLists, res.data]);
+            const result = await axios.post('/api/lists', { name });
+            setLists((prevLists) => [...prevLists, result.data]);
         } catch (error) {
             console.error('Failed to add list:', error);
         }
@@ -85,7 +81,7 @@ function Lists() {
 
     const deleteList = async (id) => {
         try {
-            await axios.delete(`/lists/${id}`);
+            await axios.delete(`/api/lists/${id}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== id));
         } catch (error) {
             console.error('Failed to delete list:', error);
@@ -97,7 +93,7 @@ function Lists() {
             <div className='list-container'>
                     <h1 className='your-shopping-lists'>Your shopping lists</h1>
                 <div className='manage-lists'>
-                    <button onCLick={addList}>
+                    <button onClick={addList}>
                         <img src={addWhiteIcon} alt='Add list'/>
                     </button>
                     <button>
