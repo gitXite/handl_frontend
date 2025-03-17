@@ -15,14 +15,14 @@ function ListCard({ list, onDelete }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
 
-    const renameList = async (e) => {
+    const renameList = async (e, listId) => {
         e.stopPropagation();
         const name = prompt('Enter new name:', newName || list.name);
         try {
             if (name) {
                 setNewName(name);
                 if (newName !== list.name) {
-                    // await api.put('/api/lists', newName);
+                    // await api.put(`/api/lists/${listId}`, newName);
                 }
             }
         } catch (error) {

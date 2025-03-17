@@ -90,9 +90,9 @@ function Lists() {
         setSelectedList(listId);
         setShowModal(true);
     };
-    const deleteList = async (id) => {
+    const deleteList = async (listId) => {
         try {
-            // await axios.delete(`/api/lists/${id}`);
+            // await axios.delete(`/api/lists/${listId}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== selectedList));
             setShowModal(false);
             setSelectedList(null);
