@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import MotionWrapper from '../../components/MotionWrapper';
-import './ForgotPassword.css';
 import api from '../../utils/api';
-import { requestFormReset } from 'react-dom';
+
+import './ForgotPassword.css';
 
 
 function ForgotPasswordPage() {
