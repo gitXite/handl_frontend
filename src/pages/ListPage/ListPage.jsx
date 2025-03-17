@@ -6,6 +6,7 @@ import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 
+import DeleteModal from '@components/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
@@ -19,6 +20,8 @@ function Lists() {
     const [isLoading, setIsLoading] = useState(false);
     const { isAuthenticated, setIsAuthenticated } = useAuth();
     const [lists, setLists] = useState([]);
+    const [selectedList, setSelectedList] = useState(null);
+    const [showModal, setShowModal] = useState(false);
 
     const isMounted = useRef(true);
 
@@ -84,13 +87,22 @@ function Lists() {
         }
     };
 
+    const handleDelete = (listId) => {
+        setSelectedList(listId);
+        setShowModal(true);
+    };
     const deleteList = async (id) => {
         try {
             // await axios.delete(`/api/lists/${id}`);
-            setLists((prevLists) => prevLists.filter((list) => list.id !== id));
+            setLists((prevLists) => prevLists.filter((list) => list.id !== selectedList));
+            setShowModal(false);
+            setSelectedList(null);
         } catch (error) {
             console.error('Failed to delete list:', error);
         }
+    };
+    const cancelDelete = () => {
+        setShowModal(false);
     };
     
     return (
@@ -155,11 +167,19 @@ function Lists() {
                                 exit={{ opacity: 0, x: -100, scale: 0.9 }}
                                 transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
                             >
-                                <ListCard list={list} onDelete={deleteList} />
+                                <ListCard list={list} onDelete={() => handleDelete(list.id)} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </div>
+
+                {showModal && (
+                    <DeleteModal 
+                        message='Are you sure you want to delete this list?'
+                        onConfirm={deleteList}
+                        onCancel={cancelDelete}
+                    />
+                )}
             </div>
         ) : (
             <div className='list-redirect'>
