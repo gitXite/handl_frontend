@@ -14,7 +14,7 @@ import { Plus, ChartNoAxesGantt } from 'lucide-react';
 import './ListPage.css';
 
 
-function Lists() {
+function ListPage() {
     const navigate = useNavigate();
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
@@ -189,4 +189,4 @@ function Lists() {
 }
 
 
-export default Lists;
+export default ListPage;

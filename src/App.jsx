@@ -10,10 +10,11 @@ import Footer from '@components/Footer/Footer';
 
 import AuthPage from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
-import Lists from '@pages/ListPage/ListPage';
+import ListPage from '@pages/ListPage/ListPage';
 import AboutPage from '@pages/AboutPage/AboutPage';
-import Contact from '@pages/ContactPage/ContactPage';
-import ConfirmEmail from '@pages/ConfirmEmailPage/ConfirmEmailPage';
+import ContactPage from '@pages/ContactPage/ContactPage';
+import ConfirmEmailPage from '@pages/ConfirmEmailPage/ConfirmEmailPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
 
 
 const queryClient = new QueryClient();
@@ -65,7 +66,7 @@ function App() {
                             />
                             <Route path='/lists' element={
                                 <MotionWrapper pathname='lists'>
-                                    <Lists />
+                                    <ListPage />
                                 </MotionWrapper>}
                             />
                             <Route path='/about' element={
@@ -75,13 +76,18 @@ function App() {
                             />
                             <Route path='/contact' element={
                                 <MotionWrapper pathname='contact'>
-                                    <Contact />
+                                    <ContactPage />
                                 </MotionWrapper>}
                             />
                             <Route path='/confirm-email' element={
                                 <MotionWrapper pathname='confirm-email'>
-                                    <ConfirmEmail />
+                                    <ConfirmEmailPage />
                                 </MotionWrapper>}
+                            />
+                            <Route path='/forgot-password' element={
+                                <MotionWrapper pathname='forgot-password'>
+                                    <ForgotPasswordPage />
+                                </MotionWrapper>} 
                             />
                         </Routes>
                     </AnimatePresence>

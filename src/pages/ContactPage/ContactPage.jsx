@@ -9,7 +9,7 @@ import './ContactPage.css';
 import api from '../../utils/api';
 
 
-function Contact() {
+function ContactPage() {
     const [isLoading, setIsLoading] = useState(false);
     const [notice, setNotice] = useState();
     const [formData, setFormData] = useState({
@@ -104,7 +104,7 @@ function Contact() {
                     <MotionWrapper className={'fade-form'} transition={{ delay: 0.3 }}>
                         <div className='field'>
                             <input 
-                                type='text'
+                                type='email'
                                 value={formData.email}
                                 onChange={handleChange('email')} 
                                 id='email'
@@ -147,4 +147,4 @@ function Contact() {
 }
 
 
-export default Contact;
+export default ContactPage;

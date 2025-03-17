@@ -7,7 +7,7 @@ import Redirect from '@components/Redirect/Redirect';
 import './ConfirmEmail.css';
 
 
-function ConfirmEmail() {
+function ConfirmEmailPage() {
     const hasConfirmed = useRef(false);
     const navigate = useNavigate();
     const [message, setMessage] = useState('Confirming...');
@@ -51,4 +51,4 @@ function ConfirmEmail() {
 }
 
 
-export default ConfirmEmail;
+export default ConfirmEmailPage;
