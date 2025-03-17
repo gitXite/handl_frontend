@@ -1,6 +1,6 @@
 import react from 'react';
 
-import logo from '@assets/icons/logo.png';
+import logo from '@assets/icons/new_logo.png';
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
 import linkedin from '@assets/icons/linkedin_2504923.png';

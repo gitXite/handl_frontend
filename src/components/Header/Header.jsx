@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react';
 import { useAuth } from '@hooks/useAuth';
 
-import logo from '@assets/icons/logo.png';
+import logo from '@assets/icons/new_logo.png';
 import logoutImage from '@assets/icons/logout.png';
 import './Header.css';
 
