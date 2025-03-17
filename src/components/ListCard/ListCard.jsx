@@ -22,7 +22,7 @@ function ListCard({ list, onDelete }) {
             if (name) {
                 setNewName(name);
                 if (newName !== list.name) {
-                    // await api.put ('/api/lists', newName);
+                    // await api.put('/api/lists', newName);
                 }
             }
         } catch (error) {
