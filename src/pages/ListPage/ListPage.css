@@ -25,17 +25,6 @@
     padding-bottom: 2rem;
     font-size: 50px;
 }
-.your-shopping-lists::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 250px;
-    background-color: #c89666;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
 .manage-lists {
     display: flex;
     align-self: flex-end;
@@ -51,7 +40,6 @@
     width: 35px;
     margin: 0;
     padding: 0;
-    color: black;
     border: 1px solid #141414;
     border-radius: 8px;
     background-color: #242424;
@@ -61,6 +49,7 @@
     background-color: #292929;
 }
 .manage-lists button:active {
+    color: white;
     background-color: #1f1f1f;
 }
 .manage-lists img {
@@ -70,8 +59,9 @@
 .lists {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 80%;
     width: 100%;
+    margin-top: 0.5rem;
 }
 .list-fade {
     display: flex;

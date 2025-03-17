@@ -4,12 +4,12 @@ import axios from 'axios';
 import api from '@utils/api';
 import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Tooltip, Zoom } from '@mui/material';
 
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
-import addWhiteIcon from '@assets/icons/add-white.png';
-import menuIcon from '@assets/icons/menu.png';
+import { Plus, ChartNoAxesGantt } from 'lucide-react';
 import './ListPage.css';
 
 
@@ -96,14 +96,53 @@ function Lists() {
     return (
         isAuthenticated ? (
             <div className='list-container'>
-                    <h1 className='your-shopping-lists'>Your shopping lists</h1>
                 <div className='manage-lists'>
-                    <button onClick={addList}>
-                        <img src={addWhiteIcon} alt='Add list'/>
-                    </button>
-                    <button>
-                        <img src={menuIcon} alt='Manage lists' />
-                    </button>
+                    <Tooltip 
+                        title='New list'
+                        disableInteractive
+                        slots={{
+                            transition: Zoom,
+                        }}
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        slotProps={{
+                            popper: {
+                                modifiers: [
+                                    {
+                                        name: 'offset',
+                                        options: { offset: [0, -6] },
+                                    },
+                                ],
+                            },
+                        }}
+                    >
+                        <button onClick={addList}>
+                            <Plus size={25} />
+                        </button>
+                    </Tooltip>
+                    <Tooltip 
+                        title='Manage lists'
+                        disableInteractive
+                        slots={{
+                            transition: Zoom,
+                        }}
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        slotProps={{
+                            popper: {
+                                modifiers: [
+                                    {
+                                        name: 'offset',
+                                        options: { offset: [0, -6] },
+                                    },
+                                ],
+                            },
+                        }}
+                    >
+                        <button>
+                            <ChartNoAxesGantt size={25} />
+                        </button>
+                    </Tooltip>
                 </div>
                 <div className='lists'>
                     <AnimatePresence mode='popLayout'>
@@ -114,7 +153,7 @@ function Lists() {
                                 initial={{ opacity: 0, y: -30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, x: -100, scale: 0.9 }}
-                                transition={{ duration: 0.1, type: 'spring', stiffness: 250, damping: 15 }}
+                                transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
                             >
                                 <ListCard list={list} onDelete={deleteList} />
                             </motion.div>
