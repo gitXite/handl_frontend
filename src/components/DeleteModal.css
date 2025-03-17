@@ -18,6 +18,10 @@
     text-align: center;
     background: white;
 }
+.modal p {
+    font-size: 15px;
+    color: #333;
+}
 .modal-actions {
     display: flex;
     justify-content: space-around;

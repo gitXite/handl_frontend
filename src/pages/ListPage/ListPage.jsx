@@ -71,7 +71,7 @@ function Lists() {
     }, []);
 
     const addList = async () => {
-        const name = prompt('Enter list name', 'New list');
+        const name = prompt('Enter list name:', 'New list');
         if (!name) return;
 
         try {

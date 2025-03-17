@@ -5,7 +5,12 @@ import './DeleteModal.css';
 
 
 function DeleteModal({ message, onCancel, onConfirm }) {
-    useHotkeys('enter', onConfirm);
+    const handleConfirm = (e) => {
+        e.preventDefault();
+        onConfirm();
+    };
+
+    useHotkeys('enter', handleConfirm);
     useHotkeys('escape', onCancel);
 
     return (
@@ -13,7 +18,7 @@ function DeleteModal({ message, onCancel, onConfirm }) {
             <div className='modal'>
                 <p>{message}</p>
                 <div className='modal-actions'>
-                    <button className='confirm' onClick={onConfirm}>Confirm</button>
+                    <button className='confirm' onClick={handleConfirm}>Confirm</button>
                     <button onClick={onCancel}>Cancel</button>
                 </div>
             </div>

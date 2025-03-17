@@ -17,19 +17,20 @@ function ListCard({ list, onDelete }) {
 
     const renameList = async (e) => {
         e.stopPropagation();
-        const name = prompt('Enter new name', newName || list.name);
-        if (name) setNewName(name);
-
-        // try {
-        //     await api.put('/api/lists', name);
-        // } catch (error) {
-        //     console.error('Failed to update database:', error);
-        // }
+        const name = prompt('Enter new name:', newName || list.name);
+        try {
+            if (name) {
+                // await api.put ('/api/lists', name);
+                setNewName(name);
+            }
+        } catch (error) {
+            console.error('Failed to update database:', error);
+        }
     };
     
     return (
         <div className='list-card'>
-            <MotionWrapper className={'list-fade'} transition={{ delay: 0.4 }}>
+            <MotionWrapper className={'list-fade'} transition={{ delay: 0.2 }}>
                 <button className='list' onClick={() => navigate(`/lists/${list.id}`)}>
                     <div className='list-name'>
                         <Tooltip
