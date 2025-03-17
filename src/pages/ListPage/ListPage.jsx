@@ -81,7 +81,6 @@ function Lists() {
                 data: { id: Date.now(), name },
             };
             setLists((prevLists) => [...prevLists, fakeResponse.data]);
-            console.log('List added (mock):', fakeResponse.data);
         } catch (error) {
             console.error('Failed to add list:', error);
         }
