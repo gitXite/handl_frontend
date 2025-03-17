@@ -20,11 +20,6 @@
     margin-top: 2rem;
     border-radius: 10px;
 }
-.your-shopping-lists {
-    position: relative;
-    padding-bottom: 2rem;
-    font-size: 50px;
-}
 .manage-lists {
     display: flex;
     align-self: flex-end;
@@ -61,7 +56,8 @@
     flex-direction: column;
     height: 80%;
     width: 100%;
-    margin-top: 0.5rem;
+    margin-top: 2rem;
+    border-top: 1px solid #c89666;
 }
 .list-fade {
     display: flex;

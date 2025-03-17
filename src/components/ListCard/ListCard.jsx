@@ -8,16 +8,23 @@ import { Trash2, Share, SquarePlus } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 
 import './ListCard.css';
+import api from '../../utils/api';
 
 
 function ListCard({ list, onDelete }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
 
-    const renameList = (e) => {
+    const renameList = async (e) => {
         e.stopPropagation();
         const name = prompt('Enter new name', newName || list.name);
         if (name) setNewName(name);
+
+        // try {
+        //     await api.put('/api/lists', name);
+        // } catch (error) {
+        //     console.error('Failed to update database:', error);
+        // }
     };
     
     return (
