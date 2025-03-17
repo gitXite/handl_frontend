@@ -20,8 +20,10 @@ function ListCard({ list, onDelete }) {
         const name = prompt('Enter new name:', newName || list.name);
         try {
             if (name) {
-                // await api.put ('/api/lists', name);
                 setNewName(name);
+                if (newName !== list.name) {
+                    // await api.put ('/api/lists', newName);
+                }
             }
         } catch (error) {
             console.error('Failed to update database:', error);
