@@ -19,8 +19,9 @@ function ForgotPasswordPage() {
         email: ''
     });
 
-    const handleChange = (field) => (e) => {
-        setFormData({...formData, [field]: e.target.value});
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({...formData, [name]: value});
     };
 
     const handleSubmit = async (e) => {
@@ -65,7 +66,7 @@ function ForgotPasswordPage() {
                                 type='email'
                                 name='email'
                                 value={formData.email}
-                                onChange={handleChange('email')}
+                                onChange={handleChange}
                                 id='email'
                                 required
                             />
