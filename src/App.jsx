@@ -14,7 +14,8 @@ import ListPage from '@pages/ListPage/ListPage';
 import AboutPage from '@pages/AboutPage/AboutPage';
 import ContactPage from '@pages/ContactPage/ContactPage';
 import ConfirmEmailPage from '@pages/ConfirmEmailPage/ConfirmEmailPage';
-import ForgotPasswordPage from './pages/ForgotPasswordPage/ForgotPasswordPage';
+import ForgotPasswordPage from '@pages/ForgotPasswordPage/ForgotPasswordPage';
+import ResetPasswordPage from '@pages/ResetPasswordPage/ResetPasswordPage';
 
 
 const queryClient = new QueryClient();
@@ -87,6 +88,11 @@ function App() {
                             <Route path='/forgot-password' element={
                                 <MotionWrapper pathname='forgot-password'>
                                     <ForgotPasswordPage />
+                                </MotionWrapper>} 
+                            />
+                            <Route path='/reset-password' element={
+                                <MotionWrapper pathname='reset-password'>
+                                    <ResetPasswordPage />
                                 </MotionWrapper>} 
                             />
                         </Routes>
