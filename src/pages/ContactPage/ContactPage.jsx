@@ -26,8 +26,9 @@ function ContactPage() {
         message:''
     });
 
-    const handleChange = (field) => (e) => {
-        setFormData({...formData, [field]: e.target.value});
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({...formData, [name]: value});
     };
 
     const handleSubmit = async (e) => {
@@ -93,8 +94,9 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='text' 
+                                name='name'
                                 value={formData.name}
-                                onChange={handleChange('name')}
+                                onChange={handleChange}
                                 id='name' 
                                 required
                             />
@@ -105,8 +107,9 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='email'
+                                name='email'
                                 value={formData.email}
-                                onChange={handleChange('email')} 
+                                onChange={handleChange} 
                                 id='email'
                                 required
                             />
@@ -117,8 +120,9 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='text' 
+                                name='subject'
                                 value={formData.subject}
-                                onChange={handleChange('subject')}
+                                onChange={handleChange}
                                 id='subject'
                                 required
                             />
@@ -129,8 +133,9 @@ function ContactPage() {
                         <div className='field'>
                             <textarea 
                             id='message' 
+                            name='message'
                             value={formData.message}
-                            onChange={handleChange('message')}
+                            onChange={handleChange}
                             required />
                             <label className='textarea-label' htmlFor='message'>Message</label>
                         </div>
