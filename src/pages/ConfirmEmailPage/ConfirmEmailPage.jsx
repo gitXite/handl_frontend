@@ -34,7 +34,7 @@ function ConfirmEmailPage() {
                 setMessage(result.message || 'Email confirmed!');
                 setTimeout(() => navigate('/login'), 2000);
             } catch (error) {
-                console.error('Confirm email error:', error.response?.data || error.message);
+                console.error('Failed to confirm email:', error.response?.data || error.message);
                 setMessage(error.response?.data?.message || 'Error confirming email');
                 setTimeout(() => navigate('/'), 2000);
             }
