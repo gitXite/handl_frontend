@@ -67,7 +67,6 @@ function ForgotPasswordPage() {
                                 name='email'
                                 value={formData.email}
                                 onChange={handleChange}
-                                id='email'
                                 required
                             />
                                 <label className='form-label' htmlFor='email'>Email</label>
