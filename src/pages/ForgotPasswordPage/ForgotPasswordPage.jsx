@@ -33,12 +33,17 @@ function ForgotPasswordPage() {
 
         try {
             setIsLoading(true);
+            
             const result = await api.post('/api/password/forgot-password', body);
             console.log(result.message);
             setNotice(result.message);
+            
             resetForm();
+
+            setTimeout(() => navigate('/'), 2000);
         } catch (error) {
             console.error('Failed to send reset email:', error);
+            
             const errorMessage = error.response?.data?.message || 'An error occured. Please try again.';
             setNotice(errorMessage);
         } finally {
