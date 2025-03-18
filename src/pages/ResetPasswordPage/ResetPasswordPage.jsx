@@ -5,6 +5,7 @@ import MotionWrapper from '@components/MotionWrapper';
 import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
 import PasswordRequirement from '@components/PasswordRequirement/PasswordRequirement';
+import Redirect from '@components/Redirect/Redirect';
 
 import './ResetPassword.css';
 
@@ -49,13 +50,14 @@ function ResetPasswordPage() {
         const validateResetToken = async () => {
             setIsLoading(true);
             try {
-                const result = await api.get();
+                const result = await api.get('/api/password/reset-password', { params: { token } });
                 setMessage(result.message || 'Proceed to reset password');
                 setIsValidated(true);
             } catch (error) {
                 console.error('Failed to validate reset token:', error.response?.data || error.message);
                 setMessage(error.response?.data?.message || 'Error validating reset token');
-                setIsvalidated(false);
+                setIsValidated(false);
+                
                 setTimeout(() => navigate('/'), 2000);
             } finally {
                 setIsLoading(false);
@@ -79,54 +81,78 @@ function ResetPasswordPage() {
         }
 
         setNotice('');
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+        const body = {
+            password: formData.password,
+            token: { token }
+        };
+        try {
+            setIsLoading(true);
 
-        const body = {};
+            const result = await api.post('/api/password/reset-password', body);
+            console.log(result.message);
+            setNotice(result.message);
+            
+            setTimeout(() => navigate('/login'), 2000);
+        } catch (error) {
+            console.error('Failed to reset password:', error.response?.data || error.message);
+            setNotice('Failed to reset password. Please try again.');
+        } finally {
+            setIsLoading(false);
+        }
     };
     
     return (
         <div className='reset-password-container'>
-            <div className='reset-password-subcontainer'>
-                <h1>Reset your password</h1>
-                <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.2 }}>
-                    <p>Enter your new password</p>
-                </MotionWrapper>
-                <form className='reset-password-form' onSubmit={(e) => handleSubmit(e)}>
-                    <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.3 }}>
-                        <div className='field'>
-                            <input
-                                type='password'
-                                name='password'
-                                value={formData.password}
-                                onChange={handleChange}
-                                required
-                            />
-                                <label className='form-label' htmlFor='password'>Password</label>
-                        </div>
+            isValidated ? (
+                <div className='reset-password-subcontainer'>
+                    <h1>Reset your password</h1>
+                    <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.2 }}>
+                        <p>Enter your new password</p>
                     </MotionWrapper>
-                    <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.3 }}>
-                        <div className='field'>
-                            <input 
-                                type='password'
-                                name='confirmPassword'
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                required
-                            />
-                                <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
-                        </div>
+                    <form className='reset-password-form' onSubmit={(e) => handleSubmit(e)}>
+                        <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.3 }}>
+                            <div className='field'>
+                                <input
+                                    type='password'
+                                    name='password'
+                                    value={formData.password}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                    <label className='form-label' htmlFor='password'>Password</label>
+                            </div>
+                        </MotionWrapper>
+                        <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.3 }}>
+                            <div className='field'>
+                                <input 
+                                    type='password'
+                                    name='confirmPassword'
+                                    value={formData.confirmPassword}
+                                    onChange={handleChange}
+                                    required
+                                />
+                                    <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
+                            </div>
+                        </MotionWrapper>
+                        <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.4 }}>
+                            {isLoading ? <div className='reset-password-loading'><span>.</span><span>.</span><span>.</span></div> : null}
+                            {notice && <p className='error-text-rs'>{notice}</p>}
+                            <button className='reset-password-submit' type='submit'>Submit</button>
+                        </MotionWrapper>
+                    </form>
+                </div>
+                <div className='req-container'>
+                    <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.5 }}>
+                        <PasswordRequirement className={'req-list'} passwordErrors={passwordErrors} />
                     </MotionWrapper>
-                    <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.4 }}>
-                        {isLoading ? <div className='reset-password-loading'><span>.</span><span>.</span><span>.</span></div> : null}
-                        {notice && <p className='error-text-rs'>{notice}</p>}
-                        <button className='reset-password-submit' type='submit'>Submit</button>
-                    </MotionWrapper>
-                </form>
-            </div>
-            <div className='req-container'>
-                <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.5 }}>
-                    <PasswordRequirement className={'req-list'} passwordErrors={passwordErrors} />
-                </MotionWrapper>
-            </div>
+                </div>
+            ) : (
+                <div className='reset-password-redirect'>
+                    <Redirect message={message} isLoading={isLoading} />
+                </div>
+            )
         </div>
     );
 }
