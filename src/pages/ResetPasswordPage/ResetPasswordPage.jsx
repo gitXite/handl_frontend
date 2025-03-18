@@ -94,7 +94,7 @@ function ResetPasswordPage() {
             console.log(result.message);
             setNotice(result.message);
             resetForm();
-            
+
             setTimeout(() => navigate('/login'), 2000);
         } catch (error) {
             console.error('Failed to reset password:', error.response?.data || error.message);
