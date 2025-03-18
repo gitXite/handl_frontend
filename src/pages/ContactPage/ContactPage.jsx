@@ -94,10 +94,10 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='text' 
+                                id='name' 
                                 name='name'
                                 value={formData.name}
                                 onChange={handleChange}
-                                id='name' 
                                 required
                             />
                             <label className='form-label' htmlFor='name'>Name</label>
@@ -107,10 +107,10 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='email'
+                                id='email'
                                 name='email'
                                 value={formData.email}
                                 onChange={handleChange} 
-                                id='email'
                                 required
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -120,10 +120,10 @@ function ContactPage() {
                         <div className='field'>
                             <input 
                                 type='text' 
+                                id='subject'
                                 name='subject'
                                 value={formData.subject}
                                 onChange={handleChange}
-                                id='subject'
                                 required
                             />
                             <label className='form-label' htmlFor='subject'>Subject</label>
