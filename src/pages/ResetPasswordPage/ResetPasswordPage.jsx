@@ -43,7 +43,7 @@ function ResetPasswordPage() {
         if (!token) {
             setMessage('Invalid link');
             setIsLoading(true);
-            setTimeout(() => navigate('/'), 2000);
+            // setTimeout(() => navigate('/'), 2000);
             return;
         }
 
@@ -58,7 +58,7 @@ function ResetPasswordPage() {
                 setMessage(error.response?.data?.message || 'Error validating reset token');
                 setIsValidated(false);
                 
-                setTimeout(() => navigate('/'), 2000);
+                // setTimeout(() => navigate('/'), 2000);
             } finally {
                 setIsLoading(false);
             }
@@ -93,6 +93,7 @@ function ResetPasswordPage() {
             const result = await api.post('/api/password/reset-password', body);
             console.log(result.message);
             setNotice(result.message);
+            resetForm();
             
             setTimeout(() => navigate('/login'), 2000);
         } catch (error) {
@@ -104,8 +105,8 @@ function ResetPasswordPage() {
     };
     
     return (
-        <div className='reset-password-container'>
-            isValidated ? (
+        isValidated ? (
+            <div className='reset-password-container'>
                 <div className='reset-password-subcontainer'>
                     <h1>Reset your password</h1>
                     <MotionWrapper className={'reset-password-fade'} transition={{ delay: 0.2 }}>
@@ -148,12 +149,12 @@ function ResetPasswordPage() {
                         <PasswordRequirement className={'req-list'} passwordErrors={passwordErrors} />
                     </MotionWrapper>
                 </div>
-            ) : (
-                <div className='reset-password-redirect'>
-                    <Redirect message={message} isLoading={isLoading} />
-                </div>
-            )
-        </div>
+            </div>
+        ) : (
+            <div className='reset-password-redirect'>
+                <Redirect message={message} isLoading={isLoading} />
+            </div>
+        )
     );
 }
 
