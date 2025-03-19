@@ -96,11 +96,11 @@ function ListPage() {
         }
     };
 
-    const shareList = (email) => {
+    const shareList = async (email) => {
         if (!selectedList) return;
 
         try {
-            // const result = api.post(`/api/lists/${selectedList}/share`, { email });
+            // const result = await axios.post(`/api/lists/${selectedList}/share`, { email });
             console.log('List shared');
             cancelModal();
         } catch (error) {
