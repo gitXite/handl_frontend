@@ -6,7 +6,7 @@ import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 
-import DeleteModal from '@components/DeleteModal/DeleteModal';
+import DeleteModal from '@components/Modal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
