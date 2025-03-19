@@ -3,10 +3,15 @@
 Frontend repository for Handl. 
 A collaborative full stack shopping list web application. 
 
-## Stack
+## Frontend Stack
 - React
 - Vite
-- RESTful backend API integration
+- REST API integration
 - Vanilla css
+
+## Libraries
 - Framer motion
 - Axios
+- Material UI
+- Lucide
+- Tanstack Query
