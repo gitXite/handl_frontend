@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import MotionWrapper from '@components/MotionWrapper';
+import { handleChange } from '@service/handleService';
 
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
@@ -25,11 +26,6 @@ function ContactPage() {
         subject: '',
         message:''
     });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value});
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -97,7 +93,7 @@ function ContactPage() {
                                 id='name' 
                                 name='name'
                                 value={formData.name}
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, formData, setFormData)}
                                 required
                             />
                             <label className='form-label' htmlFor='name'>Name</label>
@@ -110,7 +106,7 @@ function ContactPage() {
                                 id='email'
                                 name='email'
                                 value={formData.email}
-                                onChange={handleChange} 
+                                onChange={(e) => handleChange(e, formData, setFormData)} 
                                 required
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -123,7 +119,7 @@ function ContactPage() {
                                 id='subject'
                                 name='subject'
                                 value={formData.subject}
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, formData, setFormData)}
                                 required
                             />
                             <label className='form-label' htmlFor='subject'>Subject</label>
@@ -135,7 +131,7 @@ function ContactPage() {
                             id='message' 
                             name='message'
                             value={formData.message}
-                            onChange={handleChange}
+                            onChange={(e) => handleChange(e, formData, setFormData)}
                             required />
                             <label className='textarea-label' htmlFor='message'>Message</label>
                         </div>
