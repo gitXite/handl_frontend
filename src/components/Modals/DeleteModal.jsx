@@ -15,7 +15,7 @@ function DeleteModal({ message, onCancel, onConfirm }) {
 
     return (
         <MotionWrapper className={'modal-overlay'}>
-            <div className='modal'>
+            <div className='delete-modal'>
                 <p>{message}</p>
                 <div className='modal-actions'>
                     <button className='confirm' onClick={handleConfirm}>Confirm</button>

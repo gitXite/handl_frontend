@@ -16,6 +16,9 @@ function ShareModal({ message, onCancel, onConfirm }) {
         e.preventDefault();
         
         const email = formData.email;
+        if (!email) {
+            return;
+        }
         onConfirm(email);
     };
 
@@ -24,10 +27,10 @@ function ShareModal({ message, onCancel, onConfirm }) {
 
     return (
         <MotionWrapper className={'modal-overlay'}>
-            <div className='modal'>
+            <div className='share-modal'>
                 <p>{message}</p>
                 <form className='modal-form'>
-                    <div className='field'>
+                    <div className='modal-field'>
                         <input
                             name='email'
                             type='email'
