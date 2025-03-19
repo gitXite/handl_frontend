@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { handleChange } from '@service/handleService';
 import MotionWrapper from '../../components/MotionWrapper';
 import api from '../../utils/api';
 
@@ -18,11 +19,6 @@ function ForgotPasswordPage() {
     const resetForm = () => setFormData ({
         email: ''
     });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value});
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -66,7 +62,7 @@ function ForgotPasswordPage() {
                                 type='email'
                                 name='email'
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, formData, setFormData)}
                                 required
                             />
                                 <label className='form-label' htmlFor='email'>Email</label>
