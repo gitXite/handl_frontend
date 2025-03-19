@@ -198,7 +198,7 @@ function ListPage() {
 
                 {showModal === 'share' && (
                     <ShareModal
-                        message='Share your list with another user?'
+                        message='Enter recipient email to share your list'
                         onConfirm={shareList}
                         onCancel={cancelModal}
                     />
