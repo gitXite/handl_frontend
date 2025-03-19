@@ -14,7 +14,7 @@ function DeleteModal({ message, onCancel, onConfirm }) {
     useHotkeys('escape', onCancel);
 
     return (
-        <MotionWrapper className={'modal-overlay'}>
+        <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
             <div className='delete-modal'>
                 <p>{message}</p>
                 <div className='modal-actions'>

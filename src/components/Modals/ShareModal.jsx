@@ -26,7 +26,7 @@ function ShareModal({ message, onCancel, onConfirm }) {
     useHotkeys('escape', onCancel);
 
     return (
-        <MotionWrapper className={'modal-overlay'}>
+        <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
             <div className='share-modal'>
                 <p>{message}</p>
                 <form className='modal-form'>
