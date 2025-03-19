@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
 import MotionWrapper from '@components/MotionWrapper';
 import { Tooltip, Zoom } from '@mui/material';
 

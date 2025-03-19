@@ -6,8 +6,8 @@ import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 
-import ShareModal from '@components/Modals/ShareModal';
-import DeleteModal from '@components/Modals/DeleteModal';
+import ShareModal from '@components/Modals/ShareModal/ShareModal';
+import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
@@ -85,8 +85,8 @@ function ListPage() {
         if (!name) return;
 
         try {
-            // const result = await axios.post('/api/lists', { name });
-            // setLists((prevLists) => [...prevLists, result.data]);
+            // const result = await api.post('/api/lists', { name });
+            // setLists((prevLists) => [...prevLists, result]);
             const fakeResponse = {
                 data: { id: Date.now(), name },
             };
@@ -100,8 +100,8 @@ function ListPage() {
         if (!selectedList) return;
 
         try {
-            // const result = await axios.post(`/api/lists/${selectedList}/share`, { email });
-            console.log('List shared');
+            // const result = await api.post(`/api/lists/${selectedList}/share`, { email });
+            console.log(result.message);
             cancelModal();
         } catch (error) {
             console.error('Failed to share list:', error);
@@ -112,7 +112,7 @@ function ListPage() {
         if (!selectedList) return;
         
         try {
-            // await axios.delete(`/api/lists/${selectedList}`);
+            // await api.delete(`/api/lists/${selectedList}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== selectedList));
             cancelModal();
         } catch (error) {
