@@ -113,7 +113,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="text" 
                                 name="name"
                                 value={formData.name}
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='name'>Name</label>
@@ -123,7 +123,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="email" 
                                 name="email"
                                 value={formData.email}
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -133,7 +133,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="password" 
                                 value={formData.password}
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='password'>Password</label>
@@ -143,7 +143,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="confirmPassword" 
                                 value={formData.confirmPassword}
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)} 
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)} 
                                 required
                             />
                             <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
@@ -162,7 +162,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="email" 
                                 name="email"
                                 value={formData.email}
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                 required 
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -172,7 +172,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="loginPassword"
                                 value={formData.loginPassword} 
-                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                 required 
                             />
                             <label className='form-label' htmlFor='loginPassword'>Password</label>
