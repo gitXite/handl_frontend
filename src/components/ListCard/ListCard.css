@@ -33,7 +33,7 @@
     color: #fff;
     background-color: #1f1f1f;
 }
-.list-name button {
+.rename-button {
     all: unset;
     display: flex;
     align-items: center;

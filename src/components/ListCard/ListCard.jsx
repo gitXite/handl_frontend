@@ -54,10 +54,25 @@ function ListCard({ list, onModal }) {
                                 },
                             }}
                         >
-                            <button onClick={renameList}>
+                            <div
+                                role="button"
+                                tabIndex={0}
+                                aria-label="Rename list"
+                                className="rename-button"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    renameList(e);
+                                }}
+                                onKeyDown={(e) => {
+                                    if (e && (e.key === "Enter" || e.key === " ")) {
+                                        e.preventDefault();
+                                        renameList(e);
+                                    }
+                                }}
+                            >
                                 <img src={editIcon} alt='Rename list'/>
                                 <p>{newName || list.name}</p>
-                            </button>
+                            </div>
                         </Tooltip>
                     </div>
                 </button>
