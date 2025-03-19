@@ -16,9 +16,7 @@ function ShareModal({ message, onCancel, onConfirm }) {
         e.preventDefault();
         
         const email = formData.email;
-        if (!email) {
-            return;
-        }
+        if (!email) return;
         onConfirm(email);
     };
 
