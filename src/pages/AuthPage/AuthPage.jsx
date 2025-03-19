@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { handleChangePassword } from '@service/handleService';
 import { useAuth } from '@hooks/useAuth';
 import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
@@ -45,16 +46,6 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
         confirmPassword: '',
         loginPassword: ''
     });
-    
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value});
-
-        if (name === 'password') {
-            const validation = validatePassword(value);
-            setPasswordErrors(validation.errors);
-        }
-    };
 
     // Main logic
     const handleSubmit = async (e, isSignUp) => {
@@ -122,7 +113,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="text" 
                                 name="name"
                                 value={formData.name}
-                                onChange={handleChange}
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='name'>Name</label>
@@ -132,7 +123,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="email" 
                                 name="email"
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -142,7 +133,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="password" 
                                 value={formData.password}
-                                onChange={handleChange}
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                 required
                             />
                             <label className='form-label' htmlFor='password'>Password</label>
@@ -152,7 +143,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="confirmPassword" 
                                 value={formData.confirmPassword}
-                                onChange={handleChange} 
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)} 
                                 required
                             />
                             <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
@@ -171,7 +162,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="email" 
                                 name="email"
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                 required 
                             />
                             <label className='form-label' htmlFor='email'>Email</label>
@@ -181,7 +172,7 @@ function AuthPage({ isSignUp: initialSignUp, formResetTrigger }) {
                                 type="password" 
                                 name="loginPassword"
                                 value={formData.loginPassword} 
-                                onChange={handleChange}
+                                onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                 required 
                             />
                             <label className='form-label' htmlFor='loginPassword'>Password</label>
