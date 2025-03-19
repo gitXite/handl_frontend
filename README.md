@@ -15,3 +15,5 @@ A collaborative full stack shopping list web application.
 - Material UI
 - Lucide
 - Tanstack Query
+- React Router
+- hamburger-react
