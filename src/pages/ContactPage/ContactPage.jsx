@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import MotionWrapper from '@components/MotionWrapper';
-import { handleChange } from '@service/handleService';
+import { handleChange } from '@utils/handleFunctions';
 
 import github from '@assets/icons/github_2504911.png';
 import instagram from '@assets/icons/instagram_2504918.png';
