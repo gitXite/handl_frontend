@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { handleChangePassword } from '@service/handleService';
+import { handleChange } from '@utils/handleFunctions';
 import MotionWrapper from '@components/MotionWrapper';
 import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
@@ -110,7 +110,7 @@ function ResetPasswordPage() {
                                     type='password'
                                     name='password'
                                     value={formData.password}
-                                    onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                    onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                     required
                                 />
                                     <label className='form-label' htmlFor='password'>Password</label>
@@ -122,7 +122,7 @@ function ResetPasswordPage() {
                                     type='password'
                                     name='confirmPassword'
                                     value={formData.confirmPassword}
-                                    onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
+                                    onChange={(e) => handleChange(e, formData, setFormData, setPasswordErrors)}
                                     required
                                 />
                                     <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
