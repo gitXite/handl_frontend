@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { handleChange } from '@service/handleService';
+import { handleChange } from '@utils/handleFunctions';
 import MotionWrapper from '../../components/MotionWrapper';
 import api from '../../utils/api';
 
