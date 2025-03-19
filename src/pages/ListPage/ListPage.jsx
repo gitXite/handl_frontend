@@ -6,6 +6,7 @@ import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 
+import ShareModal from '@components/Modals/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
@@ -21,7 +22,7 @@ function ListPage() {
     const { isAuthenticated, setIsAuthenticated } = useAuth();
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
-    const [showModal, setShowModal] = useState(false);
+    const [showModal, setShowModal] = useState('');
 
     const isMounted = useRef(true);
 
@@ -70,6 +71,15 @@ function ListPage() {
         });
     }, []);
 
+    const handleModal = (type, listId) => {
+        setSelectedList(listId);
+        setShowModal(type);
+    };
+    const cancelModal = () => {
+        setSelectedList(null);
+        setShowModal('');
+    };
+
     const addList = async () => {
         const name = prompt('Enter list name:', 'New list');
         if (!name) return;
@@ -86,22 +96,28 @@ function ListPage() {
         }
     };
 
-    const handleDelete = (listId) => {
-        setSelectedList(listId);
-        setShowModal(true);
-    };
-    const deleteList = async (listId) => {
+    const shareList = (email) => {
+        if (!selectedList) return;
+
         try {
-            // await axios.delete(`/api/lists/${listId}`);
+            // const result = api.post(`/api/lists/${selectedList}/share`, { email });
+            console.log('List shared');
+            cancelModal();
+        } catch (error) {
+            console.error('Failed to share list:', error);
+        }
+    };
+    
+    const deleteList = async () => {
+        if (!selectedList) return;
+        
+        try {
+            // await axios.delete(`/api/lists/${selectedList}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== selectedList));
-            setShowModal(false);
-            setSelectedList(null);
+            cancelModal();
         } catch (error) {
             console.error('Failed to delete list:', error);
         }
-    };
-    const cancelDelete = () => {
-        setShowModal(false);
     };
     
     return (
@@ -166,17 +182,25 @@ function ListPage() {
                                 exit={{ opacity: 0, x: -100, scale: 0.9 }}
                                 transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
                             >
-                                <ListCard list={list} onDelete={() => handleDelete(list.id)} />
+                                <ListCard list={list} onModal={handleModal} />
                             </motion.div>
                         ))}
                     </AnimatePresence>
                 </div>
 
-                {showModal && (
+                {showModal === 'delete' && (
                     <DeleteModal 
                         message='Are you sure you want to delete this list?'
                         onConfirm={deleteList}
-                        onCancel={cancelDelete}
+                        onCancel={cancelModal}
+                    />
+                )}
+
+                {showModal === 'share' && (
+                    <ShareModal
+                        message='Share your list with another user?'
+                        onConfirm={shareList}
+                        onCancel={cancelModal}
                     />
                 )}
             </div>
