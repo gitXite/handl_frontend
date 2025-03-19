@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { handleChangePassword } from '@service/handleService';
+import { handleChange } from '@utils/handleFunctions';
 import { useAuth } from '@hooks/useAuth';
 import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
