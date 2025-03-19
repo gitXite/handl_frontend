@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { handleChangePassword } from '@service/handleService';
 import MotionWrapper from '@components/MotionWrapper';
 import { validatePassword } from '@utils/passwordValidator';
 import api from '@utils/api';
@@ -26,16 +27,6 @@ function ResetPasswordPage() {
         password: '',
         confirmPassword: ''
     });
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({...formData, [name]: value});
-
-        if (name === 'password') {
-            const validation = validatePassword(value);
-            setPasswordErrors(validation.errors);
-        }
-    };
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -119,7 +110,7 @@ function ResetPasswordPage() {
                                     type='password'
                                     name='password'
                                     value={formData.password}
-                                    onChange={handleChange}
+                                    onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                     required
                                 />
                                     <label className='form-label' htmlFor='password'>Password</label>
@@ -131,7 +122,7 @@ function ResetPasswordPage() {
                                     type='password'
                                     name='confirmPassword'
                                     value={formData.confirmPassword}
-                                    onChange={handleChange}
+                                    onChange={(e) => handleChangePassword(e, formData, setFormData, setPasswordErrors)}
                                     required
                                 />
                                     <label className='form-label' htmlFor='confirmPassword'>Confirm Password</label>
