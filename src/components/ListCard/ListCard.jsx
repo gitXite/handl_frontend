@@ -11,7 +11,7 @@ import './ListCard.css';
 import api from '../../utils/api';
 
 
-function ListCard({ list, onDelete }) {
+function ListCard({ list, onModal }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
 
@@ -83,7 +83,7 @@ function ListCard({ list, onDelete }) {
                             },
                         }}
                     >
-                        <button>
+                        <button className='list-add-item'>
                             <SquarePlus size={25} />
                         </button>
                     </Tooltip>
@@ -108,7 +108,7 @@ function ListCard({ list, onDelete }) {
                             },
                         }}
                     >
-                        <button>
+                        <button className='list-share' onClick={() => onModal('share', list.id)}>
                             <Share size={25} />
                         </button>
                     </Tooltip>
@@ -133,7 +133,7 @@ function ListCard({ list, onDelete }) {
                             },
                         }}
                     >
-                        <button className='list-delete' onClick={() => onDelete(list.id)}>
+                        <button className='list-delete' onClick={() => onModal('delete', list.id)}>
                             <Trash2 size={25} />
                         </button>
                     </Tooltip>
