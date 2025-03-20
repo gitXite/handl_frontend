@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { handleChange } from '@utils/handleFunctions';
@@ -13,6 +13,8 @@ import './ResetPassword.css';
 
 function ResetPasswordPage() {
     const navigate = useNavigate();
+    const hasValidated = useRef(false);
+    const [token, setToken] = useState(null);
     const [passwordErrors, setPasswordErrors] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [notice, setNotice] = useState('');
@@ -29,13 +31,16 @@ function ResetPasswordPage() {
     });
 
     useEffect(() => {
+        if (hasValidated.current) return;
+        hasValidated.current = true;
+
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
         console.log(token);
         if (!token) {
             setMessage('Invalid link');
             setIsLoading(true);
-            // setTimeout(() => navigate('/'), 2000);
+            setTimeout(() => navigate('/'), 2000);
             return;
         }
 
@@ -45,12 +50,13 @@ function ResetPasswordPage() {
                 const result = await api.get('/api/password/reset-password', { params: { token } });
                 setMessage(result.message || 'Valid token');
                 setIsValidated(true);
+                setIsLoading(false);
             } catch (error) {
                 console.error('Failed to validate reset token:', error.response?.data || error.message);
                 setMessage(error.response?.data?.message || 'Error validating reset token');
                 setIsValidated(false);
                 
-                // setTimeout(() => navigate('/'), 2000);
+                setTimeout(() => navigate('/'), 2000);
             }
         };
 
@@ -58,7 +64,7 @@ function ResetPasswordPage() {
     }, [navigate]);
 
     const handleSubmit = async (e) => {
-        e.preventDefault;
+        e.preventDefault();
 
         const validation = validatePassword(formData.password);
         if (!validation.isValid) {
@@ -75,7 +81,7 @@ function ResetPasswordPage() {
         const token = urlParams.get('token');
         const body = {
             password: formData.password,
-            token: { token }
+            token
         };
         try {
             setIsLoading(true);
