@@ -67,8 +67,8 @@ function ListPage() {
     }, [isAuthenticated]);
 
     useEffect(() => {
-        axios.get('/lists').then((res) => {
-            setLists(res.data);
+        api.get('/api/lists').then((res) => {
+            setLists(res);
         });
     }, []);
 
@@ -118,6 +118,15 @@ function ListPage() {
             cancelModal();
         } catch (error) {
             console.error('Failed to delete list:', error);
+        }
+    };
+
+    const refreshLists = async () => {
+        try {
+            // const result = api.get('/api/lists');
+            // setLists(result)
+        } catch (error) {
+            console.error('Failed to fetch lists:', error);
         }
     };
     
@@ -190,7 +199,7 @@ function ListPage() {
                             },
                         }}
                     >
-                        <button>
+                        <button onClick={refreshLists}>
                             <RefreshCcw size={25} />
                         </button>
                     </Tooltip>
