@@ -191,16 +191,9 @@ function ListPage() {
 
                 {showModal === 'add' && (
                     <ListModal 
-                    message='Give your list a name'
+                    message='Add a new list'
                     onConfirm={addList}
                     onCancel={cancelModal}
-                    />
-                )}
-                {showModal === 'rename' && (
-                    <ListModal 
-                        message='Rename your list'
-                        onConfirm={renameList}
-                        onCancel={cancelModal}
                     />
                 )}
                 {showModal === 'share' && (
