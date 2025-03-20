@@ -14,6 +14,11 @@ function ListCard({ list, onModal }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
     const [isShared, setIsShared] = useState(false);
+    const shareNumber = 2; // mock number of shares
+
+    const isSharedList = async () => {
+        // function to check how many people the list is shared with
+    };
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
@@ -202,6 +207,7 @@ function ListCard({ list, onModal }) {
                         >
                             <div className='list-shared'>
                                 <Rss size={25} color={'#00CF00'}/>
+                                <div>{shareNumber}</div>
                             </div>
                         </Tooltip>
                     </MotionWrapper>

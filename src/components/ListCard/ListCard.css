@@ -91,3 +91,16 @@
     height: 25px;
     width: 25px;
 }
+.list-shared {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.list-shared div {
+    cursor: default;
+    margin: 0;
+    margin-top: 0.8rem;
+    font-size: 10px;
+    color: #e2e2e2;
+}
