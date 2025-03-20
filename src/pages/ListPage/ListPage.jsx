@@ -6,6 +6,7 @@ import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 
+import ListModal from '@components/Modals/ListModal/ListModal';
 import ShareModal from '@components/Modals/ShareModal/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
@@ -80,8 +81,7 @@ function ListPage() {
         setShowModal('');
     };
 
-    const addList = async () => {
-        const name = prompt('Enter list name:', 'New list');
+    const addList = async (name) => {
         if (!name) return;
 
         try {
@@ -91,6 +91,7 @@ function ListPage() {
                 data: { id: Date.now(), name },
             };
             setLists((prevLists) => [...prevLists, fakeResponse.data]);
+            cancelModal();
         } catch (error) {
             console.error('Failed to add list:', error);
         }
@@ -101,7 +102,7 @@ function ListPage() {
 
         try {
             // const result = await api.post(`/api/lists/${selectedList}/share`, { email });
-            console.log(result.message);
+            // console.log(result.message);
             cancelModal();
         } catch (error) {
             console.error('Failed to share list:', error);
@@ -143,7 +144,7 @@ function ListPage() {
                             },
                         }}
                     >
-                        <button onClick={addList}>
+                        <button onClick={(e) => handleModal('add', selectedList)}>
                             <Plus size={25} />
                         </button>
                     </Tooltip>
@@ -188,18 +189,31 @@ function ListPage() {
                     </AnimatePresence>
                 </div>
 
-                {showModal === 'delete' && (
-                    <DeleteModal 
-                        message='Are you sure you want to delete this list?'
-                        onConfirm={deleteList}
+                {showModal === 'add' && (
+                    <ListModal 
+                    message='Give your list a name'
+                    onConfirm={addList}
+                    onCancel={cancelModal}
+                    />
+                )}
+                {showModal === 'rename' && (
+                    <ListModal 
+                        message='Rename your list'
+                        onConfirm={renameList}
                         onCancel={cancelModal}
                     />
                 )}
-
                 {showModal === 'share' && (
                     <ShareModal
                         message='Enter recipient email to share your list'
                         onConfirm={shareList}
+                        onCancel={cancelModal}
+                    />
+                )}
+                {showModal === 'delete' && (
+                    <DeleteModal 
+                        message='Are you sure you want to delete this list?'
+                        onConfirm={deleteList}
                         onCancel={cancelModal}
                     />
                 )}

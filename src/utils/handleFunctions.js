@@ -22,3 +22,5 @@ export const handleConfirm = (e, input, onConfirm, setNotice) => {
     }
     onConfirm(data);
 };
+
+export const handleFocus = (e) => e.target.select();

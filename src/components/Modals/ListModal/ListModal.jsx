@@ -2,35 +2,36 @@ import { useState } from 'react';
 import MotionWrapper from '@components/MotionWrapper';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import { handleChange, handleConfirm } from '@utils/handleFunctions';
+import { handleChange, handleConfirm, handleFocus } from '@utils/handleFunctions';
 
-import './ShareModal.css';
+import './ListModal.css';
 
 
-function ShareModal({ message, onCancel, onConfirm }) {
+function ListModal({ message, onConfirm, onCancel }) {
     const [notice, setNotice] = useState('');
     const [formData, setFormData] = useState({
-        email: ''
+        name: 'New list'
     });
 
-    useHotkeys('enter', (e) => handleConfirm(e, formData.email, onConfirm, setNotice));
+    useHotkeys('enter', (e) => handleConfirm(e, formData.name, onConfirm, setNotice));
     useHotkeys('escape', onCancel);
 
     return (
         <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
-            <div className='share-modal'>
+            <div className='list-modal'>
                 <p>{message}</p>
-                <form className='modal-form' onSubmit={(e) => {e.preventDefault(); handleConfirm(e, formData.email, onConfirm, setNotice);}}>
+                <form className='modal-form' onSubmit={(e) => {e.preventDefault(); handleConfirm(e, formData.name, onConfirm, setNotice);}}>
                     <div className='modal-field'>
                         <input
-                            name='email'
-                            type='email'
-                            value={formData.email}
+                            name='name'
+                            type='text'
+                            value={formData.name}
                             onChange={(e) => handleChange(e, formData, setFormData)}
+                            onFocus={handleFocus}
                             autoFocus
                             required
                         />
-                        <label className='form-label' htmlFor='email'>Email</label>
+                        <label className='form-label' htmlFor='name'>Name</label>
                     </div>
                 </form>
                 <div className='modal-notice-container'>
@@ -41,7 +42,7 @@ function ShareModal({ message, onCancel, onConfirm }) {
                     )}
                 </div>
                 <div className='modal-actions'>
-                    <button className='share' type='submit' onClick={(e) => handleConfirm(e, formData.email, onConfirm, setNotice)}>Share</button>
+                    <button className='confirm' type='submit' onClick={(e) => handleConfirm(e, formData.name, onConfirm, setNotice)}>Confirm</button>
                     <button onClick={onCancel}>Cancel</button>
                 </div>
             </div>
@@ -50,4 +51,4 @@ function ShareModal({ message, onCancel, onConfirm }) {
 }
 
 
-export default ShareModal;
+export default ListModal;
