@@ -2,30 +2,18 @@ import { useState } from 'react';
 import MotionWrapper from '@components/MotionWrapper';
 import { useHotkeys } from 'react-hotkeys-hook';
 
-import { handleChange } from '@utils/handleFunctions';
+import { handleChange, handleConfirm } from '@utils/handleFunctions';
 
 import './ShareModal.css';
-import { duration } from '@mui/material';
 
 
 function ShareModal({ message, onCancel, onConfirm }) {
+    const [notice, setNotice] = useState('');
     const [formData, setFormData] = useState({
         email: ''
     });
-    const [notice, setNotice] = useState('');
-    
-    const handleConfirm = (e) => {
-        e.preventDefault();
-        
-        const email = formData.email;
-        if (!email) {
-            setNotice('Please enter a valid email')
-            return;
-        }
-        onConfirm(email);
-    };
 
-    useHotkeys('enter', handleConfirm);
+    useHotkeys('enter', (e) => handleConfirm(e, formData.email, onConfirm, setNotice));
     useHotkeys('escape', onCancel);
 
     return (
@@ -52,7 +40,7 @@ function ShareModal({ message, onCancel, onConfirm }) {
                     )}
                 </div>
                 <div className='modal-actions'>
-                    <button className='share' onClick={handleConfirm}>Share</button>
+                    <button className='share' onClick={(e) => handleConfirm(e, formData.email, onConfirm, setNotice)}>Share</button>
                     <button onClick={onCancel}>Cancel</button>
                 </div>
             </div>
