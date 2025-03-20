@@ -31,6 +31,7 @@ function ResetPasswordPage() {
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get('token');
+        console.log(token);
         if (!token) {
             setMessage('Invalid link');
             setIsLoading(true);
@@ -42,7 +43,7 @@ function ResetPasswordPage() {
             setIsLoading(true);
             try {
                 const result = await api.get('/api/password/reset-password', { params: { token } });
-                setMessage(result.message || 'Proceed to reset password');
+                setMessage(result.message || 'Valid token');
                 setIsValidated(true);
             } catch (error) {
                 console.error('Failed to validate reset token:', error.response?.data || error.message);
@@ -50,8 +51,6 @@ function ResetPasswordPage() {
                 setIsValidated(false);
                 
                 // setTimeout(() => navigate('/'), 2000);
-            } finally {
-                setIsLoading(false);
             }
         };
 
