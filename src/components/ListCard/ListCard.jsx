@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MotionWrapper from '@components/MotionWrapper';
 import { Tooltip, Zoom } from '@mui/material';
 
-import { Trash2, Share, SquarePlus } from 'lucide-react';
+import { Trash2, Share, SquarePlus, Rss } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
 
@@ -13,6 +13,7 @@ import './ListCard.css';
 function ListCard({ list, onModal }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
+    const [isShared, setIsShared] = useState(false);
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
@@ -152,6 +153,59 @@ function ListCard({ list, onModal }) {
                         </button>
                     </Tooltip>
                 </MotionWrapper>
+                {isShared ? (
+                    <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
+                        <Tooltip 
+                            title='Shared'
+                            disableInteractive
+                            slots={{
+                                transition: Zoom,
+                            }}
+                            enterDelay={500}
+                            enterNextDelay={500}
+                            slotProps={{
+                                popper: {
+                                    modifiers: [
+                                        {
+                                            name: 'offset',
+                                            options: { offset: [0, -6] },
+                                        },
+                                    ],
+                                },
+                            }}
+                        >
+                            <div className='list-shared'>
+                                <Rss size={25} color={'#00CF00'}/>
+                            </div>
+                        </Tooltip>
+                    </MotionWrapper>
+                ) : (
+                    <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
+                        <Tooltip 
+                            title='Shared'
+                            disableInteractive
+                            slots={{
+                                transition: Zoom,
+                            }}
+                            enterDelay={500}
+                            enterNextDelay={500}
+                            slotProps={{
+                                popper: {
+                                    modifiers: [
+                                        {
+                                            name: 'offset',
+                                            options: { offset: [0, -6] },
+                                        },
+                                    ],
+                                },
+                            }}
+                        >
+                            <div className='list-shared'>
+                                <Rss size={25} color={'#00CF00'}/>
+                            </div>
+                        </Tooltip>
+                    </MotionWrapper>
+                )}
             </div>
         </div>
     );

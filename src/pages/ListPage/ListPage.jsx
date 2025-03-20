@@ -12,7 +12,7 @@ import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 
-import { Plus, ChartNoAxesGantt } from 'lucide-react';
+import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import './ListPage.css';
 
 
@@ -169,6 +169,29 @@ function ListPage() {
                     >
                         <button>
                             <ChartNoAxesGantt size={25} />
+                        </button>
+                    </Tooltip>
+                    <Tooltip 
+                        title='Refresh'
+                        disableInteractive
+                        slots={{
+                            transition: Zoom,
+                        }}
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        slotProps={{
+                            popper: {
+                                modifiers: [
+                                    {
+                                        name: 'offset',
+                                        options: { offset: [0, -6] },
+                                    },
+                                ],
+                            },
+                        }}
+                    >
+                        <button>
+                            <RefreshCcw size={25} />
                         </button>
                     </Tooltip>
                 </div>
