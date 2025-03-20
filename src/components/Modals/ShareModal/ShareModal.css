@@ -108,3 +108,10 @@
     font-size: 11px;
     background: #fff;
 }
+.modal-notice-container {
+    margin-bottom: 1rem;
+}
+.modal-notice {
+    color: red;
+    font-size: 15px !important;
+}
