@@ -181,37 +181,11 @@ function ListCard({ list, onModal }) {
                         >
                             <div className='list-shared'>
                                 <Rss size={25} color={'#00CF00'}/>
-                            </div>
-                        </Tooltip>
-                    </MotionWrapper>
-                ) : (
-                    <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
-                        <Tooltip 
-                            title='Shared'
-                            disableInteractive
-                            slots={{
-                                transition: Zoom,
-                            }}
-                            enterDelay={500}
-                            enterNextDelay={500}
-                            slotProps={{
-                                popper: {
-                                    modifiers: [
-                                        {
-                                            name: 'offset',
-                                            options: { offset: [0, -6] },
-                                        },
-                                    ],
-                                },
-                            }}
-                        >
-                            <div className='list-shared'>
-                                <Rss size={25} color={'#00CF00'}/>
                                 <div>{shareNumber}</div>
                             </div>
                         </Tooltip>
                     </MotionWrapper>
-                )}
+                ) : null}
             </div>
         </div>
     );
