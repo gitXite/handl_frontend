@@ -11,3 +11,14 @@ export const handleChange = (e, formData, setFormData, setPasswordErrors) => {
         setPasswordErrors(validation.errors);
     }
 };
+
+export const handleConfirm = (e, input, onConfirm, setNotice) => {
+    e.preventDefault();
+
+    const data = input;
+    if (!data) {
+        setNotice('Please provide an input');
+        return;
+    }
+    onConfirm(data);
+};
