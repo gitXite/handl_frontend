@@ -21,7 +21,7 @@ function ListCard({ list, onModal }) {
             if (name) {
                 setNewName(name);
                 if (newName !== list.name) {
-                    // await api.put(`/api/lists/${listId}`, newName);
+                    // await api.put(`/api/lists/${listId}/rename`, newName);
                 }
             }
         } catch (error) {
