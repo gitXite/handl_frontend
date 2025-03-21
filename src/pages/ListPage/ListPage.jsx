@@ -11,6 +11,7 @@ import ShareModal from '@components/Modals/ShareModal/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
+import MotionWrapper from '@components/MotionWrapper';
 
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import './ListPage.css';
@@ -133,76 +134,87 @@ function ListPage() {
     return (
         isAuthenticated ? (
             <div className='list-container'>
-                <div className='manage-lists'>
-                    <Tooltip 
-                        title='New list'
-                        disableInteractive
-                        slots={{
-                            transition: Zoom,
-                        }}
-                        enterDelay={500}
-                        enterNextDelay={500}
-                        slotProps={{
-                            popper: {
-                                modifiers: [
-                                    {
-                                        name: 'offset',
-                                        options: { offset: [0, -6] },
+                <div className='list-subcontainer'>
+                    <div className='list-header'>
+                        <h1>Your Lists</h1>
+                    </div>
+                    <div className='manage-lists'>
+                        <MotionWrapper transition={{ delay: 0.0 }}>
+                            <Tooltip 
+                                title='New list'
+                                disableInteractive
+                                slots={{
+                                    transition: Zoom,
+                                }}
+                                enterDelay={500}
+                                enterNextDelay={500}
+                                slotProps={{
+                                    popper: {
+                                        modifiers: [
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, -6] },
+                                            },
+                                        ],
                                     },
-                                ],
-                            },
-                        }}
-                    >
-                        <button onClick={(e) => handleModal('add', selectedList)}>
-                            <Plus size={25} />
-                        </button>
-                    </Tooltip>
-                    <Tooltip 
-                        title='Manage lists'
-                        disableInteractive
-                        slots={{
-                            transition: Zoom,
-                        }}
-                        enterDelay={500}
-                        enterNextDelay={500}
-                        slotProps={{
-                            popper: {
-                                modifiers: [
-                                    {
-                                        name: 'offset',
-                                        options: { offset: [0, -6] },
+                                }}
+                            >
+                                <button onClick={(e) => handleModal('add', selectedList)}>
+                                    <Plus size={25} />
+                                </button>
+                            </Tooltip>
+                        </MotionWrapper>
+                        <MotionWrapper transition={{ delay: 0.1 }}>
+                            <Tooltip 
+                                title='Manage lists'
+                                disableInteractive
+                                slots={{
+                                    transition: Zoom,
+                                }}
+                                enterDelay={500}
+                                enterNextDelay={500}
+                                slotProps={{
+                                    popper: {
+                                        modifiers: [
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, -6] },
+                                            },
+                                        ],
                                     },
-                                ],
-                            },
-                        }}
-                    >
-                        <button>
-                            <ChartNoAxesGantt size={25} />
-                        </button>
-                    </Tooltip>
-                    <Tooltip 
-                        title='Refresh'
-                        disableInteractive
-                        slots={{
-                            transition: Zoom,
-                        }}
-                        enterDelay={500}
-                        enterNextDelay={500}
-                        slotProps={{
-                            popper: {
-                                modifiers: [
-                                    {
-                                        name: 'offset',
-                                        options: { offset: [0, -6] },
+                                }}
+                            >
+                                <button>
+                                    <ChartNoAxesGantt size={25} />
+                                </button>
+                            </Tooltip>
+                        </MotionWrapper>
+                        <MotionWrapper transition={{ delay: 0.2 }}>
+                            <Tooltip 
+                                title='Refresh'
+                                disableInteractive
+                                slots={{
+                                    transition: Zoom,
+                                }}
+                                enterDelay={500}
+                                enterNextDelay={500}
+                                slotProps={{
+                                    popper: {
+                                        modifiers: [
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, -6] },
+                                            },
+                                        ],
                                     },
-                                ],
-                            },
-                        }}
-                    >
-                        <button onClick={refreshLists}>
-                            <RefreshCcw size={25} />
-                        </button>
-                    </Tooltip>
+                                }}
+                            >
+                                <button onClick={refreshLists}>
+                                    <RefreshCcw size={25} />
+                                </button>
+                            </Tooltip>
+                        </MotionWrapper>
+                    </div>
                 </div>
                 <div className='lists'>
                     <AnimatePresence mode='popLayout'>
