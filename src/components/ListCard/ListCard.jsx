@@ -22,7 +22,7 @@ function ListCard({ list, onModal }) {
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
-        const name = prompt('Enter new name:', newName || list.name);
+        const name = prompt('Rename your list:', newName || list.name);
         try {
             if (name) {
                 setNewName(name);
