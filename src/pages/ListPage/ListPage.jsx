@@ -252,9 +252,10 @@ function ListPage() {
                 )}
                 {showModal === 'sharedUsers' && (
                     <SharedUserModal 
+                        listId={selectedList}
                         message='Shared users for this list'
                         onCancel={cancelModal}
-                        // need to figure out this
+                        // onRemove={someModalOrFunction}
                     />
                 )}
             </div>
