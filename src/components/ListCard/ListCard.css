@@ -90,13 +90,13 @@
     height: 25px;
     width: 25px;
 }
-.list-shared {
+.list-shared-users {
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
 }
-.list-shared div {
+.list-shared-users div {
     cursor: default;
     margin: 0;
     margin-top: 0.8rem;
