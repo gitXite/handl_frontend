@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import MotionWrapper from '@components/MotionWrapper';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
+import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
-import { handleConfirm } from '@utils/handleFunctions';
 
 import './SharedUserModal.css';
 
 
-function SharedUserModal({ listId, message, onCancel, onRemove }) {
+function SharedUserModal({ listId, message, onCancel }) {
+    const [userToRemove, setUserToRemove] = useState(null);
+    const queryClient = useQueryClient();
+    
     const getSharedUsers = async () => {
         try {
             const sharedUsers = await api.get(`/api/lists/${listId}/shared-users`);
@@ -20,13 +22,37 @@ function SharedUserModal({ listId, message, onCancel, onRemove }) {
         }
     };
 
+    const handleRemoveModal = (userId) => {
+        setUserToRemove(userId);
+    };
+    
+    const confirmRemove = () => {
+        if (userToRemove) {
+            removeUserMutation.mutate(userToRemove);
+        }
+    };
+
     const { data: sharedUsers = [] } = useQuery({
         queryKey: ['sharedUsersList', listId],
         queryFn: getSharedUsers,
         enabled: !!listId,
     });
 
-    useHotkeys('escape', onCancel);
+    const removeUserMutation = useMutation({
+        mutationFn: async (userId) => {
+            await api.delete(`/api/lists/${listId}/unshare/${userId}`)
+        },
+        onSuccess: () => {
+            queryClient.invalidateQueries(['sharedUsersList', listId]);
+            setUserToRemove(null);
+        },
+    });
+
+    useHotkeys('enter', confirmRemove, { enabled: !!userToRemove });
+    useHotkeys('escape', () => {
+        setUserToRemove(null);
+        onCancel();
+    });
 
     return (
         <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
@@ -36,7 +62,7 @@ function SharedUserModal({ listId, message, onCancel, onRemove }) {
                     {sharedUsers.map((user) => (
                         <li key={user.id} className='shared-user'>
                             <p>{user.email}</p>
-                            <button onClick={() => onRemove(user.id)}></button>
+                            <button onClick={() => handleRemoveModal(user.id)}></button>
                         </li>
                     ))}
                 </ul>
@@ -44,6 +70,18 @@ function SharedUserModal({ listId, message, onCancel, onRemove }) {
                     <button onClick={onCancel}>Back</button>
                 </div>
             </div>
+
+            {userToRemove && (
+                <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
+                    <div className='confirmation-modal'>
+                        <p>Are you sure you want to remove this user?</p>
+                        <div className='modal-actions'>
+                            <button className='confirm' onClick={confirmRemove}>Yes</button>
+                            <button onClick={() => setUserToRemove(null)}>Cancel</button>
+                        </div>
+                    </div>
+                </MotionWrapper>
+            )}
         </MotionWrapper>
     );
 }
