@@ -250,6 +250,13 @@ function ListPage() {
                         onCancel={cancelModal}
                     />
                 )}
+                {showModal === 'sharedUsers' && (
+                    <SharedUserModal 
+                        message='Shared users for this list'
+                        onCancel={cancelModal}
+                        // need to figure out this
+                    />
+                )}
             </div>
         ) : (
             <div className='list-redirect'>
