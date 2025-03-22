@@ -255,7 +255,6 @@ function ListPage() {
                         listId={selectedList}
                         message='Shared users for this list'
                         onCancel={cancelModal}
-                        // onRemove={someModalOrFunction}
                     />
                 )}
             </div>
