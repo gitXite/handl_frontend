@@ -175,8 +175,13 @@ function ListCard({ list, onModal }) {
                                 },
                             }}
                         >
-                            <div className='list-shared'>
-                                <Rss size={25} color={'#00CF00'}/>
+                            <div 
+                                role="button"
+                                aria-label='shared-users-button'
+                                className='list-shared-users'
+                                onClick={() => onModal('sharedUsers', list.id)}
+                            >
+                                <Rss size={25} color={'#00CF00'} />
                                 <div>{shareNumber}</div>
                             </div>
                         </Tooltip>
