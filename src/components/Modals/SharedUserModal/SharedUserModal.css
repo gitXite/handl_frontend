@@ -62,3 +62,9 @@
     text-align: center;
     background: white;
 }
+.confirmation-modal p {
+    margin: 0;
+    margin-bottom: 1rem;
+    font-size: 17px;
+    color: #333;
+}
