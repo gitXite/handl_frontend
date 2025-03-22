@@ -16,10 +16,6 @@ function ListCard({ list, onModal }) {
     const [isShared, setIsShared] = useState(false);
     const shareNumber = 2; // mock number of shares
 
-    const isSharedList = async () => {
-        // function to check how many people the list is shared with
-    };
-
     const renameList = async (e, listId) => {
         e.stopPropagation();
         const name = prompt('Rename your list:', newName || list.name);
@@ -66,12 +62,12 @@ function ListCard({ list, onModal }) {
                                 className="rename-button"
                                 onClick={(e) => {
                                     e.stopPropagation();
-                                    renameList(e);
+                                    renameList(e, list.id);
                                 }}
                                 onKeyDown={(e) => {
                                     if (e && (e.key === "Enter" || e.key === " ")) {
                                         e.preventDefault();
-                                        renameList(e);
+                                        renameList(e, list.id);
                                     }
                                 }}
                             >
