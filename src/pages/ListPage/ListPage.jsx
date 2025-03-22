@@ -84,14 +84,10 @@ function ListPage() {
 
     const addList = async (name) => {
         if (!name) return;
-
+        
         try {
-            // const result = await api.post('/api/lists', { name });
-            // setLists((prevLists) => [...prevLists, result]);
-            const fakeResponse = {
-                data: { id: Date.now(), name },
-            };
-            setLists((prevLists) => [...prevLists, fakeResponse.data]);
+            const newList = await api.post('/api/lists', { name });
+            setLists((prevLists) => [...prevLists, newList]);
             cancelModal();
         } catch (error) {
             console.error('Failed to add list:', error);
@@ -102,8 +98,8 @@ function ListPage() {
         if (!selectedList) return;
 
         try {
-            // const result = await api.post(`/api/lists/${selectedList}/share`, { email });
-            // console.log(result.message);
+            const result = await api.post(`/api/lists/${selectedList}/share`, { email });
+            console.log(result.message);
             cancelModal();
         } catch (error) {
             console.error('Failed to share list:', error);
@@ -114,7 +110,7 @@ function ListPage() {
         if (!selectedList) return;
         
         try {
-            // await api.delete(`/api/lists/${selectedList}`);
+            await api.delete(`/api/lists/${selectedList}`);
             setLists((prevLists) => prevLists.filter((list) => list.id !== selectedList));
             cancelModal();
         } catch (error) {
@@ -124,8 +120,8 @@ function ListPage() {
 
     const refreshLists = async () => {
         try {
-            // const result = api.get('/api/lists');
-            // setLists(result)
+            const lists = api.get('/api/lists');
+            setLists(lists)
         } catch (error) {
             console.error('Failed to fetch lists:', error);
         }
