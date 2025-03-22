@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 
