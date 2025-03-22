@@ -7,11 +7,10 @@ import { handleConfirm } from '@utils/handleFunctions';
 import './SharedUserModal.css';
 
 
-function SharedUserModal({ message, onCancel, onConfirm, onRemove }) {
+function SharedUserModal({ message, onCancel, onRemove }) {
     const [notice, setNotice] = useState('');
     const [sharedUsers, setSharedUsers] = useState([]);
 
-    useHotkeys('enter', onRemove);
     useHotkeys('escape', onCancel);
 
     return (
