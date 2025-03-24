@@ -7,7 +7,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(7px);
     z-index: 10;
 }
 .shared-user-modal {
