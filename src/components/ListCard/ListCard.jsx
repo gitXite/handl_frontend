@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MotionWrapper from '@components/MotionWrapper';
 import { Tooltip, Zoom } from '@mui/material';
 
-import { Trash2, Share, SquarePlus, Rss } from 'lucide-react';
+import { Trash2, Share, SquarePlus, Rss, AppleIcon } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
 
@@ -14,7 +14,24 @@ function ListCard({ list, onModal }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
     const [isShared, setIsShared] = useState(false);
-    const shareNumber = 2; // mock number of shares
+    const [sharedNumber, setSharedNumber] = useState(null);
+
+    useEffect(() => {
+        const getNumberOfSharedUsers = async (listId) => {
+            try {
+                const sharedUsers = await api.get(`/api/lists/${listId}/shared-users`);
+                if (sharedUsers.length > 0) {
+                    setIsShared(true);
+                }
+                setSharedNumber(sharedUsers.length);
+            } catch (error) {
+                console.error('Error retrieving number of shared users:', error);
+                setSharedNumber(null);
+            }
+        };
+
+        getNumberOfSharedUsers(list.id);
+    }, []);
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
@@ -182,7 +199,7 @@ function ListCard({ list, onModal }) {
                                 onClick={() => onModal('sharedUsers', list.id)}
                             >
                                 <Rss size={25} color={'#00CF00'} />
-                                <div>{shareNumber}</div>
+                                <div>{sharedNumber}</div>
                             </div>
                         </Tooltip>
                     </MotionWrapper>
