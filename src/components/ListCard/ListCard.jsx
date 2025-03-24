@@ -28,9 +28,10 @@ function ListCard({ list, onModal }) {
                 setSharedNumber(null);
             }
         };
-
-        getNumberOfSharedUsers(list.id);
-    }, [sharedNumber]);
+        if (list.id) {
+            getNumberOfSharedUsers(list.id);
+        }
+    }, [list.id]);
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
