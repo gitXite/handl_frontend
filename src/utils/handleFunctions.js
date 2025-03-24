@@ -17,7 +17,7 @@ export const handleConfirm = (e, input, onConfirm, setNotice) => {
 
     const data = input;
     if (!data) {
-        setNotice('Please provide an input');
+        setNotice('Please provide a valid input');
         return;
     }
     onConfirm(data);
