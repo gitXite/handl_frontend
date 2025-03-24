@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { Trash2 } from 'lucide-react';
 
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
@@ -62,7 +63,9 @@ function SharedUserModal({ listId, message, onCancel }) {
                     {sharedUsers.map((user) => (
                         <li key={user.id} className='shared-user'>
                             <p>{user.email}</p>
-                            <button onClick={() => handleRemoveModal(user.id)}></button>
+                            <button className='remove-user' onClick={() => handleRemoveModal(user.id)}>
+                                <Trash2 size={25}/>
+                            </button>
                         </li>
                     ))}
                 </ul>

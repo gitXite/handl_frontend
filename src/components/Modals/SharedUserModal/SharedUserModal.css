@@ -11,8 +11,11 @@
     z-index: 10;
 }
 .shared-user-modal {
+    display: flex;
+    flex-direction: column;
     position: relative;
     top: -5rem;
+    height: auto;
     padding: 2rem;
     border-radius: 5px;
     text-align: center;
@@ -33,10 +36,37 @@
 }
 .shared-user {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+.shared-user p {
+    margin: 0;
+    font-size: 15px;
+}
+.remove-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    padding: 0;
+    border-color: #141414;
+    border-radius: 8px;
+    background-color: #242424;
+    box-shadow: inset 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+.remove-user:hover {
+    background-color: #2e2e2e;
+}
+.remove-user:active {
+    color: #fff;
+    background-color: #1f1f1f;
 }
 .modal-actions {
     display: flex;
-    justify-content: space-around;
 }
 .modal-actions button {
     margin-right: 0.5rem;
