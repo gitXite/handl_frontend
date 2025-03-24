@@ -16,7 +16,7 @@ function ItemsPage() {
     const { listId } = useParams();
     const queryClient = useQueryClient();
 
-    const getListItems = async (listId)  => {
+    const getListItems = async ()  => {
         try {
             const items = await api.get(`/api/lists/${listId}/items`);
             return items;
@@ -26,7 +26,7 @@ function ItemsPage() {
         }
     };
 
-    const items = useQuery({
+    const { data: items = [] } = useQuery({
         queryKey: ['item'],
         queryFn: getListItems,
     });
@@ -58,7 +58,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button /*onClick={}*/>
+                            <button>
                                 <Plus size={25} />
                             </button>
                         </Tooltip>
@@ -83,7 +83,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button /*onClick={}*/>
+                            <button>
                                 <ChartNoAxesGantt size={25} />
                             </button>
                         </Tooltip>
@@ -108,7 +108,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button /*onClick={}*/>
+                            <button>
                                 <RefreshCcw size={25} />
                             </button>
                         </Tooltip>

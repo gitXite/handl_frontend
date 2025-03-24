@@ -71,8 +71,8 @@ function App() {
                                     <ListPage />
                                 </MotionWrapper>}
                             />
-                            <Route path='/lists/:id' element={
-                                <MotionWrapper pathname='lists:id'>
+                            <Route path='/lists/:listId' element={
+                                <MotionWrapper pathname='items'>
                                     <ItemsPage />
                                 </MotionWrapper>}
                             />
