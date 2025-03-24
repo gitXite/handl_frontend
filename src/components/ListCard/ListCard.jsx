@@ -6,11 +6,13 @@ import { Tooltip, Zoom } from '@mui/material';
 import { Trash2, Share, SquarePlus, Rss, AppleIcon } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
+import { useList } from '../../hooks/useList';
 
 import './ListCard.css';
 
 
 function ListCard({ list, onModal }) {
+    const { setListName } = useList();
     const navigate = useNavigate();
     const [newName, setNewName] = useState('');
     const [isShared, setIsShared] = useState(false);
@@ -39,6 +41,7 @@ function ListCard({ list, onModal }) {
         try {
             if (name) {
                 setNewName(name);
+                setListName(name);
                 if (newName !== list.name) {
                     await api.patch(`/api/lists/${listId}/rename`, newName);
                 }

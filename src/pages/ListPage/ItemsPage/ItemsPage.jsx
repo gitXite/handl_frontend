@@ -8,9 +8,11 @@ import ItemCard from '@components/ItemCard/ItemCard';
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
 import './Items.css';
+import { useList } from '../../../hooks/useList';
 
 
-function ItemsPage({ listName }) {
+function ItemsPage() {
+    const { listName } = useList();
     const { listId } = useParams();
     const queryClient = useQueryClient();
 

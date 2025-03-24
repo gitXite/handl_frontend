@@ -45,7 +45,7 @@ function App() {
 
     return (
         <QueryClientProvider client={queryClient}>
-            <AuthProvider>
+            <ContextProvider>
                 <Router>
                     <Header resetForm={resetForm} />
                     <AnimatePresence mode='sync'>
@@ -104,7 +104,7 @@ function App() {
                     </AnimatePresence>
                     <Footer />
                 </Router>
-            </AuthProvider>
+            </ContextProvider>
         </QueryClientProvider>
     );
 }
