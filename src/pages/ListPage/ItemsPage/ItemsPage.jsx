@@ -9,11 +9,13 @@ import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
 import './Items.css';
+import { useSSE } from '../../../hooks/useSSE';
 
 
 function ItemsPage() {
     const { listId } = useParams();
     const [listName, setListName] = useState('');
+    const [items, setItems] = useState([]);
     const queryClient = useQueryClient();
 
     useEffect(() => {
@@ -29,6 +31,7 @@ function ItemsPage() {
         getListName();
     }, [listId]);
 
+    // Initial API call to get list items
     const getListItems = async ()  => {
         try {
             const items = await api.get(`/api/lists/${listId}/items`);
@@ -39,10 +42,30 @@ function ItemsPage() {
         }
     };
 
-    const { data: items = [] } = useQuery({
-        queryKey: ['item'],
+    const { data: initialItems = [] } = useQuery({
+        queryKey: ['item', listId],
         queryFn: getListItems,
+        onSuccess: (data) => setItems(data),
     });
+
+    // Handle SSE updates
+    const handleSSEUpdate = (sseData) => {
+        if (sseData.type === 'ITEM_ADDED' && sseData.listId === listId) {
+            setItems((prevItems) => [...prevItems, sseData.item]);
+        } else if (sseData.type === 'ITEM_UPDATED' && sseData.listId === listId) {
+            setItems((prevItems) => 
+                prevItems.map((item) => 
+                    item.id === sseData.item.id ? sseData.item : item
+                )
+            );
+        } else if (sseData.type === 'ITEM_DELETED' && sseData.listId === listId) {
+            setItems((prevItems) => 
+                prevItems.filter((item) => item.id !== sseData.item.id)
+            );
+        }
+    };
+
+    useSSE(handleSSEUpdate);
     
     return (
         <div className='items-container'>

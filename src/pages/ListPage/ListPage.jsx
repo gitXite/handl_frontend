@@ -13,7 +13,7 @@ import ListCard from '@components/ListCard/ListCard';
 import MotionWrapper from '@components/MotionWrapper';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
-
+import { useSSE } from '@hooks/useSSE';
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import './ListPage.css';
 
@@ -68,11 +68,32 @@ function ListPage() {
         localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
     }, [isAuthenticated]);
 
+    // Initial API call to fetch lists
     useEffect(() => {
         api.get('/api/lists').then((res) => {
             setLists(res);
         });
     }, []);
+
+    // Handle SSE updates
+    const handleSSEUpdate = (sseData) => {
+        if (!sseData) return;
+
+        if (sseData.type === 'LIST_SHARED') {
+            setLists((prevLists) => {
+                if (!prevLists.some((list) => list.id === sseData.list.id)) {
+                    return [...prevLists, sseData.list];
+                }
+                return prevLists;
+            });
+        } else if (sseData.type === 'USER_REMOVED') {
+            setLists((prevLists) => 
+                prevLists.filter((list) => list.id !== sseData.listId)
+            );
+        }
+    };
+
+    useSSE(handleSSEUpdate);
 
     const handleModal = (type, listId) => {
         setSelectedList(listId);

@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react';
 
 
-const useSSE = (listId) => {
-    const [data, setData] = useState(null);
+export const useSSE = (eventHandler) => {
+    const [sseData, setSseData] = useState(null);
 
     useEffect(() => {
-        const eventSource = new EventSource(`${import.meta.env.VITE_API_URL}/stream`);
+        const eventSource = new EventSource(`${import.meta.env.VITE_API_URL}/events`);
 
-        eventSource.onmessage = function(event) {
-            const receivedData = JSON.parse(event.data);
-            setData(receivedData);
+        eventSource.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            setSseData(data);
+            eventHandler(data);
         };
 
-        eventSource.onerror = function() {
+        eventSource.onerror = () => {
             console.error('Error with SSE connection');
             eventSource.close();
         };
@@ -20,10 +21,8 @@ const useSSE = (listId) => {
         return () => {
             eventSource.close();
         };
-    }, []);
-    
-    return data;
+    }, [eventHandler]);
+
+    return sseData;
 };
 
-
-export default useSSE;
