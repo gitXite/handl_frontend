@@ -11,7 +11,6 @@ import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 import MotionWrapper from '@components/MotionWrapper';
-import { useList } from '../../hooks/useList';
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
 
@@ -21,7 +20,6 @@ import './ListPage.css';
 
 function ListPage() {
     const navigate = useNavigate();
-    const { setListName } = useList();
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
     const { isAuthenticated, setIsAuthenticated } = useAuth();
@@ -91,7 +89,6 @@ function ListPage() {
         try {
             const newList = await api.post('/api/lists', { name });
             setLists((prevLists) => [...prevLists, newList]);
-            setListName(name);
             cancelModal();
         } catch (error) {
             console.error('Failed to add list:', error);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -7,15 +7,27 @@ import { Tooltip, Zoom } from '@mui/material';
 import ItemCard from '@components/ItemCard/ItemCard';
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
-import { useList } from '../../../hooks/useList';
 import api from '@utils/api';
 import './Items.css';
 
 
 function ItemsPage() {
-    const { listName } = useList();
     const { listId } = useParams();
+    const [listName, setListName] = useState('');
     const queryClient = useQueryClient();
+
+    useEffect(() => {
+        const getListName = async () => {
+            try {
+                const result = await api.get(`/api/lists/${listId}`);
+                setListName(result.name);
+            } catch (error) {
+                console.error('Error retrieving name:', error);
+            }
+        };
+
+        getListName();
+    }, [listId]);
 
     const getListItems = async ()  => {
         try {
