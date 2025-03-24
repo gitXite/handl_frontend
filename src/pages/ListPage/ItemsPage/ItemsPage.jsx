@@ -50,9 +50,9 @@ function ItemsPage() {
 
     // Handle SSE updates
     const handleSSEUpdate = (sseData) => {
-        if (sseData.type === 'ITEM_ADDED' && sseData.listId === listId) {
+        if (sseData.type === 'ITEM_ADDED' && sseData.list.id === listId) {
             setItems((prevItems) => [...prevItems, sseData.item]);
-        } else if (sseData.type === 'ITEM_UPDATED' && sseData.listId === listId) {
+        } else if (sseData.type === 'ITEM_UPDATED' && sseData.list.id === listId) {
             setItems((prevItems) => 
                 prevItems.map((item) => 
                     item.id === sseData.item.id ? sseData.item : item
