@@ -7,8 +7,8 @@ import { Tooltip, Zoom } from '@mui/material';
 import ItemCard from '@components/ItemCard/ItemCard';
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
-import './Items.css';
 import { useList } from '../../../hooks/useList';
+import './Items.css';
 
 
 function ItemsPage() {
