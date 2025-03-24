@@ -6,7 +6,6 @@ import { Squash as Hamburger } from 'hamburger-react';
 import { useAuth } from '@hooks/useAuth';
 
 import logo from '@assets/icons/new_logo.png';
-import logoutImage from '@assets/icons/logout.png';
 import './Header.css';
 
 
@@ -47,7 +46,7 @@ function Header({ resetForm }) {
     
     const handleLogout = async () => {
         try {
-            const result = await api.post('/api/auth/logout');
+            await api.post('/api/auth/logout');
             
             setIsAuthenticated(false);
             console.log('Logged out successfully');
