@@ -25,9 +25,14 @@
     color: #333;
 }
 .shared-user-list {
+    display: flex;
+    flex-direction: column;
     list-style: none; 
     margin: 0;
     padding: 0;
+}
+.shared-user {
+    display: flex;
 }
 .modal-actions {
     display: flex;
