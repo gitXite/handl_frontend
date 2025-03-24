@@ -115,22 +115,22 @@ function ItemsPage() {
                         </Tooltip>
                     </MotionWrapper>
                 </div>
-                <div className='items'>
-                    <AnimatePresence mode='popLayout'>
-                        {items.map((item) => (
-                            <motion.div
-                                key={item.id}
-                                layout
-                                initial={{ opacity: 0, y: -30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, x: -100, scale: 0.9 }}
-                                transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
-                            >
-                                <ItemCard item={item} />
-                            </motion.div>
-                        ))}
-                    </AnimatePresence>
-                </div>
+            </div>
+            <div className='items'>
+                <AnimatePresence mode='popLayout'>
+                    {items.map((item) => (
+                        <motion.div
+                            key={item.id}
+                            layout
+                            initial={{ opacity: 0, y: -30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, x: -100, scale: 0.9 }}
+                            transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
+                        >
+                            <ItemCard item={item} />
+                        </motion.div>
+                    ))}
+                </AnimatePresence>
             </div>
         </div>
     );
