@@ -14,7 +14,7 @@ function ItemsPage({ listName }) {
     const { listId } = useParams();
     const queryClient = useQueryClient();
 
-    const getListItems = async (listId) ) => {
+    const getListItems = async (listId)  => {
         try {
             const items = await api.get(`/api/lists/${listId}/items`);
             return items;
@@ -25,8 +25,8 @@ function ItemsPage({ listName }) {
     };
 
     const items = useQuery({
-        queryKey=['item'],
-        queryFn=getListItems,
+        queryKey: ['item'],
+        queryFn: getListItems,
     });
     
     return (
