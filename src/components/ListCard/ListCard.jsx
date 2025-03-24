@@ -38,12 +38,16 @@ function ListCard({ list, onModal }) {
     const renameList = async (e, listId) => {
         e.stopPropagation();
         const name = prompt('Rename your list:', newName || list.name);
+        const body = {
+            name: name,
+            listId: listId,
+        };
         try {
             if (name) {
                 setNewName(name);
                 setListName(name);
                 if (newName !== list.name) {
-                    await api.patch(`/api/lists/${listId}/rename`, newName);
+                    await api.patch(`/api/lists/${listId}/rename`, body);
                 }
             }
         } catch (error) {
