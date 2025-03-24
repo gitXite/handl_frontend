@@ -82,7 +82,7 @@ function ListPage() {
 
         if (sseData.type === 'LIST_SHARED') {
             setLists((prevLists) => {
-                if (!prevLists.some((list) => list.id === sseData.list.id)) {
+                if (!prevLists.some((list) => list.id === sseData.list.list_id)) {
                     return [...prevLists, sseData.list];
                 }
                 return prevLists;
