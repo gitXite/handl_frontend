@@ -122,7 +122,7 @@ function ListPage() {
 
     const refreshLists = async () => {
         try {
-            const lists = api.get('/api/lists');
+            const lists = await api.get('/api/lists');
             setLists(lists)
         } catch (error) {
             console.error('Failed to fetch lists:', error);
