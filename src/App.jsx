@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { AuthProvider } from './context/AuthProvider';
+import { ContextProvider } from './context/ContextProvider';
 
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';

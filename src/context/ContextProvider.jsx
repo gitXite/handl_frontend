@@ -1,5 +1,5 @@
-import { ListProvider } from "./ListProvider";
-import { AuthProvider } from "./AuthProvider";
+import { ListProvider } from "./ListContext";
+import { AuthProvider } from "./AuthContext";
 
 export const ContextProvider = ({ children }) => {
     return (
