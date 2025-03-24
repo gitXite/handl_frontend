@@ -8,6 +8,7 @@ import { Tooltip, Zoom } from '@mui/material';
 import ListModal from '@components/Modals/ListModal/ListModal';
 import ShareModal from '@components/Modals/ShareModal/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
+import SharedUserModal from '../../components/Modals/SharedUserModal/SharedUserModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 import MotionWrapper from '@components/MotionWrapper';
@@ -125,7 +126,7 @@ function ListPage() {
 
         try {
             const result = await api.post(`/api/lists/${selectedList}/share`, { email });
-            console.log(result.message);
+            console.log(result.message, result.list);
             cancelModal();
         } catch (error) {
             console.error('Failed to share list:', error);
