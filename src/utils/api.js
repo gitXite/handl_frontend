@@ -1,3 +1,4 @@
+import { data } from 'react-router-dom';
 import axios from '../axiosConfig';
 
 
@@ -14,6 +15,14 @@ const api = {
     post: async (endpoint, data, config = {}) => {
         try {
             const response = await axios.post(endpoint, data, config);
+            return response.data;
+        } catch (error) {
+            throw error;
+        }
+    },
+    patch: async (endpoint, data, config = {}) => {
+        try {
+            const response = await axios.patch(endpoint, data, config);
             return response.data;
         } catch (error) {
             throw error;
