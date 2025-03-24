@@ -82,18 +82,18 @@ function ListPage() {
 
         if (sseData.type === 'LIST_SHARED') {
             setLists((prevLists) => {
-                if (!prevLists.some((list) => list.id === sseData.list.list_id)) {
+                if (!prevLists.some((list) => list.id === sseData.list.id)) {
                     return [...prevLists, sseData.list];
                 }
                 return prevLists;
             });
         } else if (sseData.type === 'USER_REMOVED') {
             setLists((prevLists) => 
-                prevLists.filter((list) => list.id !== sseData.listId)
+                prevLists.filter((list) => list.id !== sseData.list.id)
             );
         } else if (sseData.type === 'LIST_DELETED') {
             setLists((prevLists) => 
-                prevLists.filter((list) => list.id !== sseData.listId)
+                prevLists.filter((list) => list.id !== sseData.list.id)
             );
         }
     };
