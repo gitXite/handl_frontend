@@ -90,6 +90,10 @@ function ListPage() {
             setLists((prevLists) => 
                 prevLists.filter((list) => list.id !== sseData.listId)
             );
+        } else if (sseData.type === 'LIST_DELETED') {
+            setLists((prevLists) => 
+                prevLists.filter((list) => list.id !== sseData.listId)
+            );
         }
     };
 
