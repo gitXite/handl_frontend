@@ -11,6 +11,7 @@ import Footer from '@components/Footer/Footer';
 import AuthPage from '@pages/AuthPage/AuthPage';
 import LandingPage from '@pages/LandingPage/LandingPage';
 import ListPage from '@pages/ListPage/ListPage';
+import ItemsPage from '@pages/ListPage/ItemsPage/ItemsPage';
 import AboutPage from '@pages/AboutPage/AboutPage';
 import ContactPage from '@pages/ContactPage/ContactPage';
 import ConfirmEmailPage from '@pages/ConfirmEmailPage/ConfirmEmailPage';
