@@ -241,22 +241,24 @@ function ListPage() {
                     </div>
                 </div>
                 <div className='lists'>
-                    <SimpleBar style={{ maxHeight: 650 }}>
-                        <AnimatePresence mode='popLayout'>
-                            {lists.map((list) => (
-                                <motion.div
-                                    key={list.id}
-                                    layout
-                                    initial={{ opacity: 0, y: -30 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, x: -100, scale: 0.9 }}
-                                    transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
-                                >
-                                    <ListCard list={list} onModal={handleModal} />
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </SimpleBar>
+                    <motion.div layout>
+                        <SimpleBar style={{ maxHeight: 650 }}>
+                            <AnimatePresence mode='popLayout'>
+                                {lists.map((list) => (
+                                    <motion.div
+                                        key={list.id}
+                                        layout
+                                        initial={{ opacity: 0, y: -30 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, x: -100, scale: 0.9 }}
+                                        transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
+                                    >
+                                        <ListCard list={list} onModal={handleModal} />
+                                    </motion.div>
+                                ))}
+                            </AnimatePresence>
+                        </SimpleBar>
+                    </motion.div>
                 </div>
 
                 {showModal === 'add' && (
