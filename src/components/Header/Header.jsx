@@ -11,7 +11,7 @@ import './Header.css';
 
 function Header({ resetForm }) {
     const navigate = useNavigate();
-    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const [open, setOpen] = useState(false);
     const location = useLocation();
 
@@ -95,12 +95,11 @@ function Header({ resetForm }) {
             <div className='auth-button'>
                 {isAuthenticated ? (
                     <>
-                        <button className='profile-button' onClick={() => navigate('/profile')}>
-                            Profile
+                        <button className='profile-button' onClick={() => navigate(`/profile/${currentUser.id}`)}>
+                            {currentUser.name}
                         </button>
                         <button className='logout-button' onClick={handleLogout}>
                             Logout
-                            {/* <img src={logoutImage} /> */}
                         </button>
                     </>
                 ) : (
