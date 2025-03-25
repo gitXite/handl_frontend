@@ -3,13 +3,12 @@ import { useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
-
 import ItemCard from '@components/ItemCard/ItemCard';
 import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
-import './Items.css';
 import { useSSE } from '../../../hooks/useSSE';
+import './Items.css';
 
 
 function ItemsPage() {
@@ -61,13 +60,16 @@ function ItemsPage() {
                         item.id === sseData.item.id ? sseData.item : item
                 case 'ITEM_DELETED':
                     return prevItems.filter((item) => item.id !== sseData.item.id);
+                    
                 default:
                     return prevItems;
             }
         });
     };
-
     useSSE(handleSSEUpdate);
+
+    // Item logic
+    
     
     return (
         <div className='items-container'>
