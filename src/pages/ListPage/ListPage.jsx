@@ -23,7 +23,7 @@ function ListPage() {
     const navigate = useNavigate();
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
-    const { isAuthenticated, setIsAuthenticated } = useAuth();
+    const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
     const [showModal, setShowModal] = useState('');
@@ -80,22 +80,28 @@ function ListPage() {
     const handleSSEUpdate = (sseData) => {
         if (!sseData) return;
 
-        if (sseData.type === 'LIST_SHARED') {
-            setLists((prevLists) => {
-                if (!prevLists.some((list) => list.id === sseData.list.id)) {
-                    return [...prevLists, sseData.list];
+        setLists((prevLists) => {
+            switch (sseData.type) {
+                case 'RENAME_LIST':
+                    return prevLists.map((list) => 
+                        list.id === sseData.list.id ? { ...list, name: sseData.list.name } : list
+                    );
+                case 'DELETE_LIST':
+                case 'USER_REMOVED': {
+                    if (sseData.recipient === currentUser?.id) {
+                        return prevLists.filter((list) => list.id !== sseData.list.id);
+                    }
+                    return prevLists;
                 }
-                return prevLists;
-            });
-        } else if (sseData.type === 'USER_REMOVED') {
-            setLists((prevLists) => 
-                prevLists.filter((list) => list.id !== sseData.list.id)
-            );
-        } else if (sseData.type === 'LIST_DELETED') {
-            setLists((prevLists) => 
-                prevLists.filter((list) => list.id !== sseData.list.id)
-            );
-        }
+                case 'LIST_SHARED': {
+                    const exists = prevLists.some((list) => list.id === sseData.list.id);
+                    return exists ? prevLists : [...prevLists, sseData.list];
+                }
+
+                default: 
+                    return prevLists;
+            }
+        });
     };
 
     useSSE(handleSSEUpdate);
