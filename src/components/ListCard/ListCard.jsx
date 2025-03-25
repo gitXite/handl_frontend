@@ -6,14 +6,26 @@ import { Tooltip, Zoom } from '@mui/material';
 import { Trash2, Share, SquarePlus, Rss } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
+import { useSSE } from '@hooks/useSSE';
 import './ListCard.css';
 
 
 function ListCard({ list, onModal }) {
     const navigate = useNavigate();
-    const [newName, setNewName] = useState('');
+    const [newName, setNewName] = useState(list.name);
     const [isShared, setIsShared] = useState(false);
     const [sharedNumber, setSharedNumber] = useState(null);
+
+    // Handle SSE updates
+    const handleSSEUpdate = (sseData) => {
+        if (!sseData) return;
+    
+        if (sseData.type === 'RENAME_LIST' && list.id === sseData.list.id && list.name !== sseData.list.name) {
+            setNewName(sseData.list.name);
+        }
+    };
+    
+    useSSE(handleSSEUpdate);
 
     useEffect(() => {
         const getNumberOfSharedUsers = async (listId) => {
@@ -31,7 +43,7 @@ function ListCard({ list, onModal }) {
         if (list.id) {
             getNumberOfSharedUsers(list.id);
         }
-    }, [list.id]);
+    }, []);
 
     const renameList = async (e, listId) => {
         e.stopPropagation();
@@ -41,11 +53,9 @@ function ListCard({ list, onModal }) {
             listId: listId,
         };
         try {
-            if (name) {
+            if (name && name !== newName) {
                 setNewName(name);
-                if (newName !== list.name) {
-                    await api.patch(`/api/lists/${listId}/rename`, body);
-                }
+                await api.patch(`/api/lists/${listId}/rename`, body);
             }
         } catch (error) {
             console.error('Failed to update database:', error);
@@ -93,7 +103,7 @@ function ListCard({ list, onModal }) {
                                 }}
                             >
                                 <img src={editIcon} alt='Rename list'/>
-                                <p>{newName || list.name}</p>
+                                <p>{newName}</p>
                             </div>
                         </Tooltip>
                     </div>
