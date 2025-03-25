@@ -50,19 +50,21 @@ function ItemsPage() {
 
     // Handle SSE updates
     const handleSSEUpdate = (sseData) => {
-        if (sseData.type === 'ITEM_ADDED' && sseData.listId === listId) {
-            setItems((prevItems) => [...prevItems, sseData.item]);
-        } else if (sseData.type === 'ITEM_UPDATED' && sseData.listId === listId) {
-            setItems((prevItems) => 
-                prevItems.map((item) => 
-                    item.id === sseData.item.id ? sseData.item : item
-                )
-            );
-        } else if (sseData.type === 'ITEM_DELETED' && sseData.listId === listId) {
-            setItems((prevItems) => 
-                prevItems.filter((item) => item.id !== sseData.item.id)
-            );
-        }
+        if (sseData.listId !== listId) return;
+
+        setItems((prevItems) => {
+            switch (sseData.type) {
+                case 'ITEM_ADDED':
+                    return [...prevItems, sseData.item];
+                case 'ITEM_UPDATED':
+                    return prevItems.map((item) =>
+                        item.id === sseData.item.id ? sseData.item : item
+                case 'ITEM_DELETED':
+                    return prevItems.filter((item) => item.id !== sseData.item.id);
+                default:
+                    return prevItems;
+            }
+        });
     };
 
     useSSE(handleSSEUpdate);
