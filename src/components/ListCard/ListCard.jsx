@@ -16,17 +16,6 @@ function ListCard({ list, onModal }) {
     const [isShared, setIsShared] = useState(false);
     const [sharedNumber, setSharedNumber] = useState(null);
 
-    // Handle SSE updates
-    const handleSSEUpdate = (sseData) => {
-        if (!sseData) return;
-    
-        if (sseData.type === 'RENAME_LIST' && list.id === sseData.list.id && list.name !== sseData.list.name) {
-            setNewName(sseData.list.name);
-        }
-    };
-    
-    useSSE(handleSSEUpdate);
-
     useEffect(() => {
         const getNumberOfSharedUsers = async (listId) => {
             try {
