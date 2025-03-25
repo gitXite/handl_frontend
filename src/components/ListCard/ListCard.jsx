@@ -16,6 +16,7 @@ function ListCard({ list, onModal }) {
     const [isShared, setIsShared] = useState(false);
     const [sharedNumber, setSharedNumber] = useState(null);
 
+    // Get initial shared state
     useEffect(() => {
         const getNumberOfSharedUsers = async (listId) => {
             try {
@@ -34,6 +35,7 @@ function ListCard({ list, onModal }) {
         }
     }, []);
 
+    // SSE realtime updates for shared state
     const handleSSEUpdates (sseData) => {
         if (!sseData) return;
 
@@ -42,7 +44,6 @@ function ListCard({ list, onModal }) {
             setSharedNumber(sseData.sharedNumber);
         }
     };
-
     useSSE(handleSSEUpdates);
 
     useEffect(() => {
