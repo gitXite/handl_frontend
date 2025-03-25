@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import MotionWrapper from '@components/MotionWrapper';
 import { Tooltip, Zoom } from '@mui/material';
-
 import { Trash2, Share, SquarePlus, Rss } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
