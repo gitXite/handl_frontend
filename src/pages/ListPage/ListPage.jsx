@@ -84,6 +84,7 @@ function ListPage() {
                 case 'DELETE_LIST':
                 case 'REMOVE_USER': {
                     if (sseData.recipientId === currentUser?.id) {
+                        console.log(sseData.recipientId, currentUser?.id);
                         return prevLists.filter((list) => list.id !== sseData.list.id);
                     }
                     return prevLists;
@@ -241,24 +242,22 @@ function ListPage() {
                     </div>
                 </div>
                 <div className='lists'>
-                    <motion.div layout>
-                        <SimpleBar style={{ maxHeight: 650 }}>
-                            <AnimatePresence mode='popLayout'>
-                                {lists.map((list) => (
-                                    <motion.div
-                                        key={list.id}
-                                        layout
-                                        initial={{ opacity: 0, y: -30 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                        exit={{ opacity: 0, x: -100, scale: 0.9 }}
-                                        transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
-                                    >
-                                        <ListCard list={list} onModal={handleModal} />
-                                    </motion.div>
-                                ))}
-                            </AnimatePresence>
-                        </SimpleBar>
-                    </motion.div>
+                    <SimpleBar style={{ maxHeight: 650 }}>
+                        <AnimatePresence mode='popLayout'>
+                            {lists.map((list) => (
+                                <motion.div
+                                    key={list.id}
+                                    layout
+                                    initial={{ opacity: 0, y: -30 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, x: -100, scale: 0.9 }}
+                                    transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
+                                >
+                                    <ListCard list={list} onModal={handleModal} />
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+                    </SimpleBar>
                 </div>
 
                 {showModal === 'add' && (
