@@ -34,6 +34,17 @@ function ListCard({ list, onModal }) {
         }
     }, []);
 
+    const handleSSEUpdates (sseData) => {
+        if (!sseData) return;
+
+        if (sseData.type === 'SHARED_NUMBER' && sseData.sharedNumber !== undefined) {
+            setIsShared(sseData.sharedNumber > 0);
+            setSharedNumber(sseData.sharedNumber);
+        }
+    };
+
+    useSSE(handleSSEUpdates);
+
     useEffect(() => {
         setNewName(list.name);
     }, [list.name]);
