@@ -41,18 +41,19 @@ function ListCard({ list, onModal }) {
     const renameList = async (e, listId) => {
         e.stopPropagation();
         const name = prompt('Rename your list:', newName || list.name);
-        if (name && name !== newName) return;
         
         const body = {
             name: name,
             listId: listId,
         };
         
-        try {
-            setNewName(name);
-            await api.patch(`/api/lists/${listId}/rename`, body);
-        } catch (error) {
-            console.error('Failed to update database:', error);
+        if (name && name !== newName) {
+            try {
+                setNewName(name);
+                await api.patch(`/api/lists/${listId}/rename`, body);
+            } catch (error) {
+                console.error('Failed to update database:', error);
+            }
         }
     };
     
