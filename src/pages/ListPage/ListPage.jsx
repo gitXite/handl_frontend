@@ -23,11 +23,10 @@ function ListPage() {
     const navigate = useNavigate();
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
-    const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
     const [showModal, setShowModal] = useState('');
-
+    const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const isMounted = useRef(true);
 
     useEffect(() => {
@@ -65,10 +64,6 @@ function ListPage() {
         };
     }, [setIsAuthenticated, navigate, isAuthenticated]);
 
-    useEffect(() => {
-        localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
-    }, [isAuthenticated]);
-
     // Initial API call to fetch lists
     useEffect(() => {
         api.get('/api/lists').then((res) => {
@@ -103,9 +98,9 @@ function ListPage() {
             }
         });
     };
-
     useSSE(handleSSEUpdate);
 
+    // Modals and list logic
     const handleModal = (type, listId) => {
         setSelectedList(listId);
         setShowModal(type);
