@@ -4,7 +4,6 @@ import api from '@utils/api';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Squash as Hamburger } from 'hamburger-react';
 import { useAuth } from '@hooks/useAuth';
-
 import logo from '@assets/icons/new_logo.png';
 import './Header.css';
 
