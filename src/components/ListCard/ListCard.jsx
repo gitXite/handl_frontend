@@ -45,6 +45,7 @@ function ListCard({ list, onModal }) {
     };
     useSSE(handleSSEUpdates);
 
+    // Handle renaming and SSE updates
     useEffect(() => {
         setNewName(list.name);
     }, [list.name]);
