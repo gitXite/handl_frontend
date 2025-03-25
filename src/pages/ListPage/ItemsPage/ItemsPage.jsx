@@ -53,13 +53,13 @@ function ItemsPage() {
 
         setItems((prevItems) => {
             switch (sseData.type) {
-                case 'ITEM_ADDED':
+                case 'ADD_ITEM':
                     return [...prevItems, sseData.item];
-                case 'ITEM_UPDATED':
+                case 'UPDATE_ITEM':
                     return prevItems.map((item) =>
                         item.id === sseData.item.id ? sseData.item : item
                     );
-                case 'ITEM_DELETED':
+                case 'DELETE_ITEM':
                     return prevItems.filter((item) => item.id !== sseData.item.id);
                     
                 default:

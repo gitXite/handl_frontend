@@ -82,13 +82,13 @@ function ListPage() {
                         list.id === sseData.list.id ? { ...list, name: sseData.list.name } : list
                     );
                 case 'DELETE_LIST':
-                case 'USER_REMOVED': {
-                    if (sseData.recipient === currentUser?.id) {
+                case 'REMOVE_USER': {
+                    if (sseData.recipientId === currentUser?.id) {
                         return prevLists.filter((list) => list.id !== sseData.list.id);
                     }
                     return prevLists;
                 }
-                case 'LIST_SHARED': {
+                case 'SHARE_LIST': {
                     const exists = prevLists.some((list) => list.id === sseData.list.id);
                     return exists ? prevLists : [...prevLists, sseData.list];
                 }
