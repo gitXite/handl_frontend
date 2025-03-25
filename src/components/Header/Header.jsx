@@ -95,7 +95,7 @@ function Header({ resetForm }) {
                 {isAuthenticated ? (
                     <>
                         <button className='profile-button' onClick={() => navigate(`/profile/${currentUser.id}`)}>
-                            {currentUser.name}
+                            {currentUser?.name}
                         </button>
                         <button className='logout-button' onClick={handleLogout}>
                             Logout

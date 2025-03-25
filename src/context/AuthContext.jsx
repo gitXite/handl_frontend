@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
                 setIsAuthenticated(isAuthenticated);
                 setCurrentUser(user);
                 localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
-                localStorage.setItem(currentUser', JSON.stringify(user));
+                localStorage.setItem('currentUser', JSON.stringify(user));
             } catch (error) {
                 console.error('Error fetching session:', error.message);
                 setIsAuthenticated(false);

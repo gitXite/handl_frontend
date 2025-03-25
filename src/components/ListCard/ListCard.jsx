@@ -35,7 +35,7 @@ function ListCard({ list, onModal }) {
     }, []);
 
     // SSE realtime updates for shared state
-    const handleSSEUpdates (sseData) => {
+    const handleSSEUpdates = (sseData) => {
         if (!sseData) return;
 
         if (sseData.type === 'SHARED_NUMBER' && sseData.sharedNumber !== undefined) {

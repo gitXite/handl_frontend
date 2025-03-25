@@ -58,6 +58,7 @@ function ItemsPage() {
                 case 'ITEM_UPDATED':
                     return prevItems.map((item) =>
                         item.id === sseData.item.id ? sseData.item : item
+                    );
                 case 'ITEM_DELETED':
                     return prevItems.filter((item) => item.id !== sseData.item.id);
                     
