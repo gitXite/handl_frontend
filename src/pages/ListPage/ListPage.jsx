@@ -26,6 +26,7 @@ function ListPage() {
     const [lists, setLists] = useState([]);
     const [selectedList, setSelectedList] = useState(null);
     const [showModal, setShowModal] = useState('');
+    const [modalNotice, setModalNotice] = useState('');
     const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const isMounted = useRef(true);
 
@@ -145,6 +146,7 @@ function ListPage() {
             cancelModal();
         } catch (error) {
             console.error('Failed to delete list:', error);
+            setModalNotice(error);
         }
     };
 
@@ -280,6 +282,7 @@ function ListPage() {
                         message='Are you sure you want to delete this list?'
                         onConfirm={deleteList}
                         onCancel={cancelModal}
+                        notice={modalNotice}
                     />
                 )}
                 {showModal === 'sharedUsers' && (
