@@ -15,6 +15,8 @@ function ItemsPage() {
     const { listId } = useParams();
     const [listName, setListName] = useState('');
     const [items, setItems] = useState([]);
+    const [selectedItem, setSelectedItem] = useState(null);
+    const [showModal, setShowModal] = useState('');
     const queryClient = useQueryClient();
 
     useEffect(() => {
@@ -69,8 +71,28 @@ function ItemsPage() {
     };
     useSSE(handleSSEUpdate);
 
+    // Modals
+    const handleModal = (type, itemId) => {
+        setSelectedItem(itemId);
+        setShowModal(type);
+    };
+
+    const cancelModal = () => {
+        setSelectedItem(null);
+        setShowModal('');
+    };
+
     // Item logic
-    // const addItem = async (name, quantity) => {};
+    const addItem = async (name, quantity) => {
+        if (!name || !quantity) return;
+        try {
+            const newItem = await api.post(`/api/lists/${listId}/items`, { name, quantity });
+            setItems((prevItems) => [...prevItems, newItem]);
+            cancelModal();
+        } catch (error) {
+            console.error('Failed to add item:', error);
+        }
+    };
     
     return (
         <div className='items-container'>
@@ -167,7 +189,7 @@ function ItemsPage() {
                             exit={{ opacity: 0, x: -100, scale: 0.9 }}
                             transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
                         >
-                            <ItemCard item={item} />
+                            <ItemCard item={item} onModal={handleModal} />
                         </motion.div>
                     ))}
                 </AnimatePresence>
