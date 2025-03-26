@@ -21,7 +21,9 @@ function ListCard({ list, onModal }) {
             try {
                 const sharedUsers = await api.get(`/api/lists/${listId}/shared-users`);
                 if (sharedUsers.length > 0) {
-                    setIsShared(true);
+                    setIsShared((prev) => (prev !== true ? true : prev));
+                } else {
+                    setIsShared((prev) => (prev !== false ? false : prev));
                 }
                 setSharedNumber(sharedUsers.length);
             } catch (error) {
@@ -32,7 +34,7 @@ function ListCard({ list, onModal }) {
         if (list.id) {
             getNumberOfSharedUsers(list.id);
         }
-    }, []);
+    }, [list.id]);
 
     // SSE realtime updates for shared state
     const handleSSEUpdates = (sseData) => {
@@ -192,7 +194,7 @@ function ListCard({ list, onModal }) {
                         </button>
                     </Tooltip>
                 </MotionWrapper>
-                {isShared ? (
+                {isShared && (
                     <MotionWrapper className={'list-fade'} transition={{ delay: 0.8 }}>
                         <Tooltip 
                             title='Shared'
@@ -224,7 +226,7 @@ function ListCard({ list, onModal }) {
                             </div>
                         </Tooltip>
                     </MotionWrapper>
-                ) : null}
+                )}
             </div>
         </div>
     );
