@@ -2,7 +2,7 @@ import MotionWrapper from '../MotionWrapper';
 import './ItemCard.css';
 
 
-function ItemCard({ item }) {
+function ItemCard({ item, onModal }) {
     return (
         <div className='item-card'>
             <MotionWrapper className={'item-fade'}>
