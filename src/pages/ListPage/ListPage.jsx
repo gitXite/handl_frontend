@@ -146,7 +146,7 @@ function ListPage() {
             cancelModal();
         } catch (error) {
             console.error('Failed to delete list:', error);
-            setModalNotice(error);
+            setModalNotice('Only owners can manage lists');
         }
     };
 
@@ -245,8 +245,8 @@ function ListPage() {
                     </div>
                 </div>
                 <div className='lists'>
-                    <SimpleBar style={{ maxHeight: 650 }}>
-                        <AnimatePresence mode='popLayout'>
+                    <AnimatePresence mode='popLayout'>
+                        <SimpleBar style={{ maxHeight: 650 }}>
                             {lists.map((list) => (
                                 <motion.div
                                     key={list.id}
@@ -259,8 +259,8 @@ function ListPage() {
                                     <ListCard list={list} onModal={handleModal} />
                                 </motion.div>
                             ))}
-                        </AnimatePresence>
-                    </SimpleBar>
+                        </SimpleBar>
+                    </AnimatePresence>
                 </div>
 
                 {showModal === 'add' && (
