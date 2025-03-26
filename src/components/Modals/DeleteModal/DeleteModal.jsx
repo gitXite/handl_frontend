@@ -10,12 +10,7 @@ function DeleteModal({ message, onCancel, onConfirm }) {
     
     const handleConfirm = (e) => {
         e.preventDefault();
-        try {
-            onConfirm();
-        } catch (error) {
-            console.error('Error deleting list:', error);
-            setNotice('Only the owner can delete lists');
-        }
+        onConfirm();
     };
 
     useHotkeys('enter', handleConfirm);
