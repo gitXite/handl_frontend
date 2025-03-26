@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
 import ItemCard from '@components/ItemCard/ItemCard';
-import { Plus, ChartNoAxesGantt, RefreshCcw } from 'lucide-react';
+import { Plus, ChartNoAxesGantt, RefreshCcw, Rss } from 'lucide-react';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
 import { useSSE } from '../../../hooks/useSSE';
@@ -174,6 +174,32 @@ function ItemsPage() {
                             <button>
                                 <RefreshCcw size={25} />
                             </button>
+                        </Tooltip>
+                    </MotionWrapper>
+                    <MotionWrapper transition={{ delay: 0.3 }}>
+                        <Tooltip 
+                            title='Shared'
+                            disableInteractive
+                            slots={{
+                                transition: Zoom,
+                            }}
+                            enterDelay={500}
+                            enterNextDelay={500}
+                            slotProps={{
+                                popper: {
+                                    modifiers: [
+                                        {
+                                            name: 'offset',
+                                            options: { offset: [0, -6] },
+                                        },
+                                    ],
+                                },
+                            }}
+                        >
+                            <div className='list-shared'>
+                                <Rss size={25} color={'#00CF00'} />
+                                {/* <div>{sharedNumber}</div> */}
+                            </div>
                         </Tooltip>
                     </MotionWrapper>
                 </div>

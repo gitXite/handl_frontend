@@ -95,6 +95,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
+    cursor: pointer;
 }
 .list-shared-users div {
     cursor: default;
