@@ -2,15 +2,16 @@ import { useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { UserMinus } from 'lucide-react';
-
+import { useAuth } from '@hooks/useAuth';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
-
 import './SharedUserModal.css';
 
 
 function SharedUserModal({ listId, message, onCancel }) {
+    const { currentUser } = useAuth();
     const [userToRemove, setUserToRemove] = useState(null);
+    const [notice, setNotice] = useState('');
     const queryClient = useQueryClient();
     
     const getSharedUsers = async () => {
@@ -24,6 +25,10 @@ function SharedUserModal({ listId, message, onCancel }) {
     };
 
     const handleRemoveModal = (userId) => {
+        if (userId === currentUser.id) {
+            setNotice('Only the owner can manage lists');
+            return;
+        }
         setUserToRemove(userId);
     };
     
@@ -69,6 +74,13 @@ function SharedUserModal({ listId, message, onCancel }) {
                         </li>
                     ))}
                 </ul>
+                <div className='modal-notice-container'>
+                    {notice && (
+                        <MotionWrapper className={'modal-fade'} transition={{ duration: 0.2 }}>
+                            <i className='modal-notice'>{notice}</i>
+                        </MotionWrapper>
+                    )}
+                </div>
                 <div className='modal-actions'>
                     <button onClick={onCancel}>Back</button>
                 </div>
