@@ -70,7 +70,7 @@ function ItemsPage() {
     useSSE(handleSSEUpdate);
 
     // Item logic
-    
+    // const addItem = async (name, quantity) => {};
     
     return (
         <div className='items-container'>
