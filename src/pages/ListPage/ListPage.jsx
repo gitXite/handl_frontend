@@ -219,7 +219,7 @@ function ListPage() {
                         </MotionWrapper>
                         <MotionWrapper transition={{ delay: 0.2 }}>
                             <Tooltip 
-                                title='Refresh'
+                                title='Refresh lists'
                                 disableInteractive
                                 slots={{
                                     transition: Zoom,
