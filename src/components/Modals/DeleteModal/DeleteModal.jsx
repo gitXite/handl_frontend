@@ -5,9 +5,7 @@ import { useHotkeys } from 'react-hotkeys-hook';
 import './DeleteModal.css';
 
 
-function DeleteModal({ message, onCancel, onConfirm }) {
-    const [notice, setNotice] = useState('');
-    
+function DeleteModal({ message, onCancel, onConfirm, notice }) {
     const handleConfirm = (e) => {
         e.preventDefault();
         onConfirm();
