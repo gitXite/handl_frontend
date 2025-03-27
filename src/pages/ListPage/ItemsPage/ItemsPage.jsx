@@ -105,7 +105,6 @@ function ItemsPage() {
                     };
                 default: 
                     return prev;
-                
             }
         });
     };
