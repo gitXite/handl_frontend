@@ -134,7 +134,7 @@ function ItemsPage() {
         }
     };
 
-    const updateItem = async (name, quantity, checked) => {};
+    const updateItem = async (name, quantity) => {};
 
     const deleteItem = async () => {
         if (!selectedItem) return;
