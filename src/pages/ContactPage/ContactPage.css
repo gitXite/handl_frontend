@@ -8,13 +8,15 @@
 .contact-container {
     display: flex;
     width: 700px;
-    margin-top: 10rem;
+    margin-top: 7rem;
 }
 .contact-left {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 50%;
+    gap: 1rem;
+    padding-top: 2rem;
 }
 .contact-left h1 {
     position: relative;
@@ -62,6 +64,7 @@
     flex-direction: column;
     align-items: center;
     width: 50%;
+    padding-top: 2rem;
 }
 .contact-form {
     display: flex;
