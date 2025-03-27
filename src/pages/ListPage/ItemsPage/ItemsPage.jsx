@@ -124,12 +124,36 @@ function ItemsPage() {
     // Item logic
     const addItem = async (name, quantity) => {
         if (!name || !quantity) return;
+        
         try {
             const newItem = await api.post(`/api/lists/${listId}/items`, { name, quantity });
             setItems((prevItems) => [...prevItems, newItem]);
             cancelModal();
         } catch (error) {
             console.error('Failed to add item:', error);
+        }
+    };
+
+    const updateItem = async (name, quantity, checked) => {};
+
+    const deleteItem = async () => {
+        if (!selectedItem) return;
+
+        try {
+            await api.delete(`/api/lists/${listId}/items/${selectedItem}`);
+            setItems((prevItems) => prevItems.filter((item) => item.id !== selectedItem));
+            cancelModal();
+        } catch (error) {
+            console.error('Failed to delete item:', error);
+        }
+    };
+
+    const refreshItems = async () => {
+        try {
+            const items = await api.get(`/api/lists/${listId}/items`);
+            setItems(items);
+        } catch (error) {
+            console.error('Error retrieving items:', error);
         }
     };
     
@@ -160,7 +184,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button>
+                            <button onClick={() => handleModal('ADD_ITEM', selectedItem)}>
                                 <Plus size={25} />
                             </button>
                         </Tooltip>
@@ -210,7 +234,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button>
+                            <button onClick={refreshItems}>
                                 <RefreshCcw size={25} />
                             </button>
                         </Tooltip>
