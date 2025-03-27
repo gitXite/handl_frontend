@@ -169,7 +169,7 @@ function ListPage() {
             cancelModal();
         } catch (error) {
             console.error('Failed to delete list:', error);
-            setModalNotice('Only owners can manage lists');
+            setModalNotice('Only the owner can delete lists');
         }
     };
 

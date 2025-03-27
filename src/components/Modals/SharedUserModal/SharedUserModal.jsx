@@ -26,7 +26,7 @@ function SharedUserModal({ listId, message, onCancel }) {
 
     const handleRemoveModal = (userId) => {
         if (userId === currentUser.id) {
-            setNotice('Only the owner can manage lists');
+            setNotice('Only the owner can remove users');
             return;
         }
         setUserToRemove(userId);
