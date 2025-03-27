@@ -189,7 +189,7 @@ function ListPage() {
             <div className='list-container'>
                 <div className='list-subcontainer'>
                     <div className='list-header'>
-                        <h1>Your Lists</h1>
+                        <h1>Shopping Lists</h1>
                     </div>
                     <div className='manage-lists'>
                         <MotionWrapper transition={{ delay: 0.0 }}>

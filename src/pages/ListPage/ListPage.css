@@ -30,14 +30,15 @@
 .list-header {
     display: flex;
     position: relative;
-    margin-left: 15rem;
+    margin-left: 10rem;
     padding-bottom: 1rem;
+    font-size: 20px;
 }
 .list-header::after {
     display: block;
     content: '';
     height: 1px;
-    width: 200%;
+    width: 70%;
     background-color: #c89666;
     position: absolute;
     bottom: 0;
@@ -83,6 +84,7 @@
     max-height: 650px;
     width: 100%;
     margin-top: 1rem;
+    padding-top: 0.5rem;
     overflow-x: hidden;
     border-radius: 8px;
     background: linear-gradient(to bottom #eee #f6f5f7);
