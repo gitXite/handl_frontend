@@ -50,6 +50,7 @@
     gap: 1rem;
     margin-right: 1rem;
     padding: 1rem;
+    border: 1px solid #fff;
     border-radius: 8px;
     background-color: #eee;
     box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.2);
@@ -86,6 +87,7 @@
     margin-top: 1rem;
     padding-top: 0.5rem;
     overflow-x: hidden;
+    border: 1px solid #fff;
     border-radius: 8px;
     background: linear-gradient(to bottom #eee #f6f5f7);
     box-shadow: inset 20px 80px 60px -40px rgba(0, 0, 0, 0.2);
