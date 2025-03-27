@@ -51,7 +51,7 @@ function ItemsPage() {
 
     // Handle SSE updates
     const handleSSEUpdate = (sseData) => {
-        if (sseData.listId !== listId) return;
+        if (sseData.listId !== listId || !sseData) return;
 
         setItems((prevItems) => {
             switch (sseData.type) {
