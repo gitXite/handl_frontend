@@ -157,6 +157,7 @@ function ListPage() {
             cancelModal();
         } catch (error) {
             console.error('Failed to share list:', error);
+            setModalNotice('Cannot share a list with yourself');
         }
     };
     
@@ -305,6 +306,7 @@ function ListPage() {
                         message='Enter recipient email to share your list'
                         onConfirm={shareList}
                         onCancel={cancelModal}
+                        modalNotice={modalNotice}
                     />
                 )}
                 {showModal === 'delete' && (

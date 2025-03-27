@@ -7,7 +7,7 @@ import { handleChange, handleConfirm } from '@utils/handleFunctions';
 import './ShareModal.css';
 
 
-function ShareModal({ message, onCancel, onConfirm }) {
+function ShareModal({ message, onCancel, onConfirm, modalNotice }) {
     const [notice, setNotice] = useState('');
     const [formData, setFormData] = useState({
         email: ''
@@ -34,9 +34,9 @@ function ShareModal({ message, onCancel, onConfirm }) {
                     </div>
                 </form>
                 <div className='modal-notice-container'>
-                    {notice && (
+                    {notice || modalNotice && (
                         <MotionWrapper className={'modal-fade'} transition={{ duration: 0.2 }}>
-                            <i className='modal-notice'>{notice}</i>
+                            <i className='modal-notice'>{notice || modalNotice}</i>
                         </MotionWrapper>
                     )}
                 </div>
