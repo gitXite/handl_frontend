@@ -52,6 +52,13 @@
     align-items: center;
     height: 35px;
     width: 35px;
+    color: #333;
+    cursor: default;
+    font-size: 12px;
+}
+.list-shared div {
+    margin: 0;
+    margin-top: 0.8rem;
 }
 .items {
     display: flex;
@@ -59,8 +66,7 @@
     max-height: 80%;
     width: 100%;
     margin-top: 1rem;
-    overflow-y: auto;
-    scrollbar-width: none;
+    overflow-x: hidden;
     border-radius: 8px;
     background: linear-gradient(to bottom #eee #f6f5f7);
     box-shadow: inset 20px 80px 60px -40px rgba(0, 0, 0, 0.2);

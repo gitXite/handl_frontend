@@ -238,7 +238,7 @@ function ItemsPage() {
                             >
                                 <div className='list-shared'>
                                     <Rss size={25} color={'#00CF00'} />
-                                    {/* <div>{sharedNumber}</div> */}
+                                    <div>{sharedList[listId]?.sharedNumber}</div>
                                 </div>
                             </Tooltip>
                         </MotionWrapper>
