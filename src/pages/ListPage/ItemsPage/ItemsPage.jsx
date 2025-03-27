@@ -142,7 +142,7 @@ function ItemsPage() {
                 <div className='manage-items'>
                     <MotionWrapper transition={{ delay: 0.0 }}>
                         <Tooltip 
-                            title='New item'
+                            title='Add item'
                             disableInteractive
                             slots={{
                                 transition: Zoom,
