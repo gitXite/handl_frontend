@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { UserMinus } from 'lucide-react';
+import { Tooltip, Zoom } from '@mui/material';
 import { useAuth } from '@hooks/useAuth';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
@@ -68,9 +69,29 @@ function SharedUserModal({ listId, message, onCancel }) {
                     {sharedUsers.map((user) => (
                         <li key={user.id} className='shared-user'>
                             <p>{user.email}</p>
-                            <button className='remove-user' onClick={() => handleRemoveModal(user.id)}>
-                                <UserMinus size={25}/>
-                            </button>
+                            <Tooltip
+                                title='Remove user'
+                                disableInteractive
+                                slots={{
+                                    transition: Zoom,
+                                }}
+                                enterDelay={500}
+                                enterNextDelay={500}
+                                slotProps={{
+                                    popper: {
+                                        modifiers: [
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, -5] },
+                                            },
+                                        ],
+                                    },
+                                }}
+                            >
+                                <button className='remove-user' onClick={() => handleRemoveModal(user.id)}>
+                                    <UserMinus size={20}/>
+                                </button>
+                            </Tooltip>
                         </li>
                     ))}
                 </ul>

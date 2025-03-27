@@ -16,6 +16,7 @@
     position: relative;
     top: -5rem;
     height: auto;
+    width: 25%;
     padding: 2rem;
     border-radius: 5px;
     text-align: center;
@@ -24,34 +25,39 @@
 }
 .shared-user-modal p {
     margin: 0;
-    margin-bottom: 1rem;
-    font-size: 17px;
+    font-size: 20px;
     color: #333;
 }
 .shared-user-list {
     display: flex;
     flex-direction: column;
-    list-style: none; 
     margin: 0;
     padding: 0;
+    list-style: none; 
 }
 .shared-user {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 100%;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-right: 4rem;
+    margin-left: 6rem;
+}
+.shared-user:last-child {
+    margin-bottom: 1rem;
 }
 .shared-user p {
     margin: 0;
     font-size: 15px;
+    color: #333;
 }
 .remove-user {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 35px;
-    width: 35px;
+    height: 30px;
+    width: 30px;
     margin: 0;
     padding: 0;
     border-color: #141414;
