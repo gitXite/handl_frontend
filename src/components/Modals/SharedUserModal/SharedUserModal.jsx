@@ -108,7 +108,7 @@ function SharedUserModal({ listId, message, onCancel }) {
             </div>
 
             {userToRemove && (
-                <MotionWrapper className={'modal-overlay'} transition={{ duration: 0.2 }}>
+                <MotionWrapper className={'modal-nested-overlay'} transition={{ duration: 0.2 }}>
                     <div className='confirmation-modal'>
                         <p>Are you sure you want to remove this user?</p>
                         <div className='modal-actions'>
