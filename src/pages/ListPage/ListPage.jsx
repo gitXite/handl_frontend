@@ -94,7 +94,7 @@ function ListPage() {
                     return prevLists.filter((list) => list.id !== sseData.list.id);
                 }
                 case 'REMOVE_USER': {
-                    if (sseData.recipientId === currentUser?.id) {
+                    if (Number(sseData.recipientId) === currentUser?.id) {
                         return prevLists.filter((list) => list.id !== sseData.list.id);
                     }
                     return prevLists;
