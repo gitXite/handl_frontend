@@ -134,7 +134,7 @@ function ItemsPage() {
         }
     };
 
-    const updateItem = async (name, quantity) => {};
+    const editItem = async (name, quantity) => {};
 
     const deleteItem = async () => {
         if (!selectedItem) return;
@@ -184,7 +184,7 @@ function ItemsPage() {
                                 },
                             }}
                         >
-                            <button onClick={() => handleModal('ADD_ITEM', selectedItem)}>
+                            <button onClick={() => handleModal('add', selectedItem)}>
                                 <Plus size={25} />
                             </button>
                         </Tooltip>
