@@ -4,7 +4,7 @@ import api from '@utils/api';
 import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
-
+import { fetchAuthStatus } from '@services/AuthService';
 import ListModal from '@components/Modals/ListModal/ListModal';
 import ShareModal from '@components/Modals/ShareModal/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
@@ -30,35 +30,10 @@ function ListPage() {
     const { isAuthenticated, setIsAuthenticated, currentUser } = useAuth();
     const isMounted = useRef(true);
 
+    // Check auth and redirect
     useEffect(() => {
         isMounted.current = true;
-        const fetchAuthStatus = async () => {
-            setIsLoading(true);
-            console.log('Fetching auth status...');
-            try {
-                const result = await api.get('/api/auth/session');
-
-                console.log('Parsed JSON:', result);
-                setIsAuthenticated(result.isAuthenticated || false);
-
-                if (!isAuthenticated) {
-                    setMessage('Unauthorized, please login');
-                    setTimeout(() => {
-                        if (isMounted.current) {
-                            navigate('/login');
-                        }
-                    }, 2000);
-                }
-            } catch (error) {
-                if (api.isAxiosError(error)) {
-                    console.error('Axios error:', error.response?.data || error.message);
-                    throw new Error(error.response?.data?.message || 'Failed to fetch authentication status');
-                }
-                throw error;
-            }
-        };
-
-        fetchAuthStatus();
+        fetchAuthStatus(setIsLoading, isAuthenticated, setIsAuthenticated, setMessage, isMounted, navigate);
 
         return () => {
             isMounted.current = false;
@@ -154,6 +129,7 @@ function ListPage() {
         try {
             const lists = await api.get('/api/lists');
             setLists(lists)
+            console.log('Lists:', lists);
         } catch (error) {
             console.error('Failed to fetch lists:', error);
         }
