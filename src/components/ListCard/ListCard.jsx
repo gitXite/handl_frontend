@@ -5,47 +5,26 @@ import { Tooltip, Zoom } from '@mui/material';
 import { Trash2, Share, SquarePlus, Rss } from 'lucide-react';
 import editIcon from '@assets/icons/edit-square.png';
 import api from '../../utils/api';
-import { useSSE } from '@hooks/useSSE';
 import './ListCard.css';
 
 
-function ListCard({ list, onModal }) {
+function ListCard({ list, onModal, isShared, sharedNumber, updateSharedState }) {
     const navigate = useNavigate();
     const [newName, setNewName] = useState(list.name);
-    const [isShared, setIsShared] = useState(false);
-    const [sharedNumber, setSharedNumber] = useState(null);
 
     // Get initial shared state
     useEffect(() => {
-        const getNumberOfSharedUsers = async (listId) => {
+        const getNumberOfSharedUsers = async () => {
             try {
-                const sharedUsers = await api.get(`/api/lists/${listId}/shared-users`);
-                if (sharedUsers.length > 0) {
-                    setIsShared((prev) => (prev !== true ? true : prev));
-                } else {
-                    setIsShared((prev) => (prev !== false ? false : prev));
-                }
-                setSharedNumber(sharedUsers.length);
+                const sharedUsers = await api.get(`/api/lists/${list.id}/shared-users`);
+                updateSharedState(list.id, sharedUsers);
             } catch (error) {
                 console.error('Error retrieving number of shared users:', error);
-                setSharedNumber(null);
             }
         };
-        if (list.id) {
-            getNumberOfSharedUsers(list.id);
-        }
+
+        getNumberOfSharedUsers();
     }, [list.id]);
-
-    // SSE realtime updates for shared state
-    const handleSSEUpdates = (sseData) => {
-        if (!sseData) return;
-
-        if (sseData.type === 'SHARED_NUMBER' && sseData.sharedNumber !== undefined) {
-            setIsShared(sseData.sharedNumber > 0);
-            setSharedNumber(sseData.sharedNumber);
-        }
-    };
-    useSSE(handleSSEUpdates);
 
     // Handle renaming and SSE updates
     useEffect(() => {

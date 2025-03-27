@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { data, useNavigate } from 'react-router-dom';
 import api from '@utils/api';
 import { useAuth } from '@hooks/useAuth';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -24,6 +24,7 @@ function ListPage() {
     const [message, setMessage] = useState('Checking auth status...');
     const [isLoading, setIsLoading] = useState(false);
     const [lists, setLists] = useState([]);
+    const [sharedLists, setSharedLists] = useState({});
     const [selectedList, setSelectedList] = useState(null);
     const [showModal, setShowModal] = useState('');
     const [modalNotice, setModalNotice] = useState('');
@@ -46,6 +47,38 @@ function ListPage() {
             setLists(res);
         });
     }, []);
+
+    useEffect(() => {
+        const getSharedUsers = async () => {
+            try {
+                const sharedMap = {};
+                for (const list of lists) {
+                    const sharedUsers = await api.get(`/api/lists/${list.id}/shared-users`);
+                    sharedMap[list.id] = {
+                        isShared: sharedUsers.length > 0,
+                        sharedNumber: sharedUsers.length
+                    };
+                }
+                setSharedLists(sharedMap);
+            } catch (error) {
+                console.error('Error retrieving shared users:', error);
+            }
+        };
+
+        if (lists.length > 0) {
+            getSharedUsers();
+        }
+    }, [lists]);
+
+    const updateSharedState = (listId, newSharedUsers) => {
+        setSharedLists(prev => ({
+            ...prev,
+            [listId]: {
+                isShared: newSharedUsers.length > 0,
+                sharedNumber : newSharedUsers.length
+            }
+        }));
+    };
 
     // Handle SSE updates
     const handleSSEUpdate = (sseData) => {
@@ -73,6 +106,21 @@ function ListPage() {
 
                 default: 
                     return prevLists;
+            }
+        });
+        setSharedLists((prev) => {
+            switch (sseData.type) {
+                case 'SHARED_USERS_UPDATED': 
+                    return {
+                        ...prev,
+                        [sseData.listId]: {
+                            isShared: sseData.sharedNumber > 0,
+                            sharedNumber: sseData.sharedNumber
+                        }
+                    };
+                default: 
+                    return prev;
+                
             }
         });
     };
@@ -232,7 +280,13 @@ function ListPage() {
                                     exit={{ opacity: 0, x: -100, scale: 0.9 }}
                                     transition={{ duration: 0.1, type: 'spring', stiffness: 500, damping: 25 }}
                                 >
-                                    <ListCard list={list} onModal={handleModal} />
+                                    <ListCard 
+                                        list={list} 
+                                        onModal={handleModal}
+                                        isShared={sharedLists[list.id]?.isShared || false}
+                                        sharedNumber={sharedLists[list.id]?.sharedNumber || 0}
+                                        updateSharedState={updateSharedState}
+                                    />
                                 </motion.div>
                             ))}
                         </SimpleBar>
@@ -241,9 +295,9 @@ function ListPage() {
 
                 {showModal === 'add' && (
                     <ListModal 
-                    message='Add a new list'
-                    onConfirm={addList}
-                    onCancel={cancelModal}
+                        message='Add a new list'
+                        onConfirm={addList}
+                        onCancel={cancelModal}
                     />
                 )}
                 {showModal === 'share' && (
