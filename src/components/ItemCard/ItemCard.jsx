@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MotionWrapper from '../MotionWrapper';
 import './ItemCard.css';
 
 
 function ItemCard({ item, onModal }) {
     const [isChecked, setIsChecked] = useState(false);
+
+    useEffect(() => {
+        setIsChecked(item.checked);
+    }, [item.checked]);
     
     const handleCheckItem = async (listId, itemId) => {
         setIsChecked(true);
