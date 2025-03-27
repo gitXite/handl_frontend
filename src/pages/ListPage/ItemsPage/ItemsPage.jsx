@@ -15,6 +15,7 @@ function ItemsPage() {
     const { listId } = useParams();
     const [listName, setListName] = useState('');
     const [items, setItems] = useState([]);
+    const [sharedList, setSharedList] = useState({});
     const [selectedItem, setSelectedItem] = useState(null);
     const [showModal, setShowModal] = useState('');
     const queryClient = useQueryClient();
@@ -49,6 +50,30 @@ function ItemsPage() {
         onSuccess: (data) => setItems(data),
     });
 
+    useEffect(() => {
+            const getSharedUsers = async () => {
+                try {
+                    const sharedMap = {};
+                    const sharedUsers = await api.get(`/api/lists/${listId}/shared-users`);
+                    sharedMap[listId] = {
+                        isShared: sharedUsers.length > 0,
+                        sharedNumber: sharedUsers.length
+                    };
+                    setSharedList((prev) => ({
+                        ...prev,
+                        [listId]: {
+                            isShared: sharedUsers.length > 0,
+                            sharedNumber: sharedUsers.length
+                        }
+                    }));
+                } catch (error) {
+                    console.error('Error retrieving shared users:', error);
+                }
+            };
+    
+            getSharedUsers();
+        }, [listId]);
+
     // Handle SSE updates
     const handleSSEUpdate = (sseData) => {
         if (sseData.listId !== listId || !sseData) return;
@@ -66,6 +91,21 @@ function ItemsPage() {
                     
                 default:
                     return prevItems;
+            }
+        });
+        setSharedList((prev) => {
+            switch (sseData.type) {
+                case 'SHARED_USERS_UPDATED': 
+                    return {
+                        ...prev,
+                        [sseData.listId]: {
+                            isShared: sseData.sharedNumber > 0,
+                            sharedNumber: sseData.sharedNumber
+                        }
+                    };
+                default: 
+                    return prev;
+                
             }
         });
     };
@@ -176,32 +216,34 @@ function ItemsPage() {
                             </button>
                         </Tooltip>
                     </MotionWrapper>
-                    <MotionWrapper transition={{ delay: 0.3 }}>
-                        <Tooltip 
-                            title='Shared'
-                            disableInteractive
-                            slots={{
-                                transition: Zoom,
-                            }}
-                            enterDelay={500}
-                            enterNextDelay={500}
-                            slotProps={{
-                                popper: {
-                                    modifiers: [
-                                        {
-                                            name: 'offset',
-                                            options: { offset: [0, -6] },
-                                        },
-                                    ],
-                                },
-                            }}
-                        >
-                            <div className='list-shared'>
-                                <Rss size={25} color={'#00CF00'} />
-                                {/* <div>{sharedNumber}</div> */}
-                            </div>
-                        </Tooltip>
-                    </MotionWrapper>
+                    {sharedList[listId]?.isShared && (
+                        <MotionWrapper transition={{ delay: 0.3 }}>
+                            <Tooltip 
+                                title='Shared'
+                                disableInteractive
+                                slots={{
+                                    transition: Zoom,
+                                }}
+                                enterDelay={500}
+                                enterNextDelay={500}
+                                slotProps={{
+                                    popper: {
+                                        modifiers: [
+                                            {
+                                                name: 'offset',
+                                                options: { offset: [0, -6] },
+                                            },
+                                        ],
+                                    },
+                                }}
+                            >
+                                <div className='list-shared'>
+                                    <Rss size={25} color={'#00CF00'} />
+                                    {/* <div>{sharedNumber}</div> */}
+                                </div>
+                            </Tooltip>
+                        </MotionWrapper>
+                    )}
                 </div>
             </div>
             <div className='items'>
