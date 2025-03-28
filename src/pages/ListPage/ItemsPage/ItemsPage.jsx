@@ -6,6 +6,7 @@ import { Tooltip, Zoom } from '@mui/material';
 import { Plus, ChartNoAxesGantt, RefreshCcw, Rss } from 'lucide-react';
 import ItemCard from '@components/ItemCard/ItemCard';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
+import ItemModal from '@components/Modals/ItemModal/ItemModal';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
 import { useSSE } from '../../../hooks/useSSE';
@@ -302,10 +303,10 @@ function ItemsPage() {
             </div>
 
             {showModal === 'add' && (
-                // <ItemModal />
+                <ItemModal />
             )}
             {showModal === 'edit' && (
-                // <ItemModal />
+                <ItemModal />
             )}
             {showModal === 'delete' && (
                 <DeleteModal 
