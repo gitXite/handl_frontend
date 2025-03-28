@@ -87,6 +87,10 @@ function ItemsPage() {
                     return prevItems.map((item) =>
                         item.id === sseData.item.id ? sseData.item : item
                     );
+                case 'CHECK_ITEM':
+                    return prevItems.map((item) => 
+                        item.id === sseData.itemId ? { ...Item, checked: sseData.checkStatus } : item
+                    );
                 case 'DELETE_ITEM':
                     return prevItems.filter((item) => item.id !== sseData.item.id);
                     
