@@ -82,7 +82,7 @@ function ItemsPage() {
             switch (sseData.type) {
                 case 'ADD_ITEM':
                     return [...prevItems, sseData.item];
-                case 'UPDATE_ITEM':
+                case 'EDIT_ITEM':
                     return prevItems.map((item) =>
                         item.id === sseData.item.id ? sseData.item : item
                     );
