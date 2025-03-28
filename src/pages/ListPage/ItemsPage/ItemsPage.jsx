@@ -135,7 +135,17 @@ function ItemsPage() {
         }
     };
 
-    const editItem = async (name, quantity) => {};
+    const editItem = async (name, quantity) => {
+        if (!name || !quantity) return;
+
+        try {
+            const updatedItem = await api.patch(`/api/lists/${listId}/items/${selectedItem}`, { name, quantity });
+            setItems((prevItems) => prevItems.map((item) => item.id === updatedItem.id ? updatedItem : item));
+            cancelModal();
+        } catch (error) {
+            console.error('Failed to update item:', error);
+        }
+    };
 
     const deleteItem = async () => {
         if (!selectedItem) return;
