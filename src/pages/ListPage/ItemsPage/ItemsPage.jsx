@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tooltip, Zoom } from '@mui/material';
-import ItemCard from '@components/ItemCard/ItemCard';
 import { Plus, ChartNoAxesGantt, RefreshCcw, Rss } from 'lucide-react';
+import ItemCard from '@components/ItemCard/ItemCard';
+import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import MotionWrapper from '@components/MotionWrapper';
 import api from '@utils/api';
 import { useSSE } from '../../../hooks/useSSE';
@@ -285,6 +286,21 @@ function ItemsPage() {
                     ))}
                 </AnimatePresence>
             </div>
+
+            {showModal === 'add' && (
+                // <ItemModal />
+            )}
+            {showModal === 'edit' && (
+                // <ItemModal />
+            )}
+            {showModal === 'delete' && (
+                <DeleteModal 
+                    message='Are you sure you want to delete this item?'
+                    onConfirm={deleteItem}
+                    onCancel={cancelModal}
+                    notice={modalNotice}
+                />
+            )}
         </div>
     );
 }
