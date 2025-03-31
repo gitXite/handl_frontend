@@ -118,7 +118,7 @@ function ListCard({ list, onModal, isShared, sharedNumber, updateSharedState }) 
                             },
                         }}
                     >
-                        <button className='list-add-item'>
+                        <button className='list-add-item' onClick={() => onModal('addItem', list.id)}>
                             <SquarePlus size={25} />
                         </button>
                     </Tooltip>

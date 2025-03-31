@@ -9,6 +9,7 @@ import ListModal from '@components/Modals/ListModal/ListModal';
 import ShareModal from '@components/Modals/ShareModal/ShareModal';
 import DeleteModal from '@components/Modals/DeleteModal/DeleteModal';
 import SharedUserModal from '../../components/Modals/SharedUserModal/SharedUserModal';
+import ItemModal from '@components/Modals/ItemModal/ItemModal';
 import Redirect from '@components/Redirect/Redirect';
 import ListCard from '@components/ListCard/ListCard';
 import MotionWrapper from '@components/MotionWrapper';
@@ -183,6 +184,18 @@ function ListPage() {
             console.error('Failed to fetch lists:', error);
         }
     };
+
+    // Item logic
+    const addItem = async (name, quantity) => {
+        if (!name || !quantity) return;
+            
+        try {
+            const newItem = await api.post(`/api/lists/${selectedList}/items`, { name, quantity });
+            cancelModal();
+        } catch (error) {
+            console.error('Failed to add item:', error);
+        }
+    };
     
     return (
         isAuthenticated ? (
@@ -322,6 +335,14 @@ function ListPage() {
                         listId={selectedList}
                         message='Shared users for this list'
                         onCancel={cancelModal}
+                    />
+                )}
+                {showModal === 'addItem' && (
+                    <ItemModal 
+                        message='Add an item'
+                        onConfirm={addItem}
+                        onCancel={cancelModal}
+                        notice={modalNotice}
                     />
                 )}
             </div>
