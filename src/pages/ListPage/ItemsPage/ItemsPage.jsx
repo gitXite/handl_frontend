@@ -20,6 +20,7 @@ function ItemsPage() {
     const [sharedList, setSharedList] = useState({});
     const [selectedItem, setSelectedItem] = useState(null);
     const [showModal, setShowModal] = useState('');
+    const [modalNotice, setModalNotice] = useState('');
     const queryClient = useQueryClient();
 
     useEffect(() => {
@@ -303,10 +304,20 @@ function ItemsPage() {
             </div>
 
             {showModal === 'add' && (
-                <ItemModal />
+                <ItemModal 
+                    message='Add an item'
+                    onConfirm={addItem}
+                    onCancel={cancelModal}
+                    notice={modalNotice}
+                />
             )}
             {showModal === 'edit' && (
-                <ItemModal />
+                <ItemModal 
+                    message='Edit item'
+                    onConfirm={editItem}
+                    onCancel={cancelModal}
+                    notice={modalNotice}
+                />
             )}
             {showModal === 'delete' && (
                 <DeleteModal 

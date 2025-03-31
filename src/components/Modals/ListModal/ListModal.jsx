@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import MotionWrapper from '@components/MotionWrapper';
 import { useHotkeys } from 'react-hotkeys-hook';
-
 import { handleChange, handleConfirm, handleFocus } from '@utils/handleFunctions';
-
 import './ListModal.css';
 
 
