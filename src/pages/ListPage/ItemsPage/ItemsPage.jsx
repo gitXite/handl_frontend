@@ -308,7 +308,6 @@ function ItemsPage() {
                     message='Add an item'
                     onConfirm={addItem}
                     onCancel={cancelModal}
-                    notice={modalNotice}
                 />
             )}
             {showModal === 'edit' && (
@@ -316,7 +315,6 @@ function ItemsPage() {
                     message='Edit item'
                     onConfirm={editItem}
                     onCancel={cancelModal}
-                    notice={modalNotice}
                 />
             )}
             {showModal === 'delete' && (

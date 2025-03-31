@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import MotionWrapper from '@components/MotionWrapper';
 import { useHotkeys } from 'react-hotkeys-hook';
-import { handleChange, handleConfirm, handleFocus } from '@utils/handleFunctions';
+import { handleConfirm, handleFocus } from '@utils/handleFunctions';
 import './ItemModal.css';
 
 
 function ItemModal({ message, onConfirm, onCancel }) {
     const [notice, setNotice] = useState('');
     const [formData, setFormData] = useState({
-        
+        name: '',
+        quantity: null,
     });
+
+    const handleChange = () => {};
     
     useHotkeys('enter', (e) => handleConfirm(e, formData.prop, onConfirm, setNotice));
     useHotkeys('escape', onCancel);
@@ -24,7 +27,7 @@ function ItemModal({ message, onConfirm, onCancel }) {
                             name=''
                             type='text'
                             value={formData.prop}
-                            onChange={(e) => handleChange(e, formData, setFormData)}
+                            onChange={(e) => handleChange(e)}
                             onFocus={handleFocus}
                             autoFocus
                             required
