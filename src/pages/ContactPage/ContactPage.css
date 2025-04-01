@@ -1,3 +1,38 @@
+/* Phone screen */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        width: 90%;
+        margin-top: 4rem;
+        align-items: center;
+    }
+    .contact-left, .contact-right {
+        width: 100%;
+        padding: 1rem;
+    }
+    .contact-left h1 {
+        font-size: 32px;
+    }
+    .contact-left p {
+        font-size: 18px;
+        text-align: center;
+    }
+    .socials {
+        display: none;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .socials img {
+        width: 30px;
+        height: 30px;
+    }
+    .contact-form {
+        width: 100%;
+    }
+    .contact-form button {
+        width: 100%;
+    }
+}
 /* Laptop screen */
 @media screen and (max-width: 1750px) {
     .contact-container {
