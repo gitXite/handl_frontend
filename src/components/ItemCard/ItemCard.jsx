@@ -54,6 +54,35 @@ function ItemCard({ item, onModal }) {
             <div className='item-buttons'>
                 <MotionWrapper className={'item-fade'} transition={{ delay: 0.5 }}>
                     <Tooltip
+                        title='Quantity'
+                        disableInteractive
+                        slots={{
+                            transition: Zoom,
+                        }}
+                        enterDelay={500}
+                        enterNextDelay={500}
+                        slotProps={{
+                            popper: {
+                                modifiers: [
+                                    {
+                                        name: 'offset',
+                                        options: { offset: [0, -6] },
+                                    },
+                                ],
+                            },
+                        }}
+                    >
+                        <div className='item-quantity'>
+                            <input 
+                                type='number'
+                                name='quantity'
+                            />
+                            <label htmlFor='quantity'></label>
+                        </div>
+                    </Tooltip>
+                </MotionWrapper>
+                <MotionWrapper className={'item-fade'} transition={{ delay: 0.6 }}>
+                    <Tooltip
                         title='Check item'
                         disableInteractive
                         slots={{
@@ -83,7 +112,7 @@ function ItemCard({ item, onModal }) {
                         </div>
                     </Tooltip>
                 </MotionWrapper>
-                <MotionWrapper className={'item-fade'} transition={{ delay: 0.6 }}>
+                <MotionWrapper className={'item-fade'} transition={{ delay: 0.7 }}>
                     <Tooltip
                         title='Delete item'
                         disableInteractive
