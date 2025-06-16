@@ -47,14 +47,22 @@ The app will be available at http://localhost:3000.
 
 ## 📁 Project Structure
 ```bash
-src/
-├── assets/         # Static files
-├── components/     # Reusable UI components
-├── context/        # Global context providers
-├── hooks/          # Custom React hooks
-├── pages/          # Route-based pages
-├── services/       # Reusable service functions
-├── utils/          # Utility functions
+├── public/
+|    ├── favicon/
+|    ├── robots.txt
+|    ├── site.webmanifest
+├── src/
+|    ├── assets/         # Static files
+|    ├── components/     # Reusable UI components
+|    ├── context/        # Global context providers
+|    ├── hooks/          # Custom React hooks
+|    ├── pages/          # Route-based pages
+|    ├── services/       # Reusable service functions
+|    ├── utils/          # Utility functions
+├── index.html
+├── jsconfig.json
+├── package.json
+├── vite.config.js
 ```
 
 ## 🔒 Authentication
