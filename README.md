@@ -25,6 +25,7 @@ Frontend repository for **Handl**, a collaborative full-stack shopping list web 
 
 ### Installation
 
+```bash
 git clone https://github.com/gitXite/handl_frontend.git
 cd handl_frontend
 npm install
