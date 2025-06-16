@@ -31,6 +31,8 @@ cd handl_frontend
 npm install
 ```
 
+The app can be installed locally as a progressive web app (PWA). 
+
 ### Environment Setup
 Create a .env file in the root:
 ```ini
