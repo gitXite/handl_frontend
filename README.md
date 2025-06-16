@@ -1,4 +1,5 @@
-# Handl — Frontend //IN PROGRESS//
+# Handl — Frontend
+## //IN PROGRESS//
 
 Frontend repository for **Handl**, a collaborative full-stack shopping list web application.
 
