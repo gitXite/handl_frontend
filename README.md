@@ -43,7 +43,7 @@ npm run dev
 ```
 The app will be available at http://localhost:3000. 
 
-### 📁 Project Structure
+## 📁 Project Structure
 ```bash
 src/
 ├── assets/         # Static files
@@ -55,12 +55,12 @@ src/
 ├── utils/          # Utility functions
 ```
 
-### 🔒 Authentication
+## 🔒 Authentication
 Uses cookie-based sessions via backend (Passport + express-session). 
 
 Axios is configured to send credentials (withCredentials: true). 
 
-### 📦 Deployment
+## 📦 Deployment
 When deploying, make sure to point VITE_API_URL to your hosted backend. 
 
 ## 📄 License
