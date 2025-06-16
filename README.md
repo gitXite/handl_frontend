@@ -47,6 +47,7 @@ The app will be available at http://localhost:3000.
 
 ## 📁 Project Structure
 ```bash
+handl_frontend/
 ├── public/
 |    ├── favicon/
 |    ├── robots.txt
