@@ -60,7 +60,9 @@ handl_frontend/
 |    ├── pages/          # Route-based pages
 |    ├── services/       # Reusable service functions
 |    ├── utils/          # Utility functions
+├── .env.example
 ├── index.html
+├── README.md
 ├── jsconfig.json
 ├── package.json
 ├── vite.config.js
