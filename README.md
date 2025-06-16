@@ -61,6 +61,10 @@ handl_frontend/
 |    ├── pages/          # Route-based pages
 |    ├── services/       # Reusable service functions
 |    ├── utils/          # Utility functions
+|    ├── App.jsx         # App
+|    ├── axiosConfig.js
+|    ├── index.css       # Global styling
+|    ├── main.jsx        # Entry point
 ├── .env.example
 ├── index.html
 ├── README.md
