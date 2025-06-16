@@ -21,7 +21,7 @@ Frontend repository for **Handl**, a collaborative full-stack shopping list web 
 
 ### Prerequisites
 - Node.js (v18+ recommended)
-- Backend API (see [Handl Backend](https://github.com/yourusername/handl-backend))
+- Backend API (see [Handl Backend](https://github.com/gitXite/handl_backend))
 
 ### Installation
 
