@@ -73,6 +73,9 @@ Uses cookie-based sessions via backend (Passport + express-session).
 
 Axios is configured to send credentials (withCredentials: true). 
 
+## 🔄 Real-time Features
+Server-Sent Events (SSE) for real-time list updates and sharing
+
 ## 📦 Deployment
 When deploying, make sure to point VITE_API_URL to your hosted backend. 
 
