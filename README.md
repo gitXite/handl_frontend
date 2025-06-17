@@ -1,7 +1,7 @@
-# Handl — Frontend
+# HANDL — Frontend
 ## //IN PROGRESS//
 
-Frontend repository for **Handl**, a full-stack web app that helps users create, manage, and share shopping lists in real time. Whether you're planning groceries solo or coordinating with family, Handl keeps everything in sync across devices. 
+Frontend repository for **HANDL**, a full-stack web app that helps users create, manage, and share shopping lists in real time. Whether you're planning groceries solo or coordinating with family, Handl keeps everything in sync across devices. 
 
 ## 🌐 Tech Stack
 
