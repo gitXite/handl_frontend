@@ -5,7 +5,7 @@ Frontend repository for **Handl**, a full-stack collaborative shopping list web 
 
 ## 🌐 Tech Stack
 
-- **Framework**: React (with Vite)
+- **Framework**: Javascript & React (with Vite)
 - **Styling**: Vanilla CSS
 - **Routing**: React Router
 - **State/Data Handling**:
