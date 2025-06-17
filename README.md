@@ -85,5 +85,4 @@ Server-Sent Events (SSE) for real-time list updates and sharing
 When deploying, make sure to point VITE_API_URL to your hosted backend. 
 
 ## 📄 License
-
-This project is licensed under the [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/) license — non-commercial use only.
+MIT
